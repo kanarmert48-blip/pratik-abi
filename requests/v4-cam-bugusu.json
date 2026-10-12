@@ -1,0 +1,16 @@
+{
+  "id": "v4-cam-bugusu",
+  "items": [
+    {"name": "bugulu-cam-v", "source": "pixabay_video", "q": "foggy window", "n": 3},
+    {"name": "bugu-v", "source": "pixabay_video", "q": "condensation glass", "n": 3},
+    {"name": "araba-ic-v", "source": "pixabay_video", "q": "car interior", "n": 3},
+    {"name": "kis-araba-v", "source": "pixabay_video", "q": "car snow winter", "n": 3},
+    {"name": "yagmur-cam-v", "source": "pixabay_video", "q": "rain windshield", "n": 3},
+    {"name": "araba-gece-v", "source": "pixabay_video", "q": "driving night city", "n": 2},
+    {"name": "bugulu-cam-f", "source": "pixabay_photo", "q": "foggy car window", "n": 3},
+    {"name": "klima-f", "source": "pixabay_photo", "q": "car air conditioning", "n": 3},
+    {"name": "havalandirma-f", "source": "pixabay_photo", "q": "car air vent", "n": 3},
+    {"name": "cam-silme-f", "source": "pixabay_photo", "q": "cleaning car window", "n": 3},
+    {"name": "kis-arac-f", "source": "pixabay_photo", "q": "frozen car windshield", "n": 2}
+  ]
+}
