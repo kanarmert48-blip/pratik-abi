@@ -1,0 +1,16 @@
+{
+  "id": "v3b-ek",
+  "items": [
+    {"name": "sarj-priz-v", "source": "pixabay_video", "q": "charger plugged wall outlet", "n": 3},
+    {"name": "fis-cek-v", "source": "pixabay_video", "q": "unplug plug socket", "n": 3},
+    {"name": "sarj-priz-f", "source": "pixabay_photo", "q": "phone charger socket", "n": 3},
+    {"name": "uydu-alici-f", "source": "pixabay_photo", "q": "set top box receiver", "n": 3},
+    {"name": "uydu-anten-v", "source": "pixabay_video", "q": "satellite dish", "n": 2},
+    {"name": "tv-izleyen-v", "source": "pixabay_video", "q": "watching tv remote couch", "n": 3},
+    {"name": "uzatma-anahtar-f", "source": "pixabay_photo", "q": "power strip switch", "n": 3},
+    {"name": "fatura-f", "source": "pixabay_photo", "q": "electricity bill", "n": 2},
+    {"name": "oyun-gece-v", "source": "pixabay_video", "q": "playing video games night", "n": 3},
+    {"name": "buzdolabi-v", "source": "pixabay_video", "q": "fridge door open", "n": 3},
+    {"name": "uyku-v", "source": "pixabay_video", "q": "going to sleep bed night", "n": 2}
+  ]
+}
