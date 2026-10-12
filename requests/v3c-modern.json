@@ -1,0 +1,9 @@
+{
+  "id": "v3c-modern",
+  "items": [
+    {"name": "ps5", "source": "wikimedia", "q": "PlayStation 5 console", "n": 3},
+    {"name": "xbox", "source": "wikimedia", "q": "Xbox Series X console", "n": 3},
+    {"name": "alici", "source": "wikimedia", "q": "set-top box receiver remote", "n": 4},
+    {"name": "alici2", "source": "pixabay_photo", "q": "tv box", "n": 3}
+  ]
+}
