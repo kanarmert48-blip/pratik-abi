@@ -1,0 +1,14 @@
+{
+  "id": "v5-kombi",
+  "items": [
+    {"name": "petek", "source": "pixabay_video", "q": "radiator", "n": 4},
+    {"name": "isitma", "source": "pixabay_video", "q": "heating", "n": 4},
+    {"name": "termostat", "source": "pixabay_video", "q": "thermostat", "n": 4},
+    {"name": "alev", "source": "pixabay_video", "q": "gas flame", "n": 3},
+    {"name": "perde", "source": "pixabay_video", "q": "curtain window", "n": 4},
+    {"name": "salon", "source": "pixabay_video", "q": "living room", "n": 4},
+    {"name": "soguk", "source": "pixabay_video", "q": "cold winter home", "n": 4},
+    {"name": "gunes", "source": "pixabay_video", "q": "sunlight window", "n": 4},
+    {"name": "kar-pencere", "source": "pixabay_video", "q": "snow window", "n": 3}
+  ]
+}
