@@ -1,0 +1,18 @@
+{
+  "id": "v6-kis-yanlislar",
+  "items": [
+    {"name": "karli-araba", "source": "pixabay_video", "q": "car snow", "n": 4},
+    {"name": "buzlu-cam", "source": "pixabay_video", "q": "frozen windshield", "n": 4},
+    {"name": "egzoz", "source": "pixabay_video", "q": "exhaust", "n": 4},
+    {"name": "kontak", "source": "pixabay_video", "q": "ignition", "n": 3},
+    {"name": "kis-surus", "source": "pixabay_video", "q": "winter driving", "n": 4},
+    {"name": "lastik", "source": "pixabay_video", "q": "tire", "n": 4},
+    {"name": "lastik-basinc", "source": "pixabay_video", "q": "tire pressure", "n": 3},
+    {"name": "karda-teker", "source": "pixabay_video", "q": "wheel snow", "n": 3},
+    {"name": "kaziyici", "source": "pixabay_video", "q": "ice scraper", "n": 3},
+    {"name": "buz-kazima", "source": "pixabay_video", "q": "scraping ice", "n": 3},
+    {"name": "sicak-su", "source": "pixabay_video", "q": "pouring hot water", "n": 3},
+    {"name": "catlak-cam", "source": "pixabay_video", "q": "cracked glass", "n": 3},
+    {"name": "don", "source": "pixabay_video", "q": "frost", "n": 3}
+  ]
+}
