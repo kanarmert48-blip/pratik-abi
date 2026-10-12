@@ -17,7 +17,7 @@ from pathlib import Path
 
 UA = "PratikAbiMediaFetcher/1.0 (https://github.com/kanarmert48-blip/pratik-abi)"
 KEY = os.environ.get("PIXABAY_API_KEY", "")
-MAX_BYTES = 80 * 1024 * 1024
+MAX_BYTES = 90 * 1024 * 1024
 
 
 def get_json(url):
@@ -44,16 +44,20 @@ def ext_of(url, default):
     return (m.group(1).lower() if m else default)
 
 
-def pixabay_video(q, n):
-    url = "https://pixabay.com/api/videos/?" + urllib.parse.urlencode(
-        {"key": KEY, "q": q[:100], "per_page": max(3, n), "safesearch": "true"})
+def pixabay_video(q, n, vid=None):
+    params = {"key": KEY, "per_page": max(3, n), "safesearch": "true"}
+    if vid:
+        params["id"] = vid
+    else:
+        params["q"] = q[:100]
+    url = "https://pixabay.com/api/videos/?" + urllib.parse.urlencode(params)
     out = []
     for h in get_json(url).get("hits", [])[:n]:
         v = h["videos"]
         pick = None
-        for k in ("large", "medium", "small"):  # 1080p varsa onu al, yoksa küçült
+        for k in ("large", "medium", "small"):  # en yüksek çözünürlük (4K varsa 4K)
             c = v.get(k) or {}
-            if c.get("url") and c.get("width", 0) <= 1920 and (c.get("size", 0) or 0) < MAX_BYTES:
+            if c.get("url") and c.get("width", 0) <= 3840 and (c.get("size", 0) or 0) < MAX_BYTES:
                 pick = c
                 break
         if pick:
@@ -109,6 +113,8 @@ def main(req_path):
         try:
             if src == "pixabay_video":
                 found = pixabay_video(it["q"], n)
+            elif src == "pixabay_video_id":
+                found = pixabay_video("", 1, vid=str(it["id"]))
             elif src == "pixabay_photo":
                 found = pixabay_photo(it["q"], n)
             elif src == "wikimedia":
