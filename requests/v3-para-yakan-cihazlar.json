@@ -1,0 +1,14 @@
+{
+  "id": "v3-para-yakan-cihazlar",
+  "items": [
+    {"name": "sarj", "source": "pixabay_video", "q": "phone charger plug socket", "n": 3},
+    {"name": "sayac", "source": "pixabay_video", "q": "electricity meter", "n": 2},
+    {"name": "tv-kumanda", "source": "pixabay_video", "q": "tv remote control", "n": 3},
+    {"name": "tv-gece", "source": "pixabay_video", "q": "television living room night", "n": 2},
+    {"name": "konsol", "source": "pixabay_video", "q": "gamepad video game playing", "n": 3},
+    {"name": "bilgisayar", "source": "pixabay_video", "q": "computer monitor desk night", "n": 3},
+    {"name": "buzdolabi", "source": "pixabay_video", "q": "refrigerator kitchen", "n": 3},
+    {"name": "priz-anahtar", "source": "pixabay_video", "q": "power strip switch", "n": 2},
+    {"name": "isik-kapat", "source": "pixabay_video", "q": "light switch off", "n": 2}
+  ]
+}
