@@ -1,0 +1,50 @@
+name: medya-indir
+
+# requests/ klasörüne yeni bir istek dosyası gelince görselleri indirip media/ altına kaydeder.
+on:
+  push:
+    paths:
+      - "requests/*.json"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: medya-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  indir:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Yeni istekleri bul
+        id: istek
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            files=$(ls requests/*.json 2>/dev/null | tr '\n' ' ')
+          else
+            files=$(git diff --name-only --diff-filter=AM HEAD~1 HEAD -- 'requests/*.json' | tr '\n' ' ')
+          fi
+          echo "files=$files" >> "$GITHUB_OUTPUT"
+          echo "İstekler: $files"
+
+      - name: İndir
+        if: steps.istek.outputs.files != ''
+        env:
+          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
+        run: python3 tools/fetch_media.py ${{ steps.istek.outputs.files }}
+
+      - name: Kaydet
+        if: steps.istek.outputs.files != ''
+        run: |
+          git config user.name "pratik-abi-bot"
+          git config user.email "pratik-abi-bot@users.noreply.github.com"
+          git add media
+          git commit -m "medya: ${{ steps.istek.outputs.files }}" || exit 0
+          for i in 1 2 3; do git pull --rebase -q && git push && break; sleep 5; done
