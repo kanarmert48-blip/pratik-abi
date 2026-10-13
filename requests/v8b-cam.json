@@ -1,0 +1,15 @@
+{
+  "id": "v8b-cam",
+  "items": [
+    {"name": "w1", "source": "wikimedia", "q": "frit windscreen", "n": 4},
+    {"name": "w2", "source": "wikimedia", "q": "ceramic frit glass car", "n": 4},
+    {"name": "w3", "source": "wikimedia", "q": "windshield dot matrix black", "n": 4},
+    {"name": "w4", "source": "wikimedia", "q": "car window black dots edge", "n": 4},
+    {"name": "w5", "source": "wikimedia", "q": "rear view mirror windshield frit", "n": 4},
+    {"name": "p1", "source": "pixabay_photo", "q": "windshield", "n": 6},
+    {"name": "p2", "source": "pixabay_photo", "q": "car window close up", "n": 6},
+    {"name": "p3", "source": "pixabay_photo", "q": "rear view mirror", "n": 6},
+    {"name": "v1", "source": "pixabay_video", "q": "windshield inside car driving", "n": 4},
+    {"name": "v2", "source": "pixabay_video", "q": "rear view mirror", "n": 4}
+  ]
+}
