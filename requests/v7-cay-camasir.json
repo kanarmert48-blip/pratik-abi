@@ -1,0 +1,19 @@
+{
+  "id": "v7-cay-camasir",
+  "items": [
+    {"name": "cay-dok", "source": "pixabay_video", "q": "turkish tea", "n": 4},
+    {"name": "cay-bardak", "source": "pixabay_video", "q": "tea glass", "n": 3},
+    {"name": "caydanlik", "source": "pixabay_video", "q": "kettle", "n": 4},
+    {"name": "kaynama", "source": "pixabay_video", "q": "boiling water", "n": 3},
+    {"name": "su-doldur", "source": "pixabay_video", "q": "filling water tap", "n": 3},
+    {"name": "limon", "source": "pixabay_video", "q": "lemon", "n": 3},
+    {"name": "kirec", "source": "pixabay_video", "q": "limescale", "n": 2},
+    {"name": "makine", "source": "pixabay_video", "q": "washing machine", "n": 4},
+    {"name": "camasir", "source": "pixabay_video", "q": "laundry", "n": 4},
+    {"name": "makine-kapak", "source": "pixabay_video", "q": "washing machine door", "n": 3},
+    {"name": "silme", "source": "pixabay_video", "q": "wiping cleaning", "n": 3},
+    {"name": "sirke", "source": "pixabay_video", "q": "vinegar", "n": 2},
+    {"name": "koklama", "source": "pixabay_video", "q": "smelling clothes", "n": 3},
+    {"name": "gulme", "source": "pixabay_video", "q": "couple laughing kitchen", "n": 3}
+  ]
+}
