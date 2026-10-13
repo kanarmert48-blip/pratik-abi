@@ -1,0 +1,11 @@
+{
+  "id": "v8e-ok",
+  "items": [
+    {"name": "a", "source": "wikimedia", "q": "fuel gauge", "n": 8},
+    {"name": "b", "source": "wikimedia", "q": "Tankanzeige", "n": 6},
+    {"name": "c", "source": "wikimedia", "q": "Kraftstoffanzeige", "n": 4},
+    {"name": "d", "source": "wikimedia", "q": "petrol gauge", "n": 4},
+    {"name": "e", "source": "wikimedia", "q": "fuel door indicator", "n": 4},
+    {"name": "f", "source": "wikimedia", "q": "fuel filler door", "n": 4}
+  ]
+}
