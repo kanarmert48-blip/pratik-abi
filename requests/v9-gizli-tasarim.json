@@ -1,0 +1,17 @@
+{
+  "id": "v9-gizli-tasarim",
+  "items": [
+    {"name": "saat-v", "source": "pixabay_video", "q": "wristwatch", "n": 4},
+    {"name": "saat-p", "source": "pixabay_photo", "q": "wrist watch", "n": 6},
+    {"name": "saat-w", "source": "wikimedia", "q": "wristwatch 10:10 advertising", "n": 4},
+    {"name": "pizza-v", "source": "pixabay_video", "q": "pizza box", "n": 4},
+    {"name": "pizza-p", "source": "pixabay_photo", "q": "pizza box", "n": 6},
+    {"name": "pizza-w", "source": "wikimedia", "q": "pizza saver", "n": 4},
+    {"name": "kola-v", "source": "pixabay_video", "q": "soda can", "n": 4},
+    {"name": "kola-p", "source": "pixabay_photo", "q": "aluminum can bottom", "n": 6},
+    {"name": "kola-w", "source": "wikimedia", "q": "beverage can bottom dome", "n": 4},
+    {"name": "makarna-v", "source": "pixabay_video", "q": "boiling pasta", "n": 4},
+    {"name": "yag-v", "source": "pixabay_video", "q": "pouring olive oil", "n": 3},
+    {"name": "karistir-v", "source": "pixabay_video", "q": "stirring pasta pot", "n": 3}
+  ]
+}
