@@ -18,13 +18,23 @@ elif step == "clip":
     tok = CLIPTokenizerFast.from_pretrained(name)
     tok.backend_tokenizer.save(str(OUT / "clip-tokenizer.json"))
 
+    torch.set_grad_enabled(False)
+    for prm in m.parameters():
+        prm.requires_grad_(False)
+
     class Img(torch.nn.Module):
+        def __init__(self):
+            super().__init__(); self.m = m
+
         def forward(self, pixel_values):
-            return m.get_image_features(pixel_values=pixel_values)
+            return self.m.get_image_features(pixel_values=pixel_values)
 
     class Txt(torch.nn.Module):
+        def __init__(self):
+            super().__init__(); self.m = m
+
         def forward(self, input_ids, attention_mask):
-            return m.get_text_features(input_ids=input_ids, attention_mask=attention_mask)
+            return self.m.get_text_features(input_ids=input_ids, attention_mask=attention_mask)
 
     torch.onnx.export(Img(), (torch.rand(1, 3, 224, 224),), str(OUT / "clip-image.onnx"), input_names=["pixel_values"],
                       output_names=["emb"], dynamic_axes={"pixel_values": {0: "b"}, "emb": {0: "b"}}, opset_version=17)
