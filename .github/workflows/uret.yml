@@ -1,0 +1,61 @@
+name: uret
+
+# Ağır işler: araçlar2 (depth+clip hazırlığı), muzik (MusicGen), wav2lip (Abi ağız senkronu)
+on:
+  workflow_dispatch:
+    inputs:
+      is:
+        description: "araclar2 | muzik | wav2lip"
+        required: true
+      job:
+        description: "jobs/<id> klasörü (muzik / wav2lip için)"
+        default: ""
+
+permissions:
+  contents: write
+
+jobs:
+  calis:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      GH_TOKEN: ${{ github.token }}
+      IS: ${{ github.event.inputs.is }}
+      JOB: ${{ github.event.inputs.job }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: |
+            tools
+            jobs
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Paketler
+        run: |
+          pip install -q huggingface_hub
+          pip install -q torch==2.2.2 --index-url https://download.pytorch.org/whl/cpu
+          case "$IS" in
+            araclar2) pip install -q "transformers==4.44.2" onnx ;;
+            muzik) pip install -q "transformers==4.44.2" scipy "numpy<2" ;;
+            wav2lip) sudo apt-get -qq install -y ffmpeg >/dev/null; pip install -q "numpy<2" "librosa==0.9.2" opencv-python-headless scipy tqdm numba ;;
+          esac
+
+      - name: Çalıştır
+        run: |
+          if [ "$IS" = "araclar2" ]; then
+            python3 tools/araclar2.py depth || echo "HATA depth"
+            python3 tools/araclar2.py clip || echo "HATA clip"
+          else
+            python3 tools/uret.py "$IS" "$JOB"
+          fi
+          ls -la out
+
+      - name: Yükle
+        run: |
+          R=uretim; [ "$IS" = "araclar2" ] && R=araclar
+          gh release view $R >/dev/null 2>&1 || gh release create $R --title "$R" --notes "otomatik"
+          gh release upload $R out/* --clobber
