@@ -9,7 +9,7 @@ pip install --break-system-packages -q faster-whisper rembg rlottie-python
 pip install --break-system-packages -q --use-pep517 srt && pip install --break-system-packages -q manim
 TOK=$(gh auth token)
 gh api repos/$R/releases/tags/araclar --jq '.assets[] | "\(.id) \(.name)"' | while read id name; do
-  [ "$name" = "birefnet-general-lite.onnx" ] && continue  # 7GB RAM'e sığmıyor
+  case "$name" in birefnet-general-lite.onnx|clip-log.txt) continue;; esac  # gereksiz
   curl -sSL -H "Authorization: Bearer $TOK" -H "Accept: application/octet-stream" -o "$A/$name" \
     https://api.github.com/repos/$R/releases/assets/$id
 done
