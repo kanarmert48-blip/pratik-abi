@@ -1,0 +1,9 @@
+{"id": "v10b-mikro", "items": [
+ {"name": "mv-food", "source": "pixabay_video", "q": "microwave food", "n": 5},
+ {"name": "mv-heat", "source": "pixabay_video", "q": "microwave heating", "n": 4},
+ {"name": "mp-food", "source": "pixabay_photo", "q": "microwave food", "n": 5},
+ {"name": "mw-oven", "source": "wikimedia", "q": "Microwave oven", "n": 8},
+ {"name": "mw-door", "source": "wikimedia", "q": "microwave door", "n": 5},
+ {"name": "mw-fara", "source": "wikimedia", "q": "Faraday cage microwave", "n": 3},
+ {"name": "mw-de", "source": "wikimedia", "q": "Mikrowellenherd", "n": 4}
+]}
