@@ -14,7 +14,7 @@ elif step == "clip":
     import torch
     from transformers import CLIPModel, CLIPTokenizerFast
     name = "openai/clip-vit-base-patch32"
-    m = CLIPModel.from_pretrained(name).eval()
+    m = CLIPModel.from_pretrained(name, attn_implementation="eager").eval()
     tok = CLIPTokenizerFast.from_pretrained(name)
     tok.backend_tokenizer.save(str(OUT / "clip-tokenizer.json"))
 
