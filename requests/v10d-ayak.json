@@ -1,0 +1,13 @@
+{"id": "v10d-ayak", "items": [
+ {"name": "p-run", "source": "pixabay_photo", "q": "running shoes", "n": 12},
+ {"name": "p-jog", "source": "pixabay_photo", "q": "jogging shoes", "n": 10},
+ {"name": "p-sport", "source": "pixabay_photo", "q": "sport shoe", "n": 10},
+ {"name": "p-train", "source": "pixabay_photo", "q": "trainers", "n": 8},
+ {"name": "p-nike", "source": "pixabay_photo", "q": "nike running shoe", "n": 8},
+ {"name": "p-asics", "source": "pixabay_photo", "q": "asics", "n": 6},
+ {"name": "w-run", "source": "wikimedia", "q": "running shoe", "n": 10},
+ {"name": "w-peg", "source": "wikimedia", "q": "Nike Pegasus", "n": 6},
+ {"name": "w-asics", "source": "wikimedia", "q": "Asics Gel running shoe", "n": 6},
+ {"name": "w-ghost", "source": "wikimedia", "q": "Brooks Ghost shoe", "n": 4},
+ {"name": "w-lace", "source": "wikimedia", "q": "shoelace lacing method", "n": 6}
+]}
