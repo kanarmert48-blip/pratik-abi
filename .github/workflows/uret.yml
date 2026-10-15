@@ -47,8 +47,7 @@ jobs:
       - name: Çalıştır
         run: |
           if [ "$IS" = "araclar2" ]; then
-            python3 tools/araclar2.py depth || echo "HATA depth"
-            python3 tools/araclar2.py clip || echo "HATA clip"
+            python3 tools/araclar2.py clip > out/clip-log.txt 2>&1 || echo "HATA clip"; tail -n 40 out/clip-log.txt
           else
             python3 tools/uret.py "$IS" "$JOB"
           fi
