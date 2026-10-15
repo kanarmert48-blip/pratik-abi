@@ -1,0 +1,9 @@
+{"id": "v10c-ayak", "items": [
+ {"name": "ap-eyelet", "source": "pixabay_photo", "q": "shoe eyelets", "n": 6},
+ {"name": "ap-top", "source": "pixabay_photo", "q": "sneakers laces top view", "n": 6},
+ {"name": "ap-run", "source": "pixabay_photo", "q": "running shoe close up", "n": 6},
+ {"name": "av-lace", "source": "pixabay_video", "q": "lacing sneakers", "n": 4},
+ {"name": "aw-loop", "source": "wikimedia", "q": "runner's loop lacing", "n": 3},
+ {"name": "aw-heel", "source": "wikimedia", "q": "heel lock shoelace", "n": 3},
+ {"name": "aw-eye", "source": "wikimedia", "q": "running shoe lacing eyelets", "n": 5}
+]}
