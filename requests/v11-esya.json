@@ -1,0 +1,20 @@
+{"id": "v11-esya", "items": [
+ {"name": "cay-p", "source": "pixabay_photo", "q": "turkish teapot", "n": 8},
+ {"name": "cay-p2", "source": "pixabay_photo", "q": "teapot stove", "n": 5},
+ {"name": "cay-w", "source": "wikimedia", "q": "Çaydanlık", "n": 6},
+ {"name": "cay-w2", "source": "wikimedia", "q": "Turkish tea pot double", "n": 5},
+ {"name": "cay-v", "source": "pixabay_video", "q": "turkish tea", "n": 5},
+ {"name": "kay-v", "source": "pixabay_video", "q": "boiling kettle", "n": 4},
+ {"name": "kirec-p", "source": "pixabay_photo", "q": "limescale", "n": 5},
+ {"name": "kirec-w", "source": "wikimedia", "q": "limescale kettle", "n": 5},
+ {"name": "limon-p", "source": "pixabay_photo", "q": "citric acid", "n": 4},
+ {"name": "limon-w", "source": "wikimedia", "q": "citric acid powder", "n": 3},
+ {"name": "tel-p", "source": "pixabay_photo", "q": "smartphone charging", "n": 8},
+ {"name": "tel-v", "source": "pixabay_video", "q": "phone charging", "n": 5},
+ {"name": "tel-w", "source": "wikimedia", "q": "smartphone charging cable", "n": 4},
+ {"name": "buz-p", "source": "pixabay_photo", "q": "refrigerator door open", "n": 8},
+ {"name": "buz-p2", "source": "pixabay_photo", "q": "milk fridge", "n": 5},
+ {"name": "buz-v", "source": "pixabay_video", "q": "opening fridge", "n": 5},
+ {"name": "buz-w", "source": "wikimedia", "q": "open refrigerator interior", "n": 6},
+ {"name": "mut-p", "source": "pixabay_photo", "q": "kitchen interior", "n": 5}
+]}
