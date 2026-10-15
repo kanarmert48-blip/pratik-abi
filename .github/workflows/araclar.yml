@@ -1,0 +1,44 @@
+name: araclar
+
+# Video araçlarının modellerini (whisper, rembg, Real-ESRGAN, Noto Lottie) indirip
+# 'araclar' sürümüne yükler. Elle tetiklenir: hangi adımlar çalışsın -> input.
+on:
+  workflow_dispatch:
+    inputs:
+      adimlar:
+        description: "whisper rembg esrgan lottie"
+        default: "whisper rembg esrgan lottie"
+
+permissions:
+  contents: write
+
+jobs:
+  hazirla:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      GH_TOKEN: ${{ github.token }}
+      ADIMLAR: ${{ github.event.inputs.adimlar }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: tools
+
+      - name: Paketler
+        run: |
+          pip install -q huggingface_hub
+          if echo "$ADIMLAR" | grep -q esrgan; then
+            pip install -q torch==2.5.1 --index-url https://download.pytorch.org/whl/cpu
+            pip install -q spandrel onnx
+          fi
+
+      - name: Hazırla
+        run: |
+          for a in $ADIMLAR; do echo "== $a"; python3 tools/araclar_hazirla.py $a || echo "HATA: $a"; done
+          ls -la out
+
+      - name: Sürüme yükle
+        run: |
+          gh release view araclar >/dev/null 2>&1 || gh release create araclar --title "Araç modelleri" --notes "Whisper, rembg, Real-ESRGAN, Noto Lottie"
+          gh release upload araclar out/* --clobber
