@@ -1,0 +1,7 @@
+{"id": "v13-esneme", "items": [
+ {"name": "parmak", "source": "url", "url": "https://upload.wikimedia.org/wikipedia/commons/0/04/Wrinkly_Fingers_001.JPG"},
+ {"name": "parmak2", "source": "url", "url": "https://upload.wikimedia.org/wikipedia/commons/3/39/Wrinkly_fingers.jpg"},
+ {"name": "pxparmak", "source": "pixabay_photo", "q": "wrinkled fingers", "n": 4},
+ {"name": "asansor", "source": "pixabay_photo", "q": "elevator mirror", "n": 5},
+ {"name": "asansor2", "source": "pixabay_photo", "q": "elevator interior", "n": 5}
+]}
