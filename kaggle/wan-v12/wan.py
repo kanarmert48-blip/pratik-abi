@@ -1,6 +1,6 @@
 """Wan 2.1 T2V 1.3B ile dikey sahneler (2 GPU paralel) + Real-ESRGAN 3x büyütme. Çıktı: /kaggle/working/<ad>.mp4"""
 import os, subprocess, sys, json, time
-subprocess.run("pip install -q -U diffusers transformers accelerate ftfy spandrel imageio imageio-ffmpeg", shell=True)
+subprocess.run("pip uninstall -y -q torchao; pip install -q -U diffusers transformers accelerate ftfy spandrel imageio imageio-ffmpeg", shell=True)
 import torch, multiprocessing as mp
 
 PROMPTS = {
@@ -50,4 +50,5 @@ if __name__ == "__main__":
     mp.set_start_method("spawn")
     ps = [mp.Process(target=run, args=(g, names[g::n])) for g in range(n)]
     [p.start() for p in ps]; [p.join() for p in ps]
+    os.remove("/kaggle/working/esr.pth"); [os.remove(f"/kaggle/working/{f}") for f in os.listdir("/kaggle/working") if f.startswith("raw_")]
     print(os.listdir("/kaggle/working"))
