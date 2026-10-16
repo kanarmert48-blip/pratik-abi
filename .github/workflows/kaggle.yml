@@ -1,0 +1,36 @@
+name: kaggle
+on:
+  workflow_dispatch:
+    inputs:
+      klasor:
+        description: "kaggle/<klasör>"
+        required: true
+      script:
+        description: "çalışacak dosya"
+        required: true
+permissions:
+  contents: write
+jobs:
+  calis:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    env:
+      GH_TOKEN: ${{ github.token }}
+      KAGGLE_API_TOKEN: ${{ secrets.KAGGLE_API_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            tools
+            kaggle
+      - name: Kaggle
+        run: |
+          pip install -q -U kaggle
+          [ -n "$KAGGLE_API_TOKEN" ] && echo "anahtar var" || echo "ANAHTAR YOK"
+          python3 tools/kaggle_run.py "${{ github.event.inputs.klasor }}" "${{ github.event.inputs.script }}" 2>&1 | tee log.txt
+          mkdir -p out; cp log.txt out/$(basename ${{ github.event.inputs.klasor }})-log.txt
+      - name: Yükle
+        if: always()
+        run: |
+          gh release view kaggle >/dev/null 2>&1 || gh release create kaggle --title kaggle --notes otomatik
+          gh release upload kaggle out/* --clobber
