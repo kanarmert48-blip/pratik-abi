@@ -1,0 +1,1454 @@
+[
+ {
+  "id": "01-butce-5-kural",
+  "badge": "PARA",
+  "title": "5 Basit Bütçe Kuralı #shorts",
+  "description": "Maaşın ayın ortasında bitiyorsa, bu beş basit kural tam sana göre. 5 Basit Bütçe Kuralı hakkında kısa ve pratik ipuçları.",
+  "hashtags": [
+   "#shorts",
+   "#tasarruf",
+   "#paraipuçları",
+   "#bütçe"
+  ],
+  "scenes": [
+   {
+    "kind": "hook",
+    "text": "Maaş ayın ortasında bitiyor mu?",
+    "say": "Maaşın ayın ortasında bitiyorsa, bu beş basit kural tam sana göre."
+   },
+   {
+    "kind": "item",
+    "num": 1,
+    "text": "Önce kendine öde",
+    "say": "Maaş yattığı gün, küçük de olsa bir miktarı hemen kenara ayır."
+   },
+   {
+    "kind": "item",
+    "num": 2,
+    "text": "Her harcamayı yaz",
+    "say": "Bir hafta boyunca her harcamanı not al. Paranın nereye gittiğini göreceksin."
+   },
+   {
+    "kind": "item",
+    "num": 3,
+    "text": "50 30 20 kuralı",
+    "say": "Gelirin yüzde ellisi ihtiyaçlara, otuzu isteklere, yirmisi birikime."
+   },
+   {
+    "kind": "item",
+    "num": 4,
+    "text": "24 saat bekle",
+    "say": "Plansız bir şey almak istediğinde bir gün bekle. Çoğu zaman vazgeçersin."
+   },
+   {
+    "kind": "item",
+    "num": 5,
+    "text": "Nakit zarf yöntemi",
+    "say": "Market ve eğlence gibi kalemler için ayrı bir bütçe belirle ve aşma."
+   },
+   {
+    "kind": "cta",
+    "text": "Takip et!",
+    "say": "Bunu kaydet, işine yarayacak. Daha fazlası için takip et!"
+   }
+  ]
+ },
+ {
+  "id": "02-market-tasarruf",
+  "badge": "MARKET",
+  "title": "Markette Daha Az Harca #shorts",
+  "description": "Markette her seferinde planladığından fazla mı harcıyorsun? İşte nedeni ve çözümü. Markette Daha Az Harca hakkında kısa ve pratik ipuçları.",
+  "hashtags": [
+   "#shorts",
+   "#tasarruf",
+   "#paraipuçları",
+   "#bütçe"
+  ],
+  "scenes": [
+   {
+    "kind": "hook",
+    "text": "Markette fazla harcamanın sebebi bu",
+    "say": "Markette her seferinde planladığından fazla mı harcıyorsun? İşte nedeni ve çözümü."
+   },
+   {
+    "kind": "item",
+    "num": 1,
+    "text": "Listeyle git",
+    "say": "Listesiz alışveriş, plansız harcamanın bir numaralı sebebi."
+   },
+   {
+    "kind": "item",
+    "num": 2,
+    "text": "Tok git",
+    "say": "Aç karnına alışverişe gidersen sepetin kendiliğinden dolar."
+   },
+   {
+    "kind": "item",
+    "num": 3,
+    "text": "Alt ve üst raflara bak",
+    "say": "Pahalı ürünler göz hizasında durur. Ucuz alternatifler genelde aşağıda."
+   },
+   {
+    "kind": "item",
+    "num": 4,
+    "text": "Birim fiyatı karşılaştır",
+    "say": "Büyük paket her zaman ucuz değildir. Kilo ya da litre fiyatına bak."
+   },
+   {
+    "kind": "item",
+    "num": 5,
+    "text": "Sepet değil, file al",
+    "say": "Küçük taşıma aracı, gereksiz ürünleri almanı zorlaştırır."
+   },
+   {
+    "kind": "cta",
+    "text": "Takip et!",
+    "say": "Hangisini zaten yapıyorsun? Yorumlara yaz, takip etmeyi unutma."
+   }
+  ]
+ },
+ {
+  "id": "03-fatura-dusur",
+  "badge": "EV",
+  "title": "Faturaları Düşürmenin 4 Yolu #shorts",
+  "description": "Faturaların her ay artıyorsa, bu dört küçük alışkanlık fark yaratır. Faturaları Düşürmenin 4 Yolu hakkında kısa ve pratik ipuçları.",
+  "hashtags": [
+   "#shorts",
+   "#tasarruf",
+   "#paraipuçları",
+   "#bütçe"
+  ],
+  "scenes": [
+   {
+    "kind": "hook",
+    "text": "Faturaların her ay artıyor mu?",
+    "say": "Faturaların her ay artıyorsa, bu dört küçük alışkanlık fark yaratır."
+   },
+   {
+    "kind": "item",
+    "num": 1,
+    "text": "Bekleme modunu kapat",
+    "say": "Kullanmadığın cihazları prizden çek. Bekleme modu da elektrik yakar."
+   },
+   {
+    "kind": "item",
+    "num": 2,
+    "text": "Çamaşırı soğuk yıka",
+    "say": "Çoğu çamaşır otuz derecede temizlenir. Isıtma en çok enerjiyi harcar."
+   },
+   {
+    "kind": "item",
+    "num": 3,
+    "text": "Tam dolu çalıştır",
+    "say": "Bulaşık ve çamaşır makinesini yarım değil, tam dolu çalıştır."
+   },
+   {
+    "kind": "item",
+    "num": 4,
+    "text": "Kombi derecesini düşür",
+    "say": "Petek ayarını bir kademe düşürmek bile fark edilir tasarruf sağlar."
+   },
+   {
+    "kind": "cta",
+    "text": "Takip et!",
+    "say": "Faydalı bulduysan bir arkadaşına gönder ve takip et."
+   }
+  ]
+ },
+ {
+  "id": "04-abonelik-kontrol",
+  "badge": "PARA",
+  "title": "Unuttuğun Abonelikler #shorts",
+  "description": "Şu an fark etmeden her ay para ödediğin bir abonelik olabilir. Unuttuğun Abonelikler hakkında kısa ve pratik ipuçları.",
+  "hashtags": [
+   "#shorts",
+   "#tasarruf",
+   "#paraipuçları",
+   "#bütçe"
+  ],
+  "scenes": [
+   {
+    "kind": "hook",
+    "text": "Fark etmeden para ödüyor olabilirsin",
+    "say": "Şu an fark etmeden her ay para ödediğin bir abonelik olabilir."
+   },
+   {
+    "kind": "item",
+    "num": 1,
+    "text": "Ekstreni aç",
+    "say": "Son üç ayın kart ekstresine bak, tekrar eden ödemeleri işaretle."
+   },
+   {
+    "kind": "item",
+    "num": 2,
+    "text": "Kullanmadığını iptal et",
+    "say": "Son bir ayda açmadığın uygulamanın aboneliğini hemen iptal et."
+   },
+   {
+    "kind": "item",
+    "num": 3,
+    "text": "Aile paketine geç",
+    "say": "Bazı hizmetlerde aile paketi kişi başı çok daha ucuza gelir."
+   },
+   {
+    "kind": "item",
+    "num": 4,
+    "text": "Deneme süresine not düş",
+    "say": "Ücretsiz deneme başlattığında bitişinden bir gün öncesine hatırlatıcı kur."
+   },
+   {
+    "kind": "cta",
+    "text": "Takip et!",
+    "say": "Yarın yeni bir ipucuyla geliyorum. Takipte kal!"
+   }
+  ]
+ },
+ {
+  "id": "05-acil-durum-fonu",
+  "badge": "BİRİKİM",
+  "title": "Acil Durum Fonu Nedir? #shorts",
+  "description": "Bozulan bir telefon ya da beklenmedik bir masraf geldiğinde ne yaparsın? Acil Durum Fonu Nedir? hakkında kısa ve pratik ipuçları.",
+  "hashtags": [
+   "#shorts",
+   "#tasarruf",
+   "#paraipuçları",
+   "#bütçe"
+  ],
+  "scenes": [
+   {
+    "kind": "hook",
+    "text": "Beklenmedik masraf geldiğinde ne yaparsın?",
+    "say": "Bozulan bir telefon ya da beklenmedik bir masraf geldiğinde ne yaparsın?"
+   },
+   {
+    "kind": "item",
+    "num": 1,
+    "text": "Ayrı bir hesap aç",
+    "say": "Acil durum parasını günlük harcama hesabından ayrı tut."
+   },
+   {
+    "kind": "item",
+    "num": 2,
+    "text": "Küçük başla",
+    "say": "İlk hedefin tek bir aylık temel giderin olsun."
+   },
+   {
+    "kind": "item",
+    "num": 3,
+    "text": "Otomatik talimat ver",
+    "say": "Maaş günü küçük bir tutarın otomatik aktarılmasını ayarla."
+   },
+   {
+    "kind": "item",
+    "num": 4,
+    "text": "Sadece acil için kullan",
+    "say": "Tatil ya da indirim acil durum değildir. Bu kurala sadık kal."
+   },
+   {
+    "kind": "cta",
+    "text": "Takip et!",
+    "say": "Bunu kaydet, işine yarayacak. Daha fazlası için takip et!"
+   }
+  ]
+ },
+ {
+  "id": "06-indirim-tuzaklari",
+  "badge": "DİKKAT",
+  "title": "İndirim Tuzakları #shorts",
+  "description": "Her indirim gerçekten indirim değil. Bu tuzaklara dikkat et. İndirim Tuzakları hakkında kısa ve pratik ipuçları.",
+  "hashtags": [
+   "#shorts",
+   "#tasarruf",
+   "#paraipuçları",
+   "#bütçe"
+  ],
+  "scenes": [
+   {
+    "kind": "hook",
+    "text": "İndirim seni nasıl kandırıyor?",
+    "say": "Her indirim gerçekten indirim değil. Bu tuzaklara dikkat et."
+   },
+   {
+    "kind": "item",
+    "num": 1,
+    "text": "Sahte eski fiyat",
+    "say": "Bazı ürünlerin fiyatı indirimden önce yükseltilir. Fiyat geçmişine bak."
+   },
+   {
+    "kind": "item",
+    "num": 2,
+    "text": "İkinci ürün bedava",
+    "say": "İhtiyacın olmayan ikinci ürün, kazanç değil fazladan harcamadır."
+   },
+   {
+    "kind": "item",
+    "num": 3,
+    "text": "Son birkaç saat baskısı",
+    "say": "Geri sayım sayaçları acele ettirip düşünmeni engellemek için var."
+   },
+   {
+    "kind": "item",
+    "num": 4,
+    "text": "Kargo bedava sınırı",
+    "say": "Kargo için sepete eklediğin ürün, kargo ücretinden pahalıya gelebilir."
+   },
+   {
+    "kind": "cta",
+    "text": "Takip et!",
+    "say": "Hangisini zaten yapıyorsun? Yorumlara yaz, takip etmeyi unutma."
+   }
+  ]
+ },
+ {
+  "id": "07-kahve-hesabi",
+  "badge": "HESAP",
+  "title": "Küçük Harcamaların Gücü #shorts",
+  "description": "Her gün aldığın küçük şeylerin yıllık toplamını hiç hesapladın mı? Küçük Harcamaların Gücü hakkında kısa ve pratik ipuçları.",
+  "hashtags": [
+   "#shorts",
+   "#tasarruf",
+   "#paraipuçları",
+   "#bütçe"
+  ],
+  "scenes": [
+   {
+    "kind": "hook",
+    "text": "Günlük kahven sana yılda kaça mal oluyor?",
+    "say": "Her gün aldığın küçük şeylerin yıllık toplamını hiç hesapladın mı?"
+   },
+   {
+    "kind": "item",
+    "num": 1,
+    "text": "Günlük tutarı yaz",
+    "say": "Her gün tekrar eden küçük bir harcamanı seç ve tutarını yaz."
+   },
+   {
+    "kind": "item",
+    "num": 2,
+    "text": "Üç yüz altmış beşle çarp",
+    "say": "Sonucu yılın gün sayısıyla çarp. Rakam seni şaşırtacak."
+   },
+   {
+    "kind": "item",
+    "num": 3,
+    "text": "Tamamen bırakma",
+    "say": "Amaç yasak değil. Haftada birkaç günü evde hazırlamak bile yeter."
+   },
+   {
+    "kind": "item",
+    "num": 4,
+    "text": "Farkı biriktir",
+    "say": "Evde yaptığın günlerde o tutarı ayrı bir kumbaraya at."
+   },
+   {
+    "kind": "cta",
+    "text": "Takip et!",
+    "say": "Faydalı bulduysan bir arkadaşına gönder ve takip et."
+   }
+  ]
+ },
+ {
+  "id": "08-yemek-planlama",
+  "badge": "MUTFAK",
+  "title": "Haftalık Yemek Planı #shorts",
+  "description": "Dışarıdan söylenen yemekler bütçeni eritiyorsa, haftalık plan tam çözüm. Haftalık Yemek Planı hakkında kısa ve pratik ipuçları.",
+  "hashtags": [
+   "#shorts",
+   "#tasarruf",
+   "#paraipuçları",
+   "#bütçe"
+  ],
+  "scenes": [
+   {
+    "kind": "hook",
+    "text": "Dışarıdan yemek bütçeni eritiyor mu?",
+    "say": "Dışarıdan söylenen yemekler bütçeni eritiyorsa, haftalık plan tam çözüm."
+   },
+   {
+    "kind": "item",
+    "num": 1,
+    "text": "Pazar planla",
+    "say": "Haftanın yemeklerini tek seferde, pazar günü belirle."
+   },
+   {
+    "kind": "item",
+    "num": 2,
+    "text": "Ortak malzeme seç",
+    "say": "Aynı malzemeyle birden fazla yemek yapılabilecek tarifler seç."
+   },
+   {
+    "kind": "item",
+    "num": 3,
+    "text": "Toplu pişir",
+    "say": "Bir kerede büyük tencere yap, porsiyonlayıp dondur."
+   },
+   {
+    "kind": "item",
+    "num": 4,
+    "text": "Artanı değerlendir",
+    "say": "Artan yemekleri ertesi gün farklı bir tarifte kullan."
+   },
+   {
+    "kind": "cta",
+    "text": "Takip et!",
+    "say": "Yarın yeni bir ipucuyla geliyorum. Takipte kal!"
+   }
+  ]
+ },
+ {
+  "id": "09-israf-onle",
+  "badge": "MUTFAK",
+  "title": "Mutfakta İsrafı Bitir #shorts",
+  "description": "Fark etmesen de aldığın yiyeceklerin bir kısmı çöpe gidiyor olabilir. Mutfakta İsrafı Bitir hakkında kısa ve pratik ipuçları.",
+  "hashtags": [
+   "#shorts",
+   "#tasarruf",
+   "#paraipuçları",
+   "#bütçe"
+  ],
+  "scenes": [
+   {
+    "kind": "hook",
+    "text": "Aldığın yiyeceğin bir kısmını çöpe atıyorsun",
+    "say": "Fark etmesen de aldığın yiyeceklerin bir kısmı çöpe gidiyor olabilir."
+   },
+   {
+    "kind": "item",
+    "num": 1,
+    "text": "Önce eskiyi öne al",
+    "say": "Buzdolabında yeni aldıklarını arkaya, eskileri öne koy."
+   },
+   {
+    "kind": "item",
+    "num": 2,
+    "text": "Ekmeği dondur",
+    "say": "Ekmeği dilimleyip dondurursan bayatlamadan istediğin kadar kullanırsın."
+   },
+   {
+    "kind": "item",
+    "num": 3,
+    "text": "Sebzeyi doğru sakla",
+    "say": "Yeşillikleri nemli bir havluya sararak saklarsan daha uzun dayanır."
+   },
+   {
+    "kind": "item",
+    "num": 4,
+    "text": "Son kullanma tarihine bak",
+    "say": "Alışverişten önce dolabı kontrol et, aynı ürünü tekrar alma."
+   },
+   {
+    "kind": "cta",
+    "text": "Takip et!",
+    "say": "Bunu kaydet, işine yarayacak. Daha fazlası için takip et!"
+   }
+  ]
+ },
+ {
+  "id": "10-borc-kartopu",
+  "badge": "BORÇ",
+  "title": "Borçtan Kurtulma Yöntemi #shorts",
+  "description": "Birden fazla borcun varsa, bu yöntem motivasyonunu korumana yardım eder. Borçtan Kurtulma Yöntemi hakkında kısa ve pratik ipuçları.",
+  "hashtags": [
+   "#shorts",
+   "#tasarruf",
+   "#paraipuçları",
+   "#bütçe"
+  ],
+  "scenes": [
+   {
+    "kind": "hook",
+    "text": "Birden fazla borcun mu var?",
+    "say": "Birden fazla borcun varsa, bu yöntem motivasyonunu korumana yardım eder."
+   },
+   {
+    "kind": "item",
+    "num": 1,
+    "text": "Hepsini listele",
+    "say": "Tüm borçlarını tutarı ve faiziyle birlikte bir kağıda yaz."
+   },
+   {
+    "kind": "item",
+    "num": 2,
+    "text": "Minimumları öde",
+    "say": "Gecikme olmaması için her borcun asgari ödemesini aksatma."
+   },
+   {
+    "kind": "item",
+    "num": 3,
+    "text": "Birine odaklan",
+    "say": "Ekstra paranı tek bir borca yönlendir; ya en küçüğüne ya en yüksek faizlisine."
+   },
+   {
+    "kind": "item",
+    "num": 4,
+    "text": "Zinciri sürdür",
+    "say": "Bir borç bittiğinde onun ödemesini sıradaki borca ekle."
+   },
+   {
+    "kind": "cta",
+    "text": "Takip et!",
+    "say": "Hangisini zaten yapıyorsun? Yorumlara yaz, takip etmeyi unutma."
+   }
+  ]
+ },
+ {
+  "id": "11-kart-kullanimi",
+  "badge": "KART",
+  "title": "Kredi Kartını Doğru Kullan #shorts",
+  "description": "Kredi kartı doğru kullanılırsa avantajlıdır, yanlış kullanılırsa pahalıya patlar. Kredi Kartını Doğru Kullan hakkında kısa ve pratik ipuçları.",
+  "hashtags": [
+   "#shorts",
+   "#tasarruf",
+   "#paraipuçları",
+   "#bütçe"
+  ],
+  "scenes": [
+   {
+    "kind": "hook",
+    "text": "Kredi kartı seni zengin de eder, batırır da",
+    "say": "Kredi kartı doğru kullanılırsa avantajlıdır, yanlış kullanılırsa pahalıya patlar."
+   },
+   {
+    "kind": "item",
+    "num": 1,
+    "text": "Asgariyle yetinme",
+    "say": "Sadece asgari tutarı ödersen kalan borca faiz işler."
+   },
+   {
+    "kind": "item",
+    "num": 2,
+    "text": "Limiti düşük tut",
+    "say": "İhtiyacından yüksek limit, harcamayı kolaylaştırır."
+   },
+   {
+    "kind": "item",
+    "num": 3,
+    "text": "Taksiti planla",
+    "say": "Her taksit, gelecek ayların bütçesinden bir parçadır."
+   },
+   {
+    "kind": "item",
+    "num": 4,
+    "text": "Kesim tarihini bil",
+    "say": "Büyük alışverişi kesimden hemen sonra yaparsan ödemeye daha çok zamanın olur."
+   },
+   {
+    "kind": "cta",
+    "text": "Takip et!",
+    "say": "Faydalı bulduysan bir arkadaşına gönder ve takip et."
+   }
+  ]
+ },
+ {
+  "id": "12-dolap-duzen",
+  "badge": "DÜZEN",
+  "title": "Dolabını 10 Dakikada Topla #shorts",
+  "description": "Dolabın sürekli dağınıksa, bu dört adım on dakikada işini görür. Dolabını 10 Dakikada Topla hakkında kısa ve pratik ipuçları.",
+  "hashtags": [
+   "#shorts",
+   "#pratikbilgiler",
+   "#hayatkolaylaştıran",
+   "#günlükhayat"
+  ],
+  "scenes": [
+   {
+    "kind": "hook",
+    "text": "Dolabın sürekli dağınık mı?",
+    "say": "Dolabın sürekli dağınıksa, bu dört adım on dakikada işini görür."
+   },
+   {
+    "kind": "item",
+    "num": 1,
+    "text": "Hepsini çıkar",
+    "say": "Bir rafı tamamen boşalt. Ne olduğunu ancak böyle görürsün."
+   },
+   {
+    "kind": "item",
+    "num": 2,
+    "text": "Üç grup yap",
+    "say": "Tut, bağışla, at. Bir yıldır giymediğini düşünmeden ayır."
+   },
+   {
+    "kind": "item",
+    "num": 3,
+    "text": "Dikey katla",
+    "say": "Tişörtleri dikey katlarsan hepsini tek bakışta görürsün."
+   },
+   {
+    "kind": "item",
+    "num": 4,
+    "text": "Bir girerse bir çıksın",
+    "say": "Yeni bir kıyafet aldığında eski birini çıkar."
+   },
+   {
+    "kind": "cta",
+    "text": "Takip et!",
+    "say": "Yarın yeni bir ipucuyla geliyorum. Takipte kal!"
+   }
+  ]
+ },
+ {
+  "id": "13-sabah-rutini",
+  "badge": "RUTİN",
+  "title": "Güne Hızlı Başlamanın Sırrı #shorts",
+  "description": "Sabahları hep koşturuyorsan, işin sırrı aslında bir önceki akşamda. Güne Hızlı Başlamanın Sırrı hakkında kısa ve pratik ipuçları.",
+  "hashtags": [
+   "#shorts",
+   "#pratikbilgiler",
+   "#hayatkolaylaştıran",
+   "#günlükhayat"
+  ],
+  "scenes": [
+   {
+    "kind": "hook",
+    "text": "Sabahları hep geç mi kalıyorsun?",
+    "say": "Sabahları hep koşturuyorsan, işin sırrı aslında bir önceki akşamda."
+   },
+   {
+    "kind": "item",
+    "num": 1,
+    "text": "Kıyafeti akşamdan seç",
+    "say": "Yarın giyeceklerini akşamdan hazırla, sabah karar vermekle uğraşma."
+   },
+   {
+    "kind": "item",
+    "num": 2,
+    "text": "Çantanı kapının yanına koy",
+    "say": "Anahtar, cüzdan ve çanta hep aynı yerde dursun."
+   },
+   {
+    "kind": "item",
+    "num": 3,
+    "text": "Alarmı uzağa koy",
+    "say": "Telefonu yataktan uzağa koyarsan erteleme tuşuna basamazsın."
+   },
+   {
+    "kind": "item",
+    "num": 4,
+    "text": "Bir bardak su iç",
+    "say": "Uyanır uyanmaz bir bardak su, güne daha zinde başlamanı sağlar."
+   },
+   {
+    "kind": "cta",
+    "text": "Takip et!",
+    "say": "Bunu kaydet, işine yarayacak. Daha fazlası için takip et!"
+   }
+  ]
+ },
+ {
+  "id": "14-telefon-pil",
+  "badge": "TEKNO",
+  "title": "Telefon Şarjı Daha Uzun Gitsin #shorts",
+  "description": "Telefonunun şarjı öğlene kadar bitiyorsa, bu ayarları kontrol et. Telefon Şarjı Daha Uzun Gitsin hakkında kısa ve pratik ipuçları.",
+  "hashtags": [
+   "#shorts",
+   "#pratikbilgiler",
+   "#hayatkolaylaştıran",
+   "#günlükhayat"
+  ],
+  "scenes": [
+   {
+    "kind": "hook",
+    "text": "Şarjın öğlene kadar bitiyor mu?",
+    "say": "Telefonunun şarjı öğlene kadar bitiyorsa, bu ayarları kontrol et."
+   },
+   {
+    "kind": "item",
+    "num": 1,
+    "text": "Ekran parlaklığı",
+    "say": "Otomatik parlaklığı aç ve ekran zaman aşımını kısalt."
+   },
+   {
+    "kind": "item",
+    "num": 2,
+    "text": "Arka plan uygulamaları",
+    "say": "Arka planda konum ve veri kullanan uygulamaları kısıtla."
+   },
+   {
+    "kind": "item",
+    "num": 3,
+    "text": "Karanlık mod",
+    "say": "Bazı ekranlarda karanlık mod pil tüketimini azaltır."
+   },
+   {
+    "kind": "item",
+    "num": 4,
+    "text": "Aşırı sıcaktan koru",
+    "say": "Telefonu güneşte ya da sıcak yerde şarj etme. Pil ömrünü kısaltır."
+   },
+   {
+    "kind": "cta",
+    "text": "Takip et!",
+    "say": "Hangisini zaten yapıyorsun? Yorumlara yaz, takip etmeyi unutma."
+   }
+  ]
+ },
+ {
+  "id": "15-temizlik-sirke",
+  "badge": "EV",
+  "title": "Sirkeyle Ev Temizliği #shorts",
+  "description": "Birçok temizlik işi için pahalı ürünlere gerek yok. Sirke çoğunu halleder. Sirkeyle Ev Temizliği hakkında kısa ve pratik ipuçları.",
+  "hashtags": [
+   "#shorts",
+   "#pratikbilgiler",
+   "#hayatkolaylaştıran",
+   "#günlükhayat"
+  ],
+  "scenes": [
+   {
+    "kind": "hook",
+    "text": "Pahalı temizlik ürünlerine gerek yok",
+    "say": "Birçok temizlik işi için pahalı ürünlere gerek yok. Sirke çoğunu halleder."
+   },
+   {
+    "kind": "item",
+    "num": 1,
+    "text": "Kireç lekeleri",
+    "say": "Musluk ve duş başlığındaki kireci sirkeli bezle sararak çözebilirsin."
+   },
+   {
+    "kind": "item",
+    "num": 2,
+    "text": "Cam ve ayna",
+    "say": "Su ve sirke karışımı camlarda iz bırakmadan temizler."
+   },
+   {
+    "kind": "item",
+    "num": 3,
+    "text": "Çamaşır yumuşatıcı",
+    "say": "Son durulamaya biraz sirke eklemek yumuşatıcı etkisi yapar."
+   },
+   {
+    "kind": "item",
+    "num": 4,
+    "text": "Dikkat et",
+    "say": "Mermer ve doğal taşta sirke kullanma, yüzeye zarar verebilir."
+   },
+   {
+    "kind": "cta",
+    "text": "Takip et!",
+    "say": "Faydalı bulduysan bir arkadaşına gönder ve takip et."
+   }
+  ]
+ },
+ {
+  "id": "16-bir-dakika-kurali",
+  "badge": "ALIŞKANLIK",
+  "title": "Bir Dakika Kuralı #shorts",
+  "description": "Evin bir türlü toplanmıyorsa, bu basit kural hayatını değiştirir. Bir Dakika Kuralı hakkında kısa ve pratik ipuçları.",
+  "hashtags": [
+   "#shorts",
+   "#pratikbilgiler",
+   "#hayatkolaylaştıran",
+   "#günlükhayat"
+  ],
+  "scenes": [
+   {
+    "kind": "hook",
+    "text": "Ev neden hep dağınık?",
+    "say": "Evin bir türlü toplanmıyorsa, bu basit kural hayatını değiştirir."
+   },
+   {
+    "kind": "item",
+    "num": 1,
+    "text": "Kural basit",
+    "say": "Bir işi yapmak bir dakikadan kısa sürüyorsa hemen yap."
+   },
+   {
+    "kind": "item",
+    "num": 2,
+    "text": "Örnekler",
+    "say": "Bardağı yıka, ceketi as, postayı aç. Hepsi bir dakikadan az."
+   },
+   {
+    "kind": "item",
+    "num": 3,
+    "text": "Neden işe yarar",
+    "say": "Küçük işler birikince büyük ve göz korkutan bir yığına dönüşür."
+   },
+   {
+    "kind": "item",
+    "num": 4,
+    "text": "Sonuç",
+    "say": "Birkaç gün içinde evin ve kafanın daha düzenli olduğunu fark edersin."
+   },
+   {
+    "kind": "cta",
+    "text": "Takip et!",
+    "say": "Yarın yeni bir ipucuyla geliyorum. Takipte kal!"
+   }
+  ]
+ },
+ {
+  "id": "17-odaklanma",
+  "badge": "VERİM",
+  "title": "Odaklanma Sorunu Yaşıyorsan #shorts",
+  "description": "Çalışırken sürekli telefona bakıyorsan, bu yöntemleri dene. Odaklanma Sorunu Yaşıyorsan hakkında kısa ve pratik ipuçları.",
+  "hashtags": [
+   "#shorts",
+   "#pratikbilgiler",
+   "#hayatkolaylaştıran",
+   "#günlükhayat"
+  ],
+  "scenes": [
+   {
+    "kind": "hook",
+    "text": "Beş dakikada bir telefona mı bakıyorsun?",
+    "say": "Çalışırken sürekli telefona bakıyorsan, bu yöntemleri dene."
+   },
+   {
+    "kind": "item",
+    "num": 1,
+    "text": "Yirmi beş dakika kuralı",
+    "say": "Yirmi beş dakika tek işe odaklan, sonra beş dakika mola ver."
+   },
+   {
+    "kind": "item",
+    "num": 2,
+    "text": "Telefonu başka odaya koy",
+    "say": "Göz önünde olmayan telefon, dikkatini daha az böler."
+   },
+   {
+    "kind": "item",
+    "num": 3,
+    "text": "Tek sekme",
+    "say": "Bilgisayarda sadece o işle ilgili sekmeyi açık tut."
+   },
+   {
+    "kind": "item",
+    "num": 4,
+    "text": "Bitirme listesi",
+    "say": "Güne başlamadan bitirmek istediğin üç işi yaz."
+   },
+   {
+    "kind": "cta",
+    "text": "Takip et!",
+    "say": "Bunu kaydet, işine yarayacak. Daha fazlası için takip et!"
+   }
+  ]
+ },
+ {
+  "id": "18-ikinci-el",
+  "badge": "PARA",
+  "title": "İkinci El Alırken Dikkat #shorts",
+  "description": "İkinci el ürün almak çok tasarruf sağlar ama dikkat etmezsen kazıklanırsın. İkinci El Alırken Dikkat hakkında kısa ve pratik ipuçları.",
+  "hashtags": [
+   "#shorts",
+   "#tasarruf",
+   "#paraipuçları",
+   "#bütçe"
+  ],
+  "scenes": [
+   {
+    "kind": "hook",
+    "text": "İkinci el alırken kazıklanma",
+    "say": "İkinci el ürün almak çok tasarruf sağlar ama dikkat etmezsen kazıklanırsın."
+   },
+   {
+    "kind": "item",
+    "num": 1,
+    "text": "Sıfır fiyatına bak",
+    "say": "Önce ürünün yeni fiyatını öğren, ikinci el fiyatı mantıklı mı karşılaştır."
+   },
+   {
+    "kind": "item",
+    "num": 2,
+    "text": "Yerinde dene",
+    "say": "Elektronik ürünleri mutlaka çalışırken gör ve dene."
+   },
+   {
+    "kind": "item",
+    "num": 3,
+    "text": "Kapora gönderme",
+    "say": "Görmediğin ürüne önceden para gönderme."
+   },
+   {
+    "kind": "item",
+    "num": 4,
+    "text": "Faturayı sor",
+    "say": "Fatura ve garanti belgesi varsa ürünün geçmişi hakkında fikir verir."
+   },
+   {
+    "kind": "cta",
+    "text": "Takip et!",
+    "say": "Hangisini zaten yapıyorsun? Yorumlara yaz, takip etmeyi unutma."
+   }
+  ]
+ },
+ {
+  "id": "19-tatil-butcesi",
+  "badge": "PLAN",
+  "title": "Ucuza Tatil Planı #shorts",
+  "description": "Tatil pahalı olmak zorunda değil. Bu dört ipucu bütçeni korur. Ucuza Tatil Planı hakkında kısa ve pratik ipuçları.",
+  "hashtags": [
+   "#shorts",
+   "#tasarruf",
+   "#paraipuçları",
+   "#bütçe"
+  ],
+  "scenes": [
+   {
+    "kind": "hook",
+    "text": "Tatil pahalı olmak zorunda değil",
+    "say": "Tatil pahalı olmak zorunda değil. Bu dört ipucu bütçeni korur."
+   },
+   {
+    "kind": "item",
+    "num": 1,
+    "text": "Sezon dışı git",
+    "say": "Aynı yer, sezon dışında çok daha uygun fiyatlı olabilir."
+   },
+   {
+    "kind": "item",
+    "num": 2,
+    "text": "Erken rezervasyon",
+    "say": "Ulaşım ve konaklamayı erken ayarlamak genelde daha ucuzdur."
+   },
+   {
+    "kind": "item",
+    "num": 3,
+    "text": "Mutfaklı konaklama",
+    "say": "Kahvaltıyı kendin hazırlarsan yemek masrafı ciddi düşer."
+   },
+   {
+    "kind": "item",
+    "num": 4,
+    "text": "Günlük limit koy",
+    "say": "Tatilde de günlük harcama sınırı belirle."
+   },
+   {
+    "kind": "cta",
+    "text": "Takip et!",
+    "say": "Faydalı bulduysan bir arkadaşına gönder ve takip et."
+   }
+  ]
+ },
+ {
+  "id": "20-kumbara-meydan",
+  "badge": "BİRİKİM",
+  "title": "52 Hafta Birikim Oyunu #shorts",
+  "description": "Birikim yapmakta zorlanıyorsan, bunu bir oyuna çevirebilirsin. 52 Hafta Birikim Oyunu hakkında kısa ve pratik ipuçları.",
+  "hashtags": [
+   "#shorts",
+   "#tasarruf",
+   "#paraipuçları",
+   "#bütçe"
+  ],
+  "scenes": [
+   {
+    "kind": "hook",
+    "text": "Birikim yapmayı oyuna çevir",
+    "say": "Birikim yapmakta zorlanıyorsan, bunu bir oyuna çevirebilirsin."
+   },
+   {
+    "kind": "item",
+    "num": 1,
+    "text": "Nasıl oynanır",
+    "say": "İlk hafta küçük bir tutar biriktir, her hafta bu tutarı biraz artır."
+   },
+   {
+    "kind": "item",
+    "num": 2,
+    "text": "Tersten başla",
+    "say": "Zorlanırsan büyük tutardan başlayıp her hafta azalt."
+   },
+   {
+    "kind": "item",
+    "num": 3,
+    "text": "Tabloyu as",
+    "say": "Elli iki kutulu bir tablo yap, her hafta bir kutuyu boya."
+   },
+   {
+    "kind": "item",
+    "num": 4,
+    "text": "Yıl sonu",
+    "say": "Bir yılın sonunda düzenli bir birikim alışkanlığın olur."
+   },
+   {
+    "kind": "cta",
+    "text": "Takip et!",
+    "say": "Yarın yeni bir ipucuyla geliyorum. Takipte kal!"
+   }
+  ]
+ },
+ {
+  "id": "21-elektrik-mutfak",
+  "badge": "MUTFAK",
+  "title": "Pişirirken Enerji Tasarrufu #shorts",
+  "description": "Yemek pişirirken farkında olmadan fazladan enerji harcıyor olabilirsin. Pişirirken Enerji Tasarrufu hakkında kısa ve pratik ipuçları.",
+  "hashtags": [
+   "#shorts",
+   "#tasarruf",
+   "#paraipuçları",
+   "#bütçe"
+  ],
+  "scenes": [
+   {
+    "kind": "hook",
+    "text": "Ocakta farkında olmadan para yakıyorsun",
+    "say": "Yemek pişirirken farkında olmadan fazladan enerji harcıyor olabilirsin."
+   },
+   {
+    "kind": "item",
+    "num": 1,
+    "text": "Kapağı kapat",
+    "say": "Tencerenin kapağını kapatmak suyu çok daha hızlı kaynatır."
+   },
+   {
+    "kind": "item",
+    "num": 2,
+    "text": "Tencere ocağa uysun",
+    "say": "Küçük tencereyi büyük gözde pişirmek enerjiyi boşa harcar."
+   },
+   {
+    "kind": "item",
+    "num": 3,
+    "text": "Fırını açıp bakma",
+    "say": "Fırın kapağını her açışında ısı kaçar, pişirme uzar."
+   },
+   {
+    "kind": "item",
+    "num": 4,
+    "text": "Kalan ısıyı kullan",
+    "say": "Ocağı birkaç dakika erken kapatıp yemeği kalan ısıyla bitir."
+   },
+   {
+    "kind": "cta",
+    "text": "Takip et!",
+    "say": "Bunu kaydet, işine yarayacak. Daha fazlası için takip et!"
+   }
+  ]
+ },
+ {
+  "id": "22-maas-gunu",
+  "badge": "PARA",
+  "title": "Maaş Günü Yapılacaklar #shorts",
+  "description": "Maaş yattığı gün yaptığın ilk şey, ayın nasıl geçeceğini belirler. Maaş Günü Yapılacaklar hakkında kısa ve pratik ipuçları.",
+  "hashtags": [
+   "#shorts",
+   "#tasarruf",
+   "#paraipuçları",
+   "#bütçe"
+  ],
+  "scenes": [
+   {
+    "kind": "hook",
+    "text": "Maaş yatınca ilk ne yapıyorsun?",
+    "say": "Maaş yattığı gün yaptığın ilk şey, ayın nasıl geçeceğini belirler."
+   },
+   {
+    "kind": "item",
+    "num": 1,
+    "text": "Faturaları öde",
+    "say": "Sabit giderleri hemen öde, sonra ne kaldığını net gör."
+   },
+   {
+    "kind": "item",
+    "num": 2,
+    "text": "Birikimi ayır",
+    "say": "Harcamaya başlamadan birikim payını ayrı hesaba aktar."
+   },
+   {
+    "kind": "item",
+    "num": 3,
+    "text": "Haftalara böl",
+    "say": "Kalan parayı dört haftaya böl, her hafta kendi payını kullansın."
+   },
+   {
+    "kind": "item",
+    "num": 4,
+    "text": "Ödül payı bırak",
+    "say": "Küçük bir keyif bütçesi, kuralları bozmamanı kolaylaştırır."
+   },
+   {
+    "kind": "cta",
+    "text": "Takip et!",
+    "say": "Hangisini zaten yapıyorsun? Yorumlara yaz, takip etmeyi unutma."
+   }
+  ]
+ },
+ {
+  "id": "23-uyku-duzen",
+  "badge": "SAĞLIKLI",
+  "title": "Daha İyi Uyumak İçin #shorts",
+  "description": "Yatağa girince uyuyamıyorsan, bu alışkanlıklar yardımcı olabilir. Daha İyi Uyumak İçin hakkında kısa ve pratik ipuçları.",
+  "hashtags": [
+   "#shorts",
+   "#pratikbilgiler",
+   "#hayatkolaylaştıran",
+   "#günlükhayat"
+  ],
+  "scenes": [
+   {
+    "kind": "hook",
+    "text": "Uyuyamıyor musun?",
+    "say": "Yatağa girince uyuyamıyorsan, bu alışkanlıklar yardımcı olabilir."
+   },
+   {
+    "kind": "item",
+    "num": 1,
+    "text": "Aynı saatte yat",
+    "say": "Hafta sonu dahil her gün benzer saatlerde yatıp kalk."
+   },
+   {
+    "kind": "item",
+    "num": 2,
+    "text": "Ekranı bırak",
+    "say": "Yatmadan önce bir süre ekrana bakmamaya çalış."
+   },
+   {
+    "kind": "item",
+    "num": 3,
+    "text": "Odayı serin tut",
+    "say": "Serin, karanlık ve sessiz bir oda uykuyu kolaylaştırır."
+   },
+   {
+    "kind": "item",
+    "num": 4,
+    "text": "Akşam kafeinine dikkat",
+    "say": "Öğleden sonra kafein tüketimini azaltmayı dene."
+   },
+   {
+    "kind": "cta",
+    "text": "Takip et!",
+    "say": "Faydalı bulduysan bir arkadaşına gönder ve takip et."
+   }
+  ]
+ },
+ {
+  "id": "24-camasir-ipucu",
+  "badge": "EV",
+  "title": "Çamaşır Hataları #shorts",
+  "description": "Kıyafetlerin çabuk eskiyorsa, bu çamaşır hatalarından birini yapıyor olabilirsin. Çamaşır Hataları hakkında kısa ve pratik ipuçları.",
+  "hashtags": [
+   "#shorts",
+   "#pratikbilgiler",
+   "#hayatkolaylaştıran",
+   "#günlükhayat"
+  ],
+  "scenes": [
+   {
+    "kind": "hook",
+    "text": "Kıyafetlerin çabuk mu eskiyor?",
+    "say": "Kıyafetlerin çabuk eskiyorsa, bu çamaşır hatalarından birini yapıyor olabilirsin."
+   },
+   {
+    "kind": "item",
+    "num": 1,
+    "text": "Ters çevir",
+    "say": "Koyu ve baskılı kıyafetleri ters çevirip yıka, renkleri korunur."
+   },
+   {
+    "kind": "item",
+    "num": 2,
+    "text": "Fazla deterjan koyma",
+    "say": "Fazla deterjan daha temiz yapmaz, kumaşta kalıntı bırakır."
+   },
+   {
+    "kind": "item",
+    "num": 3,
+    "text": "Etikete bak",
+    "say": "Yıkama etiketi kıyafetin ömrünü uzatmanın en kolay yolu."
+   },
+   {
+    "kind": "item",
+    "num": 4,
+    "text": "Kurutucuyu azalt",
+    "say": "Mümkünse havada kurut. Hem kumaş korunur hem fatura düşer."
+   },
+   {
+    "kind": "cta",
+    "text": "Takip et!",
+    "say": "Yarın yeni bir ipucuyla geliyorum. Takipte kal!"
+   }
+  ]
+ },
+ {
+  "id": "25-fiyat-takip",
+  "badge": "ALIŞVERİŞ",
+  "title": "Online Alışverişte Tasarruf #shorts",
+  "description": "Online alışveriş yaparken çoğu kişi aynı ürüne fazla para ödüyor. Online Alışverişte Tasarruf hakkında kısa ve pratik ipuçları.",
+  "hashtags": [
+   "#shorts",
+   "#tasarruf",
+   "#paraipuçları",
+   "#bütçe"
+  ],
+  "scenes": [
+   {
+    "kind": "hook",
+    "text": "Online alışverişte fazla mı ödüyorsun?",
+    "say": "Online alışveriş yaparken çoğu kişi aynı ürüne fazla para ödüyor."
+   },
+   {
+    "kind": "item",
+    "num": 1,
+    "text": "Sepette beklet",
+    "say": "Ürünü sepete ekleyip birkaç gün bekle. Bazen fiyat düşer."
+   },
+   {
+    "kind": "item",
+    "num": 2,
+    "text": "Birkaç siteye bak",
+    "say": "Aynı ürünün fiyatını farklı satıcılarda karşılaştır."
+   },
+   {
+    "kind": "item",
+    "num": 3,
+    "text": "Yorumları oku",
+    "say": "Ucuz ama kalitesiz ürün, iki kez almak demektir."
+   },
+   {
+    "kind": "item",
+    "num": 4,
+    "text": "Kart bilgisini kaydetme",
+    "say": "Kayıtlı kart, tek tıkla plansız alışverişi kolaylaştırır."
+   },
+   {
+    "kind": "cta",
+    "text": "Takip et!",
+    "say": "Bunu kaydet, işine yarayacak. Daha fazlası için takip et!"
+   }
+  ]
+ },
+ {
+  "id": "26-hediye-butce",
+  "badge": "PLAN",
+  "title": "Bütçe Dostu Hediye Fikirleri #shorts",
+  "description": "Özel günlerde hediye almak bütçeni zorluyorsa, bu fikirleri dene. Bütçe Dostu Hediye Fikirleri hakkında kısa ve pratik ipuçları.",
+  "hashtags": [
+   "#shorts",
+   "#tasarruf",
+   "#paraipuçları",
+   "#bütçe"
+  ],
+  "scenes": [
+   {
+    "kind": "hook",
+    "text": "Hediye almak bütçeni zorluyor mu?",
+    "say": "Özel günlerde hediye almak bütçeni zorluyorsa, bu fikirleri dene."
+   },
+   {
+    "kind": "item",
+    "num": 1,
+    "text": "El yapımı",
+    "say": "Kendi yaptığın bir şey, pahalı bir hediyeden daha akılda kalıcı olabilir."
+   },
+   {
+    "kind": "item",
+    "num": 2,
+    "text": "Deneyim hediye et",
+    "say": "Birlikte yapılacak bir aktivite, eşyadan daha değerli olabilir."
+   },
+   {
+    "kind": "item",
+    "num": 3,
+    "text": "Yıllık liste tut",
+    "say": "Özel günleri baştan yaz, hediye bütçesini aylara yay."
+   },
+   {
+    "kind": "item",
+    "num": 4,
+    "text": "İndirimde topla",
+    "say": "Uygun bir fırsat gördüğünde ileride vereceğin hediyeyi şimdiden al."
+   },
+   {
+    "kind": "cta",
+    "text": "Takip et!",
+    "say": "Hangisini zaten yapıyorsun? Yorumlara yaz, takip etmeyi unutma."
+   }
+  ]
+ },
+ {
+  "id": "27-araba-yakit",
+  "badge": "YAKIT",
+  "title": "Daha Az Yakıt Harca #shorts",
+  "description": "Yakıt masrafın yüksekse, sürüş alışkanlıklarını değiştirmek fark yaratır. Daha Az Yakıt Harca hakkında kısa ve pratik ipuçları.",
+  "hashtags": [
+   "#shorts",
+   "#tasarruf",
+   "#paraipuçları",
+   "#bütçe"
+  ],
+  "scenes": [
+   {
+    "kind": "hook",
+    "text": "Yakıt masrafın çok mu yüksek?",
+    "say": "Yakıt masrafın yüksekse, sürüş alışkanlıklarını değiştirmek fark yaratır."
+   },
+   {
+    "kind": "item",
+    "num": 1,
+    "text": "Yumuşak kalk",
+    "say": "Sert hızlanma ve ani fren yakıt tüketimini artırır."
+   },
+   {
+    "kind": "item",
+    "num": 2,
+    "text": "Lastik basıncı",
+    "say": "Düşük lastik basıncı aracın daha çok yakmasına neden olur."
+   },
+   {
+    "kind": "item",
+    "num": 3,
+    "text": "Bagajı boşalt",
+    "say": "Gereksiz yük taşımak da yakıt demektir."
+   },
+   {
+    "kind": "item",
+    "num": 4,
+    "text": "Rölantide bekleme",
+    "say": "Uzun süre bekleyeceksen motoru kapatmak daha mantıklı."
+   },
+   {
+    "kind": "cta",
+    "text": "Takip et!",
+    "say": "Faydalı bulduysan bir arkadaşına gönder ve takip et."
+   }
+  ]
+ },
+ {
+  "id": "28-dijital-temizlik",
+  "badge": "TEKNO",
+  "title": "Telefon Hafızan Dolu mu? #shorts",
+  "description": "Telefonunda sürekli depolama dolu uyarısı alıyorsan, şunları dene. Telefon Hafızan Dolu mu? hakkında kısa ve pratik ipuçları.",
+  "hashtags": [
+   "#shorts",
+   "#pratikbilgiler",
+   "#hayatkolaylaştıran",
+   "#günlükhayat"
+  ],
+  "scenes": [
+   {
+    "kind": "hook",
+    "text": "Depolama alanı dolu uyarısı mı aldın?",
+    "say": "Telefonunda sürekli depolama dolu uyarısı alıyorsan, şunları dene."
+   },
+   {
+    "kind": "item",
+    "num": 1,
+    "text": "Mesaj medyası",
+    "say": "Mesajlaşma uygulamalarındaki eski fotoğraf ve videoları temizle."
+   },
+   {
+    "kind": "item",
+    "num": 2,
+    "text": "Kullanmadığın uygulamalar",
+    "say": "Son birkaç ayda açmadığın uygulamaları kaldır."
+   },
+   {
+    "kind": "item",
+    "num": 3,
+    "text": "Önbelleği temizle",
+    "say": "Bazı uygulamaların önbelleği zamanla çok büyür."
+   },
+   {
+    "kind": "item",
+    "num": 4,
+    "text": "Yedekle ve sil",
+    "say": "Fotoğrafları yedekledikten sonra cihazdan kaldırabilirsin."
+   },
+   {
+    "kind": "cta",
+    "text": "Takip et!",
+    "say": "Yarın yeni bir ipucuyla geliyorum. Takipte kal!"
+   }
+  ]
+ },
+ {
+  "id": "29-ihtiyac-istek",
+  "badge": "PARA",
+  "title": "İhtiyaç mı, İstek mi? #shorts",
+  "description": "Bir şey almadan önce kendine bu dört soruyu sor. İhtiyaç mı, İstek mi? hakkında kısa ve pratik ipuçları.",
+  "hashtags": [
+   "#shorts",
+   "#tasarruf",
+   "#paraipuçları",
+   "#bütçe"
+  ],
+  "scenes": [
+   {
+    "kind": "hook",
+    "text": "Bunu gerçekten istiyor musun?",
+    "say": "Bir şey almadan önce kendine bu dört soruyu sor."
+   },
+   {
+    "kind": "item",
+    "num": 1,
+    "text": "Olmasa ne olur?",
+    "say": "Bu ürün olmasa hayatında gerçekten bir şey eksik kalır mı?"
+   },
+   {
+    "kind": "item",
+    "num": 2,
+    "text": "Benzeri var mı?",
+    "say": "Evde aynı işi gören başka bir şeyin var mı?"
+   },
+   {
+    "kind": "item",
+    "num": 3,
+    "text": "Kaç kez kullanırım?",
+    "say": "Fiyatı kullanım sayısına böl. Gerçek maliyeti göreceksin."
+   },
+   {
+    "kind": "item",
+    "num": 4,
+    "text": "Kaç saatlik emek?",
+    "say": "Bu ürün için kaç saat çalışman gerektiğini hesapla."
+   },
+   {
+    "kind": "cta",
+    "text": "Takip et!",
+    "say": "Bunu kaydet, işine yarayacak. Daha fazlası için takip et!"
+   }
+  ]
+ },
+ {
+  "id": "30-haftalik-temizlik",
+  "badge": "DÜZEN",
+  "title": "Günde 15 Dakika Temizlik #shorts",
+  "description": "Hafta sonun hep temizlikle geçiyorsa, işi güne yaymayı dene. Günde 15 Dakika Temizlik hakkında kısa ve pratik ipuçları.",
+  "hashtags": [
+   "#shorts",
+   "#pratikbilgiler",
+   "#hayatkolaylaştıran",
+   "#günlükhayat"
+  ],
+  "scenes": [
+   {
+    "kind": "hook",
+    "text": "Hafta sonun temizlikle mi geçiyor?",
+    "say": "Hafta sonun hep temizlikle geçiyorsa, işi güne yaymayı dene."
+   },
+   {
+    "kind": "item",
+    "num": 1,
+    "text": "Her güne bir oda",
+    "say": "Pazartesi mutfak, salı banyo gibi her güne bir alan ver."
+   },
+   {
+    "kind": "item",
+    "num": 2,
+    "text": "Zamanlayıcı kur",
+    "say": "On beş dakika kur, süre bitince bırak."
+   },
+   {
+    "kind": "item",
+    "num": 3,
+    "text": "Yukarıdan aşağı",
+    "say": "Önce raflar, sonra yüzeyler, en son yer. İş tekrar etmez."
+   },
+   {
+    "kind": "item",
+    "num": 4,
+    "text": "Akşam toparlama",
+    "say": "Yatmadan önce beş dakika ortalığı toplamak sabahı kolaylaştırır."
+   },
+   {
+    "kind": "cta",
+    "text": "Takip et!",
+    "say": "Hangisini zaten yapıyorsun? Yorumlara yaz, takip etmeyi unutma."
+   }
+  ]
+ }
+]
