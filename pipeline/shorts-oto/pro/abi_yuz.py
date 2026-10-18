@@ -148,7 +148,7 @@ class AbiYuz:
                 out = np.where(inside, moved, out)
         return out
 
-    def face(self, t, level=0.0, expr="normal", wink=0.0):
+    def face(self, t, level=0.0, expr="normal", wink=0.0, rnd=0.0):
         """Yüz bölgesi (RGBA float) — konuşma, ifade, bakış, göz kırpma."""
         e = mix(expr, expr, 0) if isinstance(expr, str) else expr
         x0, y0, x1, y1 = self.BOX
@@ -156,9 +156,11 @@ class AbiYuz:
         open_amt = float(np.clip((level - 0.12) / 0.38, 0, 1))
         open_amt = open_amt * open_amt * (3 - 2 * open_amt)
         o = e["o"] * (1 - open_amt)                                        # konuşmuyorken "o" ağız
-        if open_amt > 0.01:
-            k = self.mmask * open_amt
-            img[..., :3] = img[..., :3] * (1 - k) + self.Bc * k
+        if open_amt > 0.01:                                                # konuşma: geniş (e/i) <-> yuvarlak (o/u) ağız
+            r = float(np.clip(rnd, 0, 1))
+            k = (self.mmask * (1 - r) + self.omask * r) * open_amt
+            src = self.Bc * (1 - r) + self.Bo * r
+            img[..., :3] = img[..., :3] * (1 - k) + src * k
         if o > 0.01:
             k = self.omask * o
             img[..., :3] = img[..., :3] * (1 - k) + self.Bo * k
@@ -173,13 +175,49 @@ class AbiYuz:
         img = self._lids(img, max(blink, sq), max(blink, sq, wink))
         return img
 
-    def frame(self, t, level=0.0, expr="normal", height=640, wink=0.0):
+    def frame(self, t, level=0.0, expr="normal", height=640, wink=0.0, rnd=0.0):
         """Tam beden RGBA (PIL), yüksekliği height."""
         full = self.A.copy()
         x0, y0, x1, y1 = self.BOX
-        f = self.face(t, level, expr, wink)
+        f = self.face(t, level, expr, wink, rnd)
         a = full[y0:y1, x0:x1, 3:4].copy()
         full[y0:y1, x0:x1, :3] = f[..., :3]
         full[y0:y1, x0:x1, 3:4] = a                                        # siluet aynı kalır
         im = Image.fromarray(np.clip(full, 0, 255).astype(np.uint8), "RGBA")
         return im.resize((max(1, round(self.w * height / self.h)), height), Image.LANCZOS)
+
+
+def konusma(wav, fps=30):
+    """Sesten 'dümenden' ağız hareketi: (açıklık 0-1, yuvarlaklık 0-1) kare başına.
+    Hece vurguları için yerel minimum çıkarılır; yuvarlaklık alçak/yüksek frekans oranından gelir."""
+    import subprocess
+    r = subprocess.run(["ffmpeg", "-loglevel", "error", "-i", str(wav), "-f", "s16le", "-ac", "1", "-ar", "16000", "-"],
+                       capture_output=True, check=True)
+    x = np.frombuffer(r.stdout, "<i2").astype(np.float64) / 32768
+    hop = 16000 / fps
+    n = int(len(x) / hop) + 1
+    lev, rat = np.zeros(n), np.zeros(n)
+    for i in range(n):
+        c = int(i * hop + hop / 2)
+        seg = x[max(0, c - 400):c + 400]
+        if len(seg) < 128:
+            continue
+        sp = np.abs(np.fft.rfft(seg * np.hanning(len(seg)))) ** 2
+        f = np.fft.rfftfreq(len(seg), 1 / 16000)
+        lo, hi = sp[(f > 250) & (f < 1000)].sum(), sp[(f > 1200) & (f < 3200)].sum()
+        lev[i], rat[i] = np.sqrt((lo + hi) / len(seg)), lo / (lo + hi + 1e-12)
+    voiced = lev > np.percentile(lev, 60) * 0.25
+    lev = lev / (np.percentile(lev[voiced], 92) + 1e-9) if voiced.any() else lev
+    w = np.lib.stride_tricks.sliding_window_view(np.pad(lev, 3, mode="edge"), 7)
+    syl = np.clip(lev - 0.55 * w.min(axis=1), 0, None)                     # hece vurgusu
+    syl = np.clip(syl / (np.percentile(syl[voiced], 90) + 1e-9) if voiced.any() else syl, 0, 1)
+    syl = np.where(lev < 0.08, 0, syl)                                      # sessizlikte kapalı
+    op = np.convolve(syl, [0.25, 0.5, 0.25], mode="same")
+    op = np.clip((op - 0.08) / 0.75, 0, 1) ** 0.85
+    if voiced.sum() > 10:
+        a, b = np.percentile(rat[voiced], 35), np.percentile(rat[voiced], 92)
+        rn = np.clip((rat - a) / max(b - a, 1e-6), 0, 1)
+    else:
+        rn = np.zeros(n)
+    rn = np.convolve(rn, np.ones(3) / 3, mode="same")
+    return op, rn
