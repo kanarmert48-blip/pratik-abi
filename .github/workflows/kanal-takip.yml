@@ -18,8 +18,13 @@ jobs:
         env:
           YT_API_KEY: ${{ secrets.YT_API_KEY }}
           KANAL: ${{ inputs.kanal || vars.KANAL }}
-        run: python3 tools/kanal_takip.py "$KANAL"
+        run: |
+          mkdir -p out
+          [ -n "$YT_API_KEY" ] || echo "YT_API_KEY secret YOK" > out/hata.txt
+          python3 tools/kanal_takip.py "$KANAL" 2> >(tee -a out/hata.txt >&2) || true
+          ls out
       - name: Release'e yükle
+        if: always()
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
