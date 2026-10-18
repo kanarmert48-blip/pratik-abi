@@ -1,0 +1,29 @@
+name: kanal-takip
+on:
+  workflow_dispatch:
+    inputs:
+      kanal:
+        description: "Kanal @adı veya kanal ID"
+        required: false
+  schedule:
+    - cron: "17 5 * * *"
+permissions:
+  contents: write
+jobs:
+  takip:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: İstatistik topla
+        env:
+          YT_API_KEY: ${{ secrets.YT_API_KEY }}
+          KANAL: ${{ inputs.kanal || vars.KANAL }}
+        run: python3 tools/kanal_takip.py "$KANAL"
+      - name: Release'e yükle
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          R=kanal
+          gh release view $R >/dev/null 2>&1 || gh release create $R --title "$R" --notes "günlük kanal istatistikleri"
+          gh release upload $R out/* --clobber
