@@ -7,7 +7,14 @@ def api(path, **q):
     with urllib.request.urlopen(f"https://www.googleapis.com/youtube/v3/{path}?" + urllib.parse.urlencode(q)) as r:
         return json.load(r)
 q = {"forHandle": H} if H.startswith("@") else {"id": H}
-ch = api("channels", part="snippet,statistics,contentDetails", **q)["items"][0]
+r0 = api("channels", part="snippet,statistics,contentDetails", **q)
+if not r0.get("items"):
+    sr = api("search", part="snippet", type="channel", q=H.lstrip("@"), maxResults=10)
+    print("BULUNAMADI. Aday kanallar:", file=sys.stderr)
+    for it in sr.get("items", []):
+        print(it["snippet"]["channelId"], it["snippet"]["title"], file=sys.stderr)
+    sys.exit(1)
+ch = r0["items"][0]
 up = ch["contentDetails"]["relatedPlaylists"]["uploads"]
 ids, tok = [], None
 while len(ids) < 200:
