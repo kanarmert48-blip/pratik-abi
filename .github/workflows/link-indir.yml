@@ -25,12 +25,15 @@ jobs:
           ID: ${{ inputs.id }}
         run: |
           mkdir -p out
-          yt-dlp --no-playlist -f "bv*[height<=720]+ba/b[height<=720]/b" --merge-output-format mp4 \
-            --write-info-json --write-subs --write-auto-subs --sub-langs "tr,en.*" --sub-format vtt --convert-subs vtt \
-            -o "out/${ID}.%(ext)s" "$URL" || true
-          ls -la out
-          test -n "$(ls out/*.mp4 2>/dev/null)" || { echo "VIDEO INMEDI"; exit 1; }
+          O='--no-playlist -f bv*[height<=720]+ba/b[height<=720]/b --merge-output-format mp4 --write-info-json --write-subs --write-auto-subs --sub-langs tr,en.* --convert-subs vtt'
+          for C in "" "youtube:player_client=tv_simple" "youtube:player_client=web_safari" "youtube:player_client=mweb" "youtube:player_client=ios"; do
+            if [ -z "$C" ]; then yt-dlp $O -o "out/${ID}.%(ext)s" "$URL" >> out/${ID}_log.txt 2>&1 || true
+            else yt-dlp $O --extractor-args "$C" -o "out/${ID}.%(ext)s" "$URL" >> out/${ID}_log.txt 2>&1 || true; fi
+            ls out/*.mp4 >/dev/null 2>&1 && break
+          done
+          ls -la out; tail -20 out/${ID}_log.txt
       - name: Release'e yükle
+        if: always()
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
