@@ -17,7 +17,7 @@ jobs:
       - name: İstatistik topla
         env:
           YT_API_KEY: ${{ secrets.YT_API_KEY }}
-          KANAL: ${{ inputs.kanal || vars.KANAL }}
+          KANAL: ${{ inputs.kanal || vars.KANAL || '@PratikAbii' }}
         run: |
           mkdir -p out
           [ -n "$YT_API_KEY" ] || echo "YT_API_KEY secret YOK" > out/hata.txt
