@@ -1,0 +1,30 @@
+name: kanal-incele
+on:
+  workflow_dispatch:
+    inputs:
+      kanallar:
+        description: "Virgülle @adlar"
+        required: true
+permissions:
+  contents: write
+jobs:
+  incele:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Kanalları incele
+        env:
+          YT_API_KEY: ${{ secrets.YT_API_KEY }}
+          KANALLAR: ${{ inputs.kanallar }}
+        run: |
+          mkdir -p out
+          python3 tools/kanal_incele.py "$KANALLAR" 2> >(tee -a out/hata_incele.txt >&2) || true
+      - name: Release'e yükle
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          R=incele
+          gh release view $R >/dev/null 2>&1 || gh release create $R --title "$R" --notes "rakip inceleme"
+          gh release upload $R out/* --clobber
