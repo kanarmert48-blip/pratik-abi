@@ -1,0 +1,25 @@
+name: kanal-ara
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  ara:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Rakip kanalları bul
+        env:
+          YT_API_KEY: ${{ secrets.YT_API_KEY }}
+        run: |
+          mkdir -p out
+          python3 tools/kanal_ara.py 2> >(tee -a out/hata_ara.txt >&2) || true
+      - name: Release'e yükle
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          R=kanal
+          gh release view $R >/dev/null 2>&1 || gh release create $R --title "$R" --notes "kanal verileri"
+          gh release upload $R out/* --clobber
