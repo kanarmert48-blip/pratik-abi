@@ -27,4 +27,4 @@ jobs:
         run: |
           R=incele
           gh release view $R >/dev/null 2>&1 || gh release create $R --title "$R" --notes "rakip inceleme"
-          gh release upload $R out/* --clobber
+          ls -la out; tar czf inc.tar.gz out; gh release upload $R inc.tar.gz --clobber
