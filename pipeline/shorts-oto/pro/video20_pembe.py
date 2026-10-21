@@ -37,11 +37,14 @@ t_hat = t_yor
 CL = json.loads(os.environ.get("V20_CLIPS", "{}"))
 def C(k, d):
     return MED / CL.get(k, d)
-CUTS = [("vid", C("hook", "gokkusagi_1.mp4"), 0.0, 0.5, 0.0),
-        ("vid", C("prizma", "prizma_1.mp4"), 0.0, 0.5, t_cunku),
+PH = Path("/home/claude/pratik-abi/media/v20b-pembe")
+CUTS = [("px", PH / "gk2_3.jpg", 0.0, 0.56, 0.0),
+        ("px", PH / "gk_7.jpg", 0.0, 0.34, t_pem),
+        ("vid", C("prizma", "prizma_2.mp4"), 0.0, 0.5, t_cunku),
         ("vid", C("teker", "prizma_2.mp4"), 0.0, 0.5, t_gozun),
         ("vid", C("pembe", "pembe_1.mp4"), 0.0, 0.5, t_yani),
-        ("vid", C("son", "gokkusagi_1.mp4"), 2.5, 0.5, t_sen)]
+        ("px", PH / "gk2_2.jpg", 0.0, 0.5, t_sen),
+        ("px", PH / "gk2_4.jpg", 0.0, 0.7, t_yor)]
 STARTS = [c[4] for c in CUTS] + [TOTAL]
 SEGS = [(c, STARTS[i + 1] - c[4]) for i, c in enumerate(CUTS)]
 assert all(d > 0.5 for _, d in SEGS), [round(d, 2) for _, d in SEGS]
