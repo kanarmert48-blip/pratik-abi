@@ -50,7 +50,8 @@ class Rozet:
         im2 = im2.rotate(2.0 * math.sin(t * 2.1), resample=Image.BICUBIC, expand=True)
         if alpha < 0.99:
             a = np.asarray(im2).copy(); a[..., 3] = (a[..., 3] * alpha).astype(np.uint8); im2 = Image.fromarray(a, "RGBA")
-        comp(im, self.sh, self.cx - img.width / 2 - self.pad, self.cy - img.height / 2 - self.pad + u(12))
+        sh = self.sh if alpha >= 0.99 else Image.fromarray((np.asarray(self.sh) * np.array([1, 1, 1, alpha])).astype(np.uint8), "RGBA")
+        comp(im, sh, self.cx - img.width / 2 - self.pad, self.cy - img.height / 2 - self.pad + u(12))
         comp(im, im2, self.cx - im2.width / 2, self.cy - im2.height / 2)
         if level > 0.08:
             d = ImageDraw.Draw(im)
