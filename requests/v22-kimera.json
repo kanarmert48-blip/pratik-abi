@@ -1,0 +1,19 @@
+{"id": "v22-kimera", "items": [
+ {"name": "hamile", "source": "pixabay_video", "q": "pregnant woman belly", "n": 4},
+ {"name": "bebek", "source": "pixabay_video", "q": "newborn baby hand mother", "n": 4},
+ {"name": "anneogul", "source": "pixabay_video", "q": "mother hugging son", "n": 3},
+ {"name": "yasli", "source": "pixabay_video", "q": "elderly woman portrait window", "n": 3},
+ {"name": "mikroskop", "source": "pixabay_video", "q": "scientist microscope laboratory", "n": 4},
+ {"name": "kan", "source": "pixabay_video", "q": "red blood cells flowing", "n": 4},
+ {"name": "pipet", "source": "pixabay_video", "q": "laboratory pipette dna sample", "n": 3},
+ {"name": "dna", "source": "pixabay_video", "q": "dna helix", "n": 4},
+ {"name": "beyin", "source": "pixabay_video", "q": "brain neurons", "n": 4},
+ {"name": "kalp", "source": "pixabay_video", "q": "human heart anatomy", "n": 3},
+ {"name": "fare", "source": "pixabay_video", "q": "white lab mouse", "n": 3},
+ {"name": "bakteri", "source": "pixabay_video", "q": "bacteria microscope", "n": 4},
+ {"name": "hucre", "source": "pixabay_video", "q": "cell division microscope", "n": 4},
+ {"name": "virus", "source": "pixabay_video", "q": "virus 3d", "n": 3},
+ {"name": "ultrason", "source": "pixabay_video", "q": "ultrasound pregnancy", "n": 3},
+ {"name": "aile", "source": "pixabay_video", "q": "family sunset walking", "n": 3},
+ {"name": "uzay", "source": "pixabay_video", "q": "ocean primordial life underwater light", "n": 3}
+]}
