@@ -115,9 +115,9 @@ def chair(d, k, ox, oy):
 
 
 # ---------- karakter iskeleti ----------
-THIGH, SHIN = 245, 300
+THIGH, SHIN = 255, 285
 ANKLE = (640, FLOOR - 42)
-TORSO = 290
+TORSO = 325
 
 
 def ik(hip, ankle):
@@ -179,15 +179,15 @@ def skeleton(t):
     fw = (math.cos(a), math.sin(a))
     knee = ik(hip, ANKLE)
     sh = (hip[0] + up[0] * TORSO, hip[1] + up[1] * TORSO)
-    head = (sh[0] + up[0] * 125 + fw[0] * 10, sh[1] + up[1] * 125 + fw[1] * 10)
+    head = (sh[0] + up[0] * 125 + fw[0] * 30, sh[1] + up[1] * 125 + fw[1] * 30)
     # kollar: yanda serbest (0) -> çapraz (1) -> yukarı (arms)
     def arm(side):
         free_e = (sh[0] - up[0] * 150 + fw[0] * 10, sh[1] - up[1] * 150 + fw[1] * 10)
         free_h = (free_e[0] - up[0] * 130 + fw[0] * 25, free_e[1] - up[1] * 130 + fw[1] * 25)
-        cr_e = (sh[0] - up[0] * 125 + fw[0] * 55, sh[1] - up[1] * 125 + fw[1] * 55)
-        cr_h = (cr_e[0] + up[0] * 75 + fw[0] * (20 + side * 18), cr_e[1] + up[1] * 75 + fw[1] * (20 + side * 18))
-        up_e = (sh[0] + up[0] * 40 + fw[0] * (110 + 10 * side), sh[1] + up[1] * 40 + fw[1] * (110 + 10 * side))
-        up_h = (up_e[0] + up[0] * 115 + fw[0] * (40 + 15 * side), up_e[1] + up[1] * 115 + fw[1] * (40 + 15 * side))
+        cr_e = (sh[0] - up[0] * 150 + fw[0] * (58 + 6 * side), sh[1] - up[1] * 150 + fw[1] * (58 + 6 * side))
+        cr_h = (cr_e[0] + up[0] * (34 + 8 * side) + fw[0] * (-46 + 10 * side), cr_e[1] + up[1] * (34 + 8 * side) + fw[1] * (-46 + 10 * side))
+        up_e = (sh[0] + up[0] * 25 + fw[0] * (100 + 10 * side), sh[1] + up[1] * 25 + fw[1] * (100 + 10 * side))
+        up_h = (up_e[0] + up[0] * 100 + fw[0] * (60 + 12 * side), up_e[1] + up[1] * 100 + fw[1] * (60 + 12 * side))
         e = [free_e[i] * (1 - cross) + cr_e[i] * cross for i in range(2)]
         hnd = [free_h[i] * (1 - cross) + cr_h[i] * cross for i in range(2)]
         e = [e[i] * (1 - arms) + up_e[i] * arms for i in range(2)]
@@ -206,121 +206,255 @@ def com(sk):
     return sum(p[0] * w for p, w in pts) / wsum, sum(p[1] * w for p, w in pts) / wsum
 
 
-# ---------- karakter çizimi ----------
+# ---------- karakter çizimi (gölgeli illüstrasyon) ----------
 CX0, CY0, CX1, CY1 = 150, 180, 980, 1460
-CWp, CHp = round(u(CX1 - CX0)), round(u(CY1 - CY0))
-KS = 2
+HOOD = (44, 116, 136)
+JEANS = (58, 82, 128)
+HAIR = (58, 40, 30)
+SKIN2 = (234, 184, 148)
+WOODC = (156, 102, 64)
 
 
-def cap(d, p0, p1, wd, col, k=KS, ox=0, oy=0):
-    x0, y0 = (u(p0[0]) - ox) * k, (u(p0[1]) - oy) * k
-    x1, y1 = (u(p1[0]) - ox) * k, (u(p1[1]) - oy) * k
-    r = u(wd) * k / 2
-    d.line([(x0, y0), (x1, y1)], fill=col, width=int(2 * r))
-    d.ellipse([x0 - r, y0 - r, x0 + r, y0 + r], fill=col)
-    d.ellipse([x1 - r, y1 - r, x1 + r, y1 + r], fill=col)
+def _shade_local(ma, col, far=0.0, gloss=0.0):
+    inner = cv2.GaussianBlur(ma, (0, 0), u(7))
+    edge = np.clip(ma - inner, 0, 1) * 1.7
+    hb = cv2.GaussianBlur(ma, (0, 0), u(13))
+    gx = cv2.Sobel(hb, cv2.CV_32F, 1, 0, ksize=5)
+    gy = cv2.Sobel(hb, cv2.CV_32F, 0, 1, ksize=5)
+    nrm = np.sqrt(gx ** 2 + gy ** 2) + 1e-4
+    light = (gx * 0.55 + gy * 0.85) / nrm * np.clip(nrm * 40, 0, 1)
+    img = np.ones(ma.shape + (3,), np.float32) * np.array(col, np.float32)
+    img *= (1 + 0.16 * light)[..., None]
+    img *= (1 - 0.30 * edge)[..., None]
+    if gloss:
+        img += np.clip(light, 0, 1)[..., None] ** 3 * 60 * gloss
+    img *= (1 - far)
+    return np.dstack([np.clip(img, 0, 255), ma * 255]).astype(np.uint8)
 
 
-def shade(col, f):
-    return tuple(int(clamp(c * f, 0, 255)) for c in col)
+def render_part(polys, col, far=0.0, details=None, gloss=0.0):
+    """polys: birim koordinatlı çokgenler. Döner: (RGBA, (x0,y0) px) — yerel, 2x çizilip küçültülmüş."""
+    xs = [u(p[0]) for pl in polys for p in pl]
+    ys = [u(p[1]) for pl in polys for p in pl]
+    m = u(30)
+    x0, y0 = int(min(xs) - m), int(min(ys) - m)
+    w, h = int(max(xs) + m) - x0, int(max(ys) + m) - y0
+    k = 2
+    mk = Image.new("L", (w * k, h * k), 0)
+    dm = ImageDraw.Draw(mk)
+    for pl in polys:
+        dm.polygon([((u(x) - x0) * k, (u(y) - y0) * k) for x, y in pl], fill=255)
+    ma = np.asarray(mk.resize((w, h), Image.LANCZOS)).astype(np.float32) / 255
+    im = Image.fromarray(_shade_local(ma, col, far, gloss), "RGBA")
+    if details:
+        dl = Image.new("RGBA", (w * k, h * k), (0, 0, 0, 0))
+        P2 = lambda x, y: ((u(x) - x0) * k, (u(y) - y0) * k)
+        details(ImageDraw.Draw(dl), P2, k)
+        im.alpha_composite(dl.resize((w, h), Image.LANCZOS))
+    return im, (x0, y0)
+
+
+def limb(p0, p1, w0, w1, bulge=0.0, bulge_side=-1, n=10):
+    """tabandan uca incelen, uçları yuvarlak uzuv; bulge: baldır/pazı şişkinliği (birim)."""
+    dx, dy = p1[0] - p0[0], p1[1] - p0[1]
+    L = math.hypot(dx, dy) + 1e-6
+    ux, uy = dx / L, dy / L
+    nx, ny = -uy, ux
+    left, right = [], []
+    for i in range(n + 1):
+        s = i / n
+        wdt = (w0 + (w1 - w0) * s) / 2
+        b = bulge * math.sin(math.pi * min(1, s * 1.4)) ** 2
+        cx, cy = p0[0] + dx * s, p0[1] + dy * s
+        wl = wdt + (b if bulge_side < 0 else 0)
+        wr = wdt + (b if bulge_side > 0 else 0)
+        left.append((cx + nx * wl, cy + ny * wl))
+        right.append((cx - nx * wr, cy - ny * wr))
+    cap1 = [(p1[0] + (nx * math.cos(a) + ux * math.sin(a)) * w1 / 2, p1[1] + (ny * math.cos(a) + uy * math.sin(a)) * w1 / 2)
+            for a in np.linspace(0, math.pi, 8)]
+    cap0 = [(p0[0] - (nx * math.cos(a) + ux * math.sin(a)) * w0 / 2, p0[1] - (ny * math.cos(a) + uy * math.sin(a)) * w0 / 2)
+            for a in np.linspace(0, math.pi, 8)]
+    return left + cap1 + right[::-1] + cap0
+
+
+def frame_pts(origin, ang_deg, pts, sc=1.0):
+    """yerel (x ileri, y yukarı) -> ekran; ang + öne eğim"""
+    a = math.radians(ang_deg)
+    up = (math.sin(a), -math.cos(a))
+    fw = (math.cos(a), math.sin(a))
+    return [(origin[0] + (fw[0] * x + up[0] * y) * sc, origin[1] + (fw[1] * x + up[1] * y) * sc) for x, y in pts]
+
+
+TORSO_PTS = [(-62, -18), (-72, 50), (-76, 140), (-72, 220), (-62, 280), (-44, 318), (-12, 336), (22, 334), (48, 318),
+             (66, 292), (76, 248), (74, 180), (72, 110), (70, 40), (64, -8), (40, -26), (-30, -28)]
+HEAD_PTS = [(-38, 4), (-58, 36), (-64, 80), (-52, 118), (-22, 142), (18, 146), (48, 128), (62, 100), (64, 84), (62, 76),
+            (68, 68), (86, 50), (84, 44), (70, 40), (72, 31), (68, 26), (71, 19), (66, 6), (56, -6), (36, -12), (12, -4),
+            (-10, 6)]
+HAIR_PTS = [(-56, 30), (-68, 86), (-56, 124), (-24, 152), (20, 156), (54, 132), (64, 108), (54, 112), (40, 120), (12, 116),
+            (-12, 104), (-20, 84), (-24, 58), (-36, 36)]
+SHOE = [(-42, 30), (-48, 0), (-46, -40), (118, -40), (130, -28), (126, -8), (104, 6), (64, 14), (30, 30), (0, 36)]
 
 
 def draw_character(t):
     sk = skeleton(t)
-    lay = Image.new("RGBA", (CWp * KS, CHp * KS), (0, 0, 0, 0))
-    d = ImageDraw.Draw(lay)
+    out = Image.new("RGBA", (round(u(CX1 - CX0)), round(u(CY1 - CY0))), (0, 0, 0, 0))
     ox, oy = u(CX0) - sk["shake"], u(CY0)
-    k = KS
-    chair(d, k, u(CX0), u(CY0))
-    hip, knee, ank, sh, head = sk["hip"], sk["knee"], sk["ankle"], sk["sh"], sk["head"]
-    up, fw = sk["up"], sk["fw"]
-    # uzak bacak + uzak kol (koyu)
-    off = (-14, -6)
-    def leg(dx, dy, f):
-        h2, k2, a2 = (hip[0] + dx, hip[1] + dy), (knee[0] + dx, knee[1] + dy), (ank[0] + dx, ank[1] + dy)
-        cap(d, h2, k2, 96, shade(NAVY, f), k, ox, oy)
-        cap(d, k2, a2, 84, shade(NAVY, f), k, ox, oy)
-        # ayakkabı
-        sx0, sy = a2[0] - 30, FLOOR - 26 + dy * 0
-        d.rounded_rectangle([(u(sx0) - ox) * k, (u(FLOOR - 62) - oy) * k, (u(a2[0] + 112) - ox) * k, (u(FLOOR - 4) - oy) * k],
-                            radius=u(28) * k, fill=shade((248, 248, 250), f))
-        d.rounded_rectangle([(u(sx0) - ox) * k, (u(FLOOR - 20) - oy) * k, (u(a2[0] + 114) - ox) * k, (u(FLOOR) - oy) * k],
-                            radius=u(10) * k, fill=shade((90, 96, 110), f))
-    leg(*off, 0.78)
-    eF, hF = sk["armF"]
-    cap(d, sh, eF, 66, shade(CORAL, 0.78), k, ox, oy)
-    cap(d, eF, hF, 58, shade(CORAL, 0.78), k, ox, oy)
-    cap(d, hF, hF, 54, shade(SKIN, 0.85), k, ox, oy)
-    # gövde (kapüşonlu)
-    cap(d, (hip[0] + fw[0] * 8, hip[1] + fw[1] * 8), sh, 170, CORAL, k, ox, oy)
-    cap(d, (hip[0] + up[0] * 40 - fw[0] * 10, hip[1] + up[1] * 40 - fw[1] * 10), (sh[0] - fw[0] * 30, sh[1] - fw[1] * 30), 80,
-        shade(CORAL, 1.08), k, ox, oy)                                # ışık
-    # yakın bacak
-    leg(0, 0, 1.0)
-    # kapüşon arkası + baş
-    hx, hy = head
-    R = 104
-    cap(d, (sh[0] - fw[0] * 30 + up[0] * 10, sh[1] - fw[1] * 30 + up[1] * 10), (sh[0] - fw[0] * 45 + up[0] * 55, sh[1] - fw[1] * 45 + up[1] * 55), 110,
-        shade(CORAL, 0.88), k, ox, oy)
-    d.ellipse([(u(hx - R) - ox) * k, (u(hy - R) - oy) * k, (u(hx + R) - ox) * k, (u(hy + R) - oy) * k], fill=SKIN)
-    # saç
-    d.chord([(u(hx - R - 4) - ox) * k, (u(hy - R - 8) - oy) * k, (u(hx + R + 4) - ox) * k, (u(hy + R) - oy) * k],
-            155 + sk["th"], 345 + sk["th"], fill=(70, 48, 36))
-    # kulak
-    ex_, ey_ = hx - fw[0] * 18 + up[0] * -4, hy - fw[1] * 18 + up[1] * -4
-    d.ellipse([(u(ex_ - 22) - ox) * k, (u(ey_ - 28) - oy) * k, (u(ex_ + 22) - ox) * k, (u(ey_ + 28) - oy) * k], fill=shade(SKIN, 0.92))
-    # yüz (sağa bakıyor)
-    fx, fy = hx + fw[0] * 52 + up[0] * 18, hy + fw[1] * 52 + up[1] * 18
+
+    def paste(res):
+        im, (x0, y0) = res
+        out.alpha_composite(im, (int(x0 - ox), int(y0 - oy)))
+
+    # sandalye
+    def wood_det(d, P2, k):
+        for yy in range(660, 1040, 46):
+            d.line([P2(SEAT_X0 + 10, yy), P2(SEAT_X0 + 28, yy + 14)], fill=(120, 76, 46, 90), width=int(u(2) * k))
+    paste(render_part([[(SEAT_X0 + 4, 630), (SEAT_X0 + 36, 630), (SEAT_X0 + 40, SEAT_Y), (SEAT_X0 + 8, SEAT_Y)]], WOODC, 0.12,
+                      wood_det, gloss=0.5))
+    paste(render_part([[(SEAT_X0 + 12, SEAT_Y), (SEAT_X0 + 38, SEAT_Y), (SEAT_X0 + 34, FLOOR), (SEAT_X0 + 14, FLOOR)],
+                       [(SEAT_X1 - 42, SEAT_Y), (SEAT_X1 - 16, SEAT_Y), (SEAT_X1 - 18, FLOOR), (SEAT_X1 - 38, FLOOR)]],
+                      WOODC, 0.2, gloss=0.3))
+    paste(render_part([[(SEAT_X0 - 10, 650), (SEAT_X0 + 48, 650), (SEAT_X0 + 50, 742), (SEAT_X0 - 8, 742)]], WOODC, 0.05, gloss=0.6))
+    paste(render_part([[(SEAT_X0 - 8, SEAT_Y - 16), (SEAT_X1 + 8, SEAT_Y - 16), (SEAT_X1 + 4, SEAT_Y + 22), (SEAT_X0 - 4, SEAT_Y + 22)]],
+                      WOODC, 0.0, gloss=0.6))
+    hip, knee, ank, sh = sk["hip"], sk["knee"], sk["ankle"], sk["sh"]
+    th, up, fw = sk["th"], sk["up"], sk["fw"]
     expr = sk["expr"]
-    def L(p, q, col=INKC, w=7):
-        d.line([((u(p[0]) - ox) * k, (u(p[1]) - oy) * k), ((u(q[0]) - ox) * k, (u(q[1]) - oy) * k)], fill=col, width=int(u(w) * k))
-    if expr == "strain":
-        L((fx - 16, fy - 14), (fx + 6, fy), w=8)
-        L((fx + 6, fy), (fx - 16, fy + 14), w=8)
-    elif expr == "happy":
-        d.arc([(u(fx - 18) - ox) * k, (u(fy - 12) - oy) * k, (u(fx + 18) - ox) * k, (u(fy + 18) - oy) * k], 200, 340,
-              fill=INKC, width=int(u(8) * k))
-    else:
-        r = 15 if expr != "focus" else 13
-        d.ellipse([(u(fx - r) - ox) * k, (u(fy - r * 1.25) - oy) * k, (u(fx + r) - ox) * k, (u(fy + r * 1.25) - oy) * k], fill=INKC)
-        d.ellipse([(u(fx - 3) - ox) * k, (u(fy - 12) - oy) * k, (u(fx + 5) - ox) * k, (u(fy - 4) - oy) * k], fill=(255, 255, 255))
-    # kaş
-    by = fy - 40
-    if expr in ("strain", "focus"):
-        L((fx - 24, by - 6), (fx + 20, by + 8), w=8)
-    elif expr == "sad":
-        L((fx - 24, by + 8), (fx + 20, by - 6), w=8)
-    else:
-        L((fx - 22, by), (fx + 20, by - 4), w=8)
-    # burun + ağız
-    nx, ny = hx + fw[0] * 100 + up[0] * -5, hy + fw[1] * 100 + up[1] * -5
-    d.ellipse([(u(nx - 16) - ox) * k, (u(ny - 14) - oy) * k, (u(nx + 14) - ox) * k, (u(ny + 14) - oy) * k], fill=shade(SKIN, 0.95))
-    mx, my = hx + fw[0] * 60 + up[0] * -48, hy + fw[1] * 60 + up[1] * -48
-    if expr == "happy":
-        d.chord([(u(mx - 26) - ox) * k, (u(my - 20) - oy) * k, (u(mx + 26) - ox) * k, (u(my + 22) - oy) * k], 0, 180, fill=(140, 40, 40))
-    elif expr == "sad":
-        d.arc([(u(mx - 20) - ox) * k, (u(my - 2) - oy) * k, (u(mx + 20) - ox) * k, (u(my + 26) - oy) * k], 200, 340,
-              fill=INKC, width=int(u(6) * k))
-    elif expr == "strain":
-        d.rounded_rectangle([(u(mx - 22) - ox) * k, (u(my - 8) - oy) * k, (u(mx + 22) - ox) * k, (u(my + 10) - oy) * k],
-                            radius=u(6) * k, fill=(255, 255, 255), outline=INKC, width=int(u(4) * k))
-    else:
-        d.arc([(u(mx - 18) - ox) * k, (u(my - 14) - oy) * k, (u(mx + 18) - ox) * k, (u(my + 10) - oy) * k], 20, 160,
-              fill=INKC, width=int(u(6) * k))
+
+    def leg(far):
+        f = 0.22 if far else 0.0
+        o = (-16, -4) if far else (0, 0)
+        h2, k2, a2 = (hip[0] + o[0], hip[1] + o[1]), (knee[0] + o[0], knee[1] + o[1]), (ank[0] + o[0], ank[1])
+        def jean_det(d, P2, k):
+            mx, my = (h2[0] + k2[0]) / 2, (h2[1] + k2[1]) / 2
+            d.line([P2(mx - 10, my - 26), P2(mx + 30, my - 14)], fill=(40, 58, 96, 140), width=int(u(3) * k))
+            d.line([P2(k2[0] - 18, k2[1] - 8), P2(k2[0] + 10, k2[1] + 22)], fill=(40, 58, 96, 120), width=int(u(3) * k))
+        paste(render_part([limb(h2, k2, 100, 78, 8, -1)], JEANS, f, jean_det))
+        paste(render_part([limb(k2, (a2[0], a2[1] - 4), 78, 50, 14, 1)], JEANS, f))
+        # ayakkabı
+        def shoe_det(d, P2, k):
+            sole = [P2(a2[0] - 46, FLOOR - 12), P2(a2[0] + 124, FLOOR - 12), P2(a2[0] + 120, FLOOR - 2), P2(a2[0] - 44, FLOOR - 2)]
+            d.polygon(sole, fill=(200, 196, 190, 255))
+            for i in range(3):
+                x = a2[0] + 20 + i * 18
+                d.line([P2(x, FLOOR - 66 + i * 6), P2(x + 14, FLOOR - 62 + i * 6)], fill=(150, 150, 160, 220), width=int(u(3) * k))
+            d.line([P2(a2[0] + 70, FLOOR - 36), P2(a2[0] + 112, FLOOR - 30)], fill=(220, 90, 70, 255), width=int(u(5) * k))
+        pts = [(a2[0] + x, FLOOR - 2 - (y + 40)) for x, y in SHOE]
+        paste(render_part([pts], (246, 246, 248), f * 0.6, shoe_det, gloss=0.4))
+
+    def arm(far):
+        f = 0.22 if far else 0.0
+        e, hnd = sk["armF"] if far else sk["armN"]
+        s0 = (sh[0] + fw[0] * 4 - up[0] * 14, sh[1] + fw[1] * 4 - up[1] * 14)
+        if far:
+            s0 = (s0[0] - 10, s0[1] - 4)
+        paste(render_part([limb(s0, e, 66, 54, 6, -1)], HOOD, f))
+        dx, dy = hnd[0] - e[0], hnd[1] - e[1]
+        L = math.hypot(dx, dy) + 1e-6
+        wr = (e[0] + dx * 0.86, e[1] + dy * 0.86)
+        def cuff(d, P2, k):
+            c = (wr[0] - dx / L * 14, wr[1] - dy / L * 14)
+            d.line([P2(c[0] - dy / L * 24, c[1] + dx / L * 24), P2(c[0] + dy / L * 24, c[1] - dx / L * 24)], fill=(30, 90, 108, 200),
+                   width=int(u(6) * k))
+        paste(render_part([limb(e, wr, 54, 44, 4, 1)], HOOD, f, cuff))
+        ang = math.atan2(dy, dx)
+        hand = [(wr[0] + math.cos(ang) * 30 * math.cos(a) * 1.3 - math.sin(ang) * 22 * math.sin(a),
+                 wr[1] + math.sin(ang) * 30 * math.cos(a) * 1.3 + math.cos(ang) * 22 * math.sin(a)) for a in np.linspace(-math.pi / 2, 1.5 * math.pi, 18)]
+        hand = [(x + math.cos(ang) * 30, y + math.sin(ang) * 30) for x, y in hand]
+        paste(render_part([hand], SKIN2, f))
+
+    # uzak kol, uzak bacak
+    arm(True)
+    leg(True)
+    # kapüşon (boyun arkası)
+    hood = frame_pts(hip, th, [(-52, 300), (-74, 352), (-60, 396), (-24, 404), (6, 360), (-10, 318)])
+    paste(render_part([hood], HOOD, 0.12))
+    # gövde
+    tor = frame_pts(hip, th, TORSO_PTS)
+    def tor_det(d, P2, k):
+        pk = frame_pts(hip, th, [(70, 70), (30, 66), (14, 112), (66, 120)])
+        d.line([P2(*p) for p in pk], fill=(30, 92, 110, 170), width=int(u(3) * k), joint="curve")
+        wb = frame_pts(hip, th, [(-66, 4), (68, 10)])
+        d.line([P2(*p) for p in wb], fill=(30, 92, 110, 150), width=int(u(4) * k))
+        for dxs in (0, 12):
+            st = frame_pts(hip, th, [(44 + dxs, 322), (52 + dxs, 262)])
+            d.line([P2(*p) for p in st], fill=(240, 240, 236, 230), width=int(u(3) * k))
+        for yy in (150, 200):
+            fl = frame_pts(hip, th, [(20, yy), (54, yy + 8)])
+            d.line([P2(*p) for p in fl], fill=(30, 92, 110, 90), width=int(u(3) * k))
+    paste(render_part([tor], HOOD, 0.0, tor_det))
+    # yakın bacak
+    leg(False)
+    # boyun + baş
+    nt = (sh[0] + up[0] * 52 + fw[0] * 16, sh[1] + up[1] * 52 + fw[1] * 16)
+    nb = (sh[0] + fw[0] * 8, sh[1] + fw[1] * 8)
+    paste(render_part([limb(nb, nt, 56, 50)], SKIN2, 0.08))
+    hth = th * 0.35
+    head = frame_pts(nt, hth, HEAD_PTS)
+
+    def face(d, P2, k):
+        F = lambda pts: [P2(*p) for p in frame_pts(nt, hth, pts)]
+        lw = lambda w: int(u(w) * k)
+        # sakal gölgesi
+        d.polygon(F([(-6, 8), (14, -6), (40, -10), (60, -2), (66, 10), (60, 22), (44, 18), (24, 22), (2, 30)]), fill=(90, 62, 48, 70))
+        # kulak
+        ex = F([(-20, 48), (-4, 48), (-2, 84), (-20, 84)])
+        d.ellipse([min(p[0] for p in ex), min(p[1] for p in ex), max(p[0] for p in ex), max(p[1] for p in ex)], fill=(222, 170, 136, 255))
+        # yanak kızarması
+        if expr == "strain":
+            c = F([(36, 46)])[0]
+            r = u(16) * k
+            d.ellipse([c[0] - r, c[1] - r * 0.7, c[0] + r, c[1] + r * 0.7], fill=(235, 110, 100, 110))
+        # göz
+        ec = (46, 74)
+        if expr == "strain":
+            d.line(F([(36, 78), (54, 74), (36, 70)]), fill=(40, 28, 24, 255), width=lw(3), joint="curve")
+        elif expr == "happy":
+            d.line(F([(36, 72), (45, 78), (55, 73)]), fill=(40, 28, 24, 255), width=lw(3.5), joint="curve")
+        else:
+            lid = 0.55 if expr == "sad" else (0.8 if expr == "focus" else 1.0)
+            eye = F([(36, 74), (42, 74 + 6 * lid), (52, 74 + 5 * lid), (56, 74), (50, 70), (40, 70)])
+            d.polygon(eye, fill=(250, 248, 244, 255))
+            ic = F([(47, 73)])[0]
+            r = u(4.6) * k
+            d.ellipse([ic[0] - r, ic[1] - r, ic[0] + r, ic[1] + r], fill=(70, 46, 30, 255))
+            d.ellipse([ic[0] - r * 0.3, ic[1] - r * 0.8, ic[0] + r * 0.35, ic[1] - r * 0.1], fill=(255, 255, 255, 230))
+            d.line(F([(35, 75), (42, 75 + 6.5 * lid), (52, 75 + 5.5 * lid), (57, 74)]), fill=(60, 40, 30, 255), width=lw(2.6))
+        # kaş
+        brows = {"strain": [(32, 82), (58, 86)], "focus": [(32, 88), (58, 86)], "sad": [(32, 84), (58, 92)],
+                 "happy": [(32, 92), (58, 96)], "normal": [(32, 88), (58, 92)]}
+        d.line(F(brows[expr]), fill=HAIR + (255,), width=lw(5))
+        # ağız
+        if expr == "happy":
+            d.polygon(F([(52, 30), (70, 30), (66, 18), (56, 16)]), fill=(120, 40, 40, 255))
+            d.line(F([(54, 28), (69, 28)]), fill=(255, 255, 255, 255), width=lw(3))
+        elif expr == "strain":
+            d.polygon(F([(50, 29), (70, 29), (70, 22), (50, 22)]), fill=(255, 255, 255, 255))
+            d.line(F([(50, 25.5), (70, 25.5)]), fill=(150, 120, 110, 255), width=lw(1.5))
+        elif expr == "sad":
+            d.line(F([(54, 22), (62, 26), (70, 22)]), fill=(120, 60, 52, 255), width=lw(3), joint="curve")
+        else:
+            d.line(F([(54, 26), (62, 24), (70, 26)]), fill=(150, 80, 70, 255), width=lw(3), joint="curve")
+        # burun deliği
+        d.line(F([(72, 44), (78, 44)]), fill=(180, 120, 100, 200), width=lw(2))
+    paste(render_part([head], SKIN2, 0.0, face))
+    hair = frame_pts(nt, hth, HAIR_PTS)
+    def hair_det(d, P2, k):
+        for i in range(6):
+            a = frame_pts(nt, hth, [(-40 + i * 14, 136 - abs(i - 2) * 4), (-50 + i * 16, 108)])
+            d.line([P2(*p) for p in a], fill=(84, 60, 44, 120), width=int(u(3) * k))
+    paste(render_part([hair], HAIR, 0.0, hair_det, gloss=0.6))
     # yakın kol
-    eN, hN = sk["armN"]
-    cap(d, sh, eN, 70, shade(CORAL, 1.02), k, ox, oy)
-    cap(d, eN, hN, 62, shade(CORAL, 1.02), k, ox, oy)
-    cap(d, hN, hN, 58, SKIN, k, ox, oy)
-    # ter damlaları
+    arm(False)
+    # ter
     if sk["sweat"] > 0.02:
-        for j, (ddx, ddy) in enumerate(((-40, -120), (30, -135), (-90, -60))):
-            ph_ = (t * 1.6 + j * 0.33) % 1
-            sx, sy = hx + ddx, hy + ddy + ph_ * 60
-            a = int(220 * sk["sweat"] * (1 - ph_))
-            d.ellipse([(u(sx - 9) - ox) * k, (u(sy - 13) - oy) * k, (u(sx + 9) - ox) * k, (u(sy + 13) - oy) * k], fill=(120, 190, 255, a))
-    small = lay.resize((CWp, CHp), Image.LANCZOS)
-    return small, sk
+        d = ImageDraw.Draw(out)
+        hc = frame_pts(nt, hth, [(0, 120)])[0]
+        for j, (ddx, ddy) in enumerate(((-30, -20), (40, -30), (-70, 30))):
+            p_ = (t * 1.6 + j * 0.33) % 1
+            sx, sy = u(hc[0] + ddx) - ox, u(hc[1] + ddy + p_ * 60) - oy
+            a = int(220 * sk["sweat"] * (1 - p_))
+            d.ellipse([sx - u(8), sy - u(12), sx + u(8), sy + u(12)], fill=(120, 190, 255, a))
+    return out, sk
 
 
 def floor_shadow(im, sk):
