@@ -31,6 +31,11 @@ for k in konular:
                              "tarih": v["snippet"]["publishedAt"][:10], "izlenme": int(v["statistics"].get("viewCount", 0)),
                              "dil": v["snippet"].get("defaultAudioLanguage", "")})
         vids.sort(key=lambda x: -x["izlenme"])
+        import re
+        rx = re.compile(k.get("kw_" + dil, k.get("kw", ".")), re.I)
+        rel = [v for v in vids if rx.search(v["baslik"])]
+        res[dil + "_ilgili"] = {"sayi": len(rel), "100k_ustu": sum(v["izlenme"] >= 100_000 for v in rel),
+                                "1m_ustu": sum(v["izlenme"] >= 1_000_000 for v in rel), "liste": rel[:12]}
         res[dil] = {"sonuc": len(vids), "100k_ustu": sum(v["izlenme"] >= 100_000 for v in vids),
                     "1m_ustu": sum(v["izlenme"] >= 1_000_000 for v in vids), "en_iyi": vids[:6]}
     out.append(res)
