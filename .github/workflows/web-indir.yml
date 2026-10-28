@@ -1,0 +1,73 @@
+name: web-indir
+# Verilen sayfa/dosya linklerini indirir; HTML sayfaysa içindeki görselleri de indirir.
+# Sonuçlar "web" release'ine yüklenir.
+on:
+  workflow_dispatch:
+    inputs:
+      urls:
+        description: "Boşlukla ayrılmış linkler"
+        required: true
+      desen:
+        description: "Sayfadaki görsel linklerinde aranacak regex (boşsa hepsi)"
+        required: false
+        default: ""
+permissions:
+  contents: write
+jobs:
+  indir:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: İndir
+        env:
+          URLS: ${{ inputs.urls }}
+          DESEN: ${{ inputs.desen }}
+        run: |
+          mkdir -p out
+          cat > al.py <<'EOF'
+          import os, re, sys, urllib.parse, urllib.request, hashlib
+          UA = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/124 Safari/537.36"}
+          desen = os.environ.get("DESEN", "")
+          def get(u):
+              r = urllib.request.urlopen(urllib.request.Request(u, headers=UA), timeout=60)
+              return r.read(), r.headers.get("Content-Type", "")
+          def ad(u):
+              b = os.path.basename(urllib.parse.urlparse(u).path) or "index"
+              b = re.sub(r"[^A-Za-z0-9._-]", "_", urllib.parse.unquote(b))[-80:]
+              return hashlib.md5(u.encode()).hexdigest()[:6] + "_" + b
+          for u in os.environ["URLS"].split():
+              try:
+                  data, ct = get(u)
+              except Exception as e:
+                  print("HATA", u, e); continue
+              name = ad(u)
+              if "html" in ct:
+                  name += ".html"
+              open("out/" + name, "wb").write(data)
+              print("OK", u, ct, len(data), name)
+              if "html" in ct:
+                  html = data.decode("utf-8", "ignore")
+                  links = set(re.findall(r'(?:src|href|data-src|srcset)="([^"]+)"', html))
+                  imgs = []
+                  for l in links:
+                      for part in l.split(","):
+                          p = part.strip().split(" ")[0]
+                          if re.search(r"\.(png|jpe?g|svg|webp|gif)(\?|$)", p, re.I) and (not desen or re.search(desen, p)):
+                              imgs.append(urllib.parse.urljoin(u, p))
+                  for im in sorted(set(imgs))[:60]:
+                      try:
+                          d2, ct2 = get(im)
+                          n2 = ad(im)
+                          open("out/" + n2, "wb").write(d2)
+                          print("  img", im, len(d2), n2)
+                      except Exception as e:
+                          print("  hata", im, e)
+          EOF
+          python3 al.py | tee out/liste.txt
+      - name: Release'e yükle
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh release view web >/dev/null 2>&1 || gh release create web --title web --notes "otomatik"
+          gh release upload web out/* --clobber
