@@ -1,0 +1,14 @@
+[
+ {"ad": "palmaris", "tr": ["bileğinde bu tendon var mı", "palmaris longus"], "en": ["palmaris longus test"]},
+ {"ad": "baskin_goz", "tr": ["baskın göz testi", "hangi gözün baskın"], "en": ["dominant eye test"]},
+ {"ad": "darwin_yumrusu", "tr": ["darwin yumrusu kulak", "kulağında bu çıkıntı var mı"], "en": ["darwin's tubercle ear"]},
+ {"ad": "kol_kalkar", "tr": ["kolun kendiliğinden kalkıyor kapı", "kapı kasası kol havaya kalkıyor"], "en": ["floating arm trick door frame"]},
+ {"ad": "duvar_ayak", "tr": ["duvara yaslan ayağını kaldıramazsın", "duvar ayak kaldırma deneyi"], "en": ["can't lift leg against wall trick"]},
+ {"ad": "bilek_yumruk", "tr": ["bileğini bükünce yumruk yapamazsın"], "en": ["can't make a fist wrist bent"]},
+ {"ad": "basparmak_bilek", "tr": ["başparmağını bileğine değdirebiliyor musun"], "en": ["thumb to forearm test hypermobility"]},
+ {"ad": "ayak_6", "tr": ["ayağını çevir 6 yaz", "sağ ayak daire 6 yazınca"], "en": ["foot circle draw 6 trick"]},
+ {"ad": "morton_parmak", "tr": ["ayak ikinci parmak uzun", "ayak işaret parmağı uzun"], "en": ["morton's toe second toe longer"]},
+ {"ad": "kulak_oynatma", "tr": ["kulağını oynatabiliyor musun"], "en": ["can you wiggle your ears vestigial"]},
+ {"ad": "goz_yukari", "tr": ["gözlerin yukarı bakarken gözünü açamazsın"], "en": ["look up close eyes can't open trick"]},
+ {"ad": "tek_ayak_goz_kapali", "tr": ["gözlerin kapalı tek ayak üstünde dur test"], "en": ["stand on one leg eyes closed test"]}
+]
