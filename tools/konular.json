@@ -1,13 +1,7 @@
 [
- {"ad": "palmaris", "tr": ["bileğinde bu tendon var mı", "palmaris longus", "bileğinde bu kas var mı"], "en": ["palmaris longus test", "missing forearm muscle test"], "kw_tr": "palmaris|tendon|kas|bilek", "kw_en": "palmaris|forearm|muscle"},
- {"ad": "darwin_yumrusu", "tr": ["darwin yumrusu", "kulağında bu çıkıntı var mı", "kulağındaki küçük çıkıntı"], "en": ["darwin's tubercle", "tiny bump on your ear"], "kw_tr": "darwin|çıkıntı|yumru|tümsek", "kw_en": "darwin|bump|tubercle"},
- {"ad": "morton_parmak", "tr": ["ayak ikinci parmağı uzun", "ayağının ikinci parmağı başparmaktan uzun mu"], "en": ["second toe longer than big toe", "morton's toe"], "kw_tr": "ikinci parmak|işaret parmağı|morton|ayak parmağ", "kw_en": "toe"},
- {"ad": "otostop_basparmak", "tr": ["başparmağın geriye bükülüyor mu", "otostopçu başparmağı"], "en": ["hitchhiker's thumb test"], "kw_tr": "başparmak|baş parmak|otostop", "kw_en": "thumb"},
- {"ad": "baskin_goz", "tr": ["baskın göz testi", "baskın gözünü bul"], "en": ["dominant eye test"], "kw_tr": "baskın|nişan|göz testi", "kw_en": "dominant eye"},
- {"ad": "hipermobil_basparmak", "tr": ["başparmağını bileğine değdirebiliyor musun", "eklem esnekliği testi başparmak"], "en": ["thumb to forearm test"], "kw_tr": "başparmak|esnek|bilek", "kw_en": "thumb|hypermobil"},
- {"ad": "kol_kalkar", "tr": ["kolun kendiliğinden kalkıyor", "kapı kasası kol deneyi", "kolların havaya kalkıyor deney"], "en": ["floating arm trick door frame", "kohnstamm effect"], "kw_tr": "kol|kapı", "kw_en": "arm|kohnstamm"},
- {"ad": "duvar_ayak", "tr": ["duvara yaslanıp ayağını kaldıramazsın", "duvar ayak deneyi"], "en": ["can't lift leg against wall", "wall leg lift challenge"], "kw_tr": "duvar", "kw_en": "wall"},
- {"ad": "bilek_yumruk", "tr": ["bileğini bükünce yumruk yapamazsın", "bilek bükülü yumruk"], "en": ["can't make a fist with wrist bent"], "kw_tr": "bilek|yumruk yapamaz", "kw_en": "fist|wrist"},
- {"ad": "ayak_6", "tr": ["ayağını daire çizerken 6 yaz", "sağ ayağını çevir eline 6 yaz"], "en": ["foot circle draw 6 trick"], "kw_tr": "6|altı|ayağ", "kw_en": "6|six|foot"},
- {"ad": "dil_yonca", "tr": ["dilini yonca yapabiliyor musun", "dil şekilleri testi"], "en": ["tongue clover test", "can you do this with your tongue"], "kw_tr": "dil", "kw_en": "tongue"}
+ {"ad": "parmak_12", "tr": ["parmak boğumlarıyla 12 sayma", "neden saatte 60 dakika var parmak"], "en": ["counting to 12 with finger joints", "why 60 minutes finger counting babylon"], "kw_tr": "boğum|12|on iki|parmak|60", "kw_en": "12|twelve|knuckle|joint|60|babylon"},
+ {"ad": "ayna_goz", "tr": ["aynada gözlerinin hareketini göremezsin", "aynada kendi göz hareketini görebilir misin"], "en": ["you can't see your eyes move in the mirror", "saccadic masking mirror"], "kw_tr": "ayna|göz", "kw_en": "mirror|eye|saccad"},
+ {"ad": "yutkunma", "tr": ["ağzın açıkken yutkunamazsın", "dişlerin ayrıkken yutkunmayı dene"], "en": ["try to swallow with your mouth open"], "kw_tr": "yutkun", "kw_en": "swallow"},
+ {"ad": "dirsek_deri", "tr": ["dirsek derisi neden acımaz", "dirseğini çimdikle acımıyor"], "en": ["pinch your elbow skin no pain"], "kw_tr": "dirsek", "kw_en": "elbow"},
+ {"ad": "burun_gor", "tr": ["burnunu sürekli görüyorsun beynin siliyor"], "en": ["you can always see your nose brain ignores"], "kw_tr": "burn", "kw_en": "nose"}
 ]
