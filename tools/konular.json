@@ -1,7 +1,9 @@
 [
- {"ad": "parmak_12", "tr": ["parmak boğumlarıyla 12 sayma", "neden saatte 60 dakika var parmak"], "en": ["counting to 12 with finger joints", "why 60 minutes finger counting babylon"], "kw_tr": "boğum|12|on iki|parmak|60", "kw_en": "12|twelve|knuckle|joint|60|babylon"},
- {"ad": "ayna_goz", "tr": ["aynada gözlerinin hareketini göremezsin", "aynada kendi göz hareketini görebilir misin"], "en": ["you can't see your eyes move in the mirror", "saccadic masking mirror"], "kw_tr": "ayna|göz", "kw_en": "mirror|eye|saccad"},
- {"ad": "yutkunma", "tr": ["ağzın açıkken yutkunamazsın", "dişlerin ayrıkken yutkunmayı dene"], "en": ["try to swallow with your mouth open"], "kw_tr": "yutkun", "kw_en": "swallow"},
- {"ad": "dirsek_deri", "tr": ["dirsek derisi neden acımaz", "dirseğini çimdikle acımıyor"], "en": ["pinch your elbow skin no pain"], "kw_tr": "dirsek", "kw_en": "elbow"},
- {"ad": "burun_gor", "tr": ["burnunu sürekli görüyorsun beynin siliyor"], "en": ["you can always see your nose brain ignores"], "kw_tr": "burn", "kw_en": "nose"}
+ {"ad": "burun_mirildan", "tr": ["burnunu tut ve mırıldan", "burnunu tıkayınca mırıldanamazsın"], "en": ["try to hum while holding your nose", "you can't hum with your nose closed"], "kw_tr": "burn|mırıld|hmm", "kw_en": "hum|nose"},
+ {"ad": "kumanda_ir", "tr": ["kumandanın ışığını telefon kamerasıyla gör", "kumanda bozuk mu telefon kamerası"], "en": ["see tv remote infrared with phone camera", "check remote control with phone camera"], "kw_tr": "kumanda|kızıl|kamera", "kw_en": "remote|infrared|camera"},
+ {"ad": "kulak_oynat", "tr": ["kulağını oynatabiliyor musun", "kulak oynatma kası"], "en": ["can you wiggle your ears", "ear wiggling muscle vestigial"], "kw_tr": "kula", "kw_en": "ear|wiggl"},
+ {"ad": "gidiklama", "tr": ["kendini neden gıdıklayamazsın", "kendini gıdıklamayı dene"], "en": ["why you can't tickle yourself", "try to tickle yourself"], "kw_tr": "gıdık", "kw_en": "tickl"},
+ {"ad": "kor_nokta", "tr": ["gözündeki kör noktayı bul", "kör nokta testi göz"], "en": ["find your blind spot test", "blind spot eye test"], "kw_tr": "kör nokta", "kw_en": "blind spot"},
+ {"ad": "pervane_kamera", "tr": ["pervaneyi telefonla çekince neden duruyor", "telefon kamerası pervane garip görünüyor"], "en": ["why propeller looks weird on phone camera", "rolling shutter fan phone camera"], "kw_tr": "pervane|vantilatör|kamera", "kw_en": "propeller|fan|rolling shutter"},
+ {"ad": "dil_kivir", "tr": ["dilini kıvırabiliyor musun", "dil kıvırma genetik mi"], "en": ["can you roll your tongue", "tongue rolling genetics myth"], "kw_tr": "dil", "kw_en": "tongue"}
 ]
