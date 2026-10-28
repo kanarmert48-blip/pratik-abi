@@ -1,9 +1,8 @@
 [
- {"ad": "burun_mirildan", "tr": ["burnunu tut ve mırıldan", "burnunu tıkayınca mırıldanamazsın"], "en": ["try to hum while holding your nose", "you can't hum with your nose closed"], "kw_tr": "burn|mırıld|hmm", "kw_en": "hum|nose"},
- {"ad": "kumanda_ir", "tr": ["kumandanın ışığını telefon kamerasıyla gör", "kumanda bozuk mu telefon kamerası"], "en": ["see tv remote infrared with phone camera", "check remote control with phone camera"], "kw_tr": "kumanda|kızıl|kamera", "kw_en": "remote|infrared|camera"},
- {"ad": "kulak_oynat", "tr": ["kulağını oynatabiliyor musun", "kulak oynatma kası"], "en": ["can you wiggle your ears", "ear wiggling muscle vestigial"], "kw_tr": "kula", "kw_en": "ear|wiggl"},
- {"ad": "gidiklama", "tr": ["kendini neden gıdıklayamazsın", "kendini gıdıklamayı dene"], "en": ["why you can't tickle yourself", "try to tickle yourself"], "kw_tr": "gıdık", "kw_en": "tickl"},
- {"ad": "kor_nokta", "tr": ["gözündeki kör noktayı bul", "kör nokta testi göz"], "en": ["find your blind spot test", "blind spot eye test"], "kw_tr": "kör nokta", "kw_en": "blind spot"},
- {"ad": "pervane_kamera", "tr": ["pervaneyi telefonla çekince neden duruyor", "telefon kamerası pervane garip görünüyor"], "en": ["why propeller looks weird on phone camera", "rolling shutter fan phone camera"], "kw_tr": "pervane|vantilatör|kamera", "kw_en": "propeller|fan|rolling shutter"},
- {"ad": "dil_kivir", "tr": ["dilini kıvırabiliyor musun", "dil kıvırma genetik mi"], "en": ["can you roll your tongue", "tongue rolling genetics myth"], "kw_tr": "dil", "kw_en": "tongue"}
+ {"ad": "plaka_kodu", "tr": ["plaka kodları neden alfabetik", "il plaka kodları nasıl belirlendi", "81 aksaray neden 68"], "en": ["turkey license plate codes alphabetical"], "kw_tr": "plaka", "kw_en": "plate|turkey"},
+ {"ad": "cay_bardagi", "tr": ["çay bardağı neden ince belli", "ince belli çay bardağı neden"], "en": ["why turkish tea glass tulip shape"], "kw_tr": "bardak|ince bel", "kw_en": "tea glass|tulip"},
+ {"ad": "g_harfi", "tr": ["neden ğ ile başlayan kelime yok", "yumuşak g ile başlayan kelime"], "en": ["turkish letter ğ no word starts"], "kw_tr": "ğ|yumuşak g", "kw_en": "ğ|soft g"},
+ {"ad": "yakit_ok", "tr": ["yakıt göstergesindeki ok ne işe yarar", "benzin deposu kapağı hangi tarafta"], "en": ["fuel gauge arrow meaning gas cap side"], "kw_tr": "ok|depo|yakıt|benzin", "kw_en": "arrow|gas|fuel"},
+ {"ad": "tl_banknot", "tr": ["türk lirası banknot gizli detay", "paranın üzerindeki gizli özellik"], "en": ["turkish lira banknote hidden security feature"], "kw_tr": "para|banknot|lira", "kw_en": "lira|banknote"},
+ {"ad": "telefon_metin", "tr": ["fotoğraftaki yazıyı kopyalama telefon", "kamerayla yazı kopyala gizli özellik"], "en": ["copy text from photo phone hidden feature"], "kw_tr": "kopyala|yazı|metin", "kw_en": "copy|text"}
 ]
