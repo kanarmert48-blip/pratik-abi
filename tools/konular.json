@@ -1,9 +1,4 @@
 [
- {"ad": "kagit_katla", "tr": ["kağıdı 42 kez katlarsan aya ulaşır", "bir kağıdı kaç kez katlayabilirsin"], "en": ["fold paper 42 times reach the moon", "how many times can you fold a paper"], "kw_tr": "kağıt|katla", "kw_en": "paper|fold"},
- {"ad": "dogum_paradoks", "tr": ["doğum günü paradoksu", "23 kişide aynı doğum günü"], "en": ["birthday paradox 23 people"], "kw_tr": "doğum gün", "kw_en": "birthday"},
- {"ad": "asgari_odeme", "tr": ["kredi kartı asgari ödeme tuzağı", "asgari ödeme yaparsan borç kaç yılda biter"], "en": ["credit card minimum payment trap"], "kw_tr": "asgari|kredi kart", "kw_en": "minimum payment|credit card"},
- {"ad": "ay_tek_yuz", "tr": ["ay neden hep aynı yüzünü gösterir", "ayın arka yüzü neden görünmez"], "en": ["why we only see one side of the moon"], "kw_tr": "ay|yüz", "kw_en": "moon|side"},
- {"ad": "satranc_pirinc", "tr": ["satranç tahtası pirinç hikayesi", "satranç tahtasına pirinç ikiye katlama"], "en": ["rice on chessboard doubling"], "kw_tr": "satranç|pirinç|buğday", "kw_en": "chess|rice|wheat"},
- {"ad": "gokkusagi_daire", "tr": ["gökkuşağı aslında daire", "gökkuşağı neden yay şeklinde"], "en": ["rainbow is actually a circle"], "kw_tr": "gökkuşağı", "kw_en": "rainbow"},
- {"ad": "atom_bos", "tr": ["insan vücudu aslında boşluk", "atomlar boşsa neden içinden geçmiyoruz"], "en": ["humans are 99.9 percent empty space", "atoms empty space why can't we pass through"], "kw_tr": "atom|boşluk", "kw_en": "atom|empty space"}
+ {"ad": "turkiye_bir", "tr": ["türkiye dünyada birinci olduğu şeyler", "dünyada 1 numara olduğumuz şeyler", "türkiye dünya lideri olduğu ürünler"], "en": ["things turkey is number one in the world"], "kw_tr": "dünya|birinci|1 numara|lider", "kw_en": "turkey|number one|world"},
+ {"ad": "beyin_quiz", "tr": ["sadece yüzde 1 bulabilir", "farklı olanı bul beyin testi"], "en": ["only 1 percent can find it"], "kw_tr": "%1|yüzde 1|bul|test", "kw_en": "1%|find"}
 ]
