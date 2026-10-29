@@ -26,7 +26,8 @@ jobs:
           mkdir -p out
           cat > al.py <<'EOF'
           import os, re, sys, urllib.parse, urllib.request, hashlib
-          UA = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/124 Safari/537.36"}
+          UA = {"User-Agent": "PratikAbiBot/1.0 (https://github.com/kanarmert48-blip/pratik-abi) python-urllib"}
+          import time
           desen = os.environ.get("DESEN", "")
           def get(u):
               r = urllib.request.urlopen(urllib.request.Request(u, headers=UA), timeout=60)
@@ -36,6 +37,7 @@ jobs:
               b = re.sub(r"[^A-Za-z0-9._-]", "_", urllib.parse.unquote(b))[-80:]
               return hashlib.md5(u.encode()).hexdigest()[:6] + "_" + b
           for u in os.environ["URLS"].split():
+              time.sleep(4)
               try:
                   data, ct = get(u)
               except Exception as e:
