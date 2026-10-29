@@ -1,0 +1,22 @@
+name: trend-ara
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  ara:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Trend analizi
+        env:
+          YT_API_KEY: ${{ secrets.YT_API_KEY }}
+        run: |
+          mkdir -p out
+          python3 tools/trend_ara.py
+      - name: Release'e yükle
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: gh release upload kanal out/* --clobber
