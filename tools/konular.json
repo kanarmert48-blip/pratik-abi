@@ -1,8 +1,9 @@
 [
- {"ad": "plaka_kodu", "tr": ["plaka kodları neden alfabetik", "il plaka kodları nasıl belirlendi", "81 aksaray neden 68"], "en": ["turkey license plate codes alphabetical"], "kw_tr": "plaka", "kw_en": "plate|turkey"},
- {"ad": "cay_bardagi", "tr": ["çay bardağı neden ince belli", "ince belli çay bardağı neden"], "en": ["why turkish tea glass tulip shape"], "kw_tr": "bardak|ince bel", "kw_en": "tea glass|tulip"},
- {"ad": "g_harfi", "tr": ["neden ğ ile başlayan kelime yok", "yumuşak g ile başlayan kelime"], "en": ["turkish letter ğ no word starts"], "kw_tr": "ğ|yumuşak g", "kw_en": "ğ|soft g"},
- {"ad": "yakit_ok", "tr": ["yakıt göstergesindeki ok ne işe yarar", "benzin deposu kapağı hangi tarafta"], "en": ["fuel gauge arrow meaning gas cap side"], "kw_tr": "ok|depo|yakıt|benzin", "kw_en": "arrow|gas|fuel"},
- {"ad": "tl_banknot", "tr": ["türk lirası banknot gizli detay", "paranın üzerindeki gizli özellik"], "en": ["turkish lira banknote hidden security feature"], "kw_tr": "para|banknot|lira", "kw_en": "lira|banknote"},
- {"ad": "telefon_metin", "tr": ["fotoğraftaki yazıyı kopyalama telefon", "kamerayla yazı kopyala gizli özellik"], "en": ["copy text from photo phone hidden feature"], "kw_tr": "kopyala|yazı|metin", "kw_en": "copy|text"}
+ {"ad": "kagit_katla", "tr": ["kağıdı 42 kez katlarsan aya ulaşır", "bir kağıdı kaç kez katlayabilirsin"], "en": ["fold paper 42 times reach the moon", "how many times can you fold a paper"], "kw_tr": "kağıt|katla", "kw_en": "paper|fold"},
+ {"ad": "dogum_paradoks", "tr": ["doğum günü paradoksu", "23 kişide aynı doğum günü"], "en": ["birthday paradox 23 people"], "kw_tr": "doğum gün", "kw_en": "birthday"},
+ {"ad": "asgari_odeme", "tr": ["kredi kartı asgari ödeme tuzağı", "asgari ödeme yaparsan borç kaç yılda biter"], "en": ["credit card minimum payment trap"], "kw_tr": "asgari|kredi kart", "kw_en": "minimum payment|credit card"},
+ {"ad": "ay_tek_yuz", "tr": ["ay neden hep aynı yüzünü gösterir", "ayın arka yüzü neden görünmez"], "en": ["why we only see one side of the moon"], "kw_tr": "ay|yüz", "kw_en": "moon|side"},
+ {"ad": "satranc_pirinc", "tr": ["satranç tahtası pirinç hikayesi", "satranç tahtasına pirinç ikiye katlama"], "en": ["rice on chessboard doubling"], "kw_tr": "satranç|pirinç|buğday", "kw_en": "chess|rice|wheat"},
+ {"ad": "gokkusagi_daire", "tr": ["gökkuşağı aslında daire", "gökkuşağı neden yay şeklinde"], "en": ["rainbow is actually a circle"], "kw_tr": "gökkuşağı", "kw_en": "rainbow"},
+ {"ad": "atom_bos", "tr": ["insan vücudu aslında boşluk", "atomlar boşsa neden içinden geçmiyoruz"], "en": ["humans are 99.9 percent empty space", "atoms empty space why can't we pass through"], "kw_tr": "atom|boşluk", "kw_en": "atom|empty space"}
 ]
