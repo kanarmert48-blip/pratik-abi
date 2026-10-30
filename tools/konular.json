@@ -1,8 +1,6 @@
 [
- {"ad": "asansor_zipla", "tr": ["asansör düşerken zıplarsan kurtulur musun", "asansör halatı koparsa ne olur"], "en": ["jump in falling elevator survive", "what happens if elevator cable snaps"], "kw_tr": "asansör", "kw_en": "elevator|lift"},
- {"ad": "yagmur_kos", "tr": ["yağmurda koşarsan daha az mı ıslanırsın", "yağmurda koşmak mı yürümek mi"], "en": ["run or walk in rain less wet"], "kw_tr": "yağmur", "kw_en": "rain"},
- {"ad": "bataklik", "tr": ["bataklığa düşersen batar mısın", "bataklıktan nasıl kurtulunur"], "en": ["quicksand myth can you sink"], "kw_tr": "batakl", "kw_en": "quicksand"},
- {"ad": "ucak_kapi", "tr": ["uçakta kapıyı açarsan ne olur", "uçak kapısı havada açılır mı"], "en": ["can you open airplane door mid flight"], "kw_tr": "uçak", "kw_en": "plane|airplane|door"},
- {"ad": "ari_olum", "tr": ["arı sokunca neden ölür", "arı iğnesi neden kopar"], "en": ["why do bees die after stinging"], "kw_tr": "arı", "kw_en": "bee"},
- {"ad": "yildirim_araba", "tr": ["arabaya yıldırım düşerse ne olur", "yıldırımda arabada güvende misin"], "en": ["lightning strike car safe inside"], "kw_tr": "yıldırım|şimşek", "kw_en": "lightning"}
+ {"ad": "buzdolabi_kapak", "tr": ["buzdolabı kapağı neden hemen açılmıyor", "buzdolabını kapatınca neden tekrar açılmıyor"], "en": ["why fridge door hard to open right after closing"], "kw_tr": "buzdolab", "kw_en": "fridge|refrigerator|freezer"},
+ {"ad": "mikrodalga_metal", "tr": ["mikrodalgaya metal koyarsan ne olur", "mikrodalgada kaşık neden kıvılcım"], "en": ["why metal sparks in microwave"], "kw_tr": "mikrodalga", "kw_en": "microwave"},
+ {"ad": "kedi_dusme", "tr": ["kedi neden hep ayakları üstüne düşer", "kediler yüksekten düşünce"], "en": ["why cats always land on their feet"], "kw_tr": "kedi", "kw_en": "cat"},
+ {"ad": "ucak_kapi2", "tr": ["uçak kapısı havada açılabilir mi", "uçuşta uçak kapısını açmak mümkün mü"], "en": ["can you open plane door during flight pressure"], "kw_tr": "kapı", "kw_en": "door"}
 ]
