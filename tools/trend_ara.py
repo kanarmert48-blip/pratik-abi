@@ -7,9 +7,9 @@ def api(path, **q):
     q["key"] = KEY
     with urllib.request.urlopen(f"https://www.googleapis.com/youtube/v3/{path}?" + urllib.parse.urlencode(q)) as r:
         return json.load(r)
-SORGU = ["hemen dene", "yapamazsın", "bu videoya bak", "15 saniye bak", "bunu bilmiyordun", "ilginç bilgi",
-         "beynin seni kandırıyor", "gözünü kırpma", "kimse fark etmedi", "bunu dene", "test et", "sakın kaydırma",
-         "inanamayacaksın", "gizli özellik", "%99 bilmiyor", "dikkatli bak"]
+SORGU = ["neden böyle", "bunu biliyor muydun", "aslında", "ne olurdu", "kimse bilmiyor", "gerçek mi", "hiç düşündün mü",
+         "bunu yapma", "dünyanın en", "sırrı", "tarihte", "ilk kez", "efsane mi gerçek mi", "mühendislik", "nasıl yapılır aslında",
+         "hayvanlar", "uzay", "telefonun gizli", "araba", "para"]
 after = (datetime.datetime.utcnow() - datetime.timedelta(days=GUN)).strftime("%Y-%m-%dT%H:%M:%SZ")
 ids, kaynak = [], {}
 for q in SORGU:
