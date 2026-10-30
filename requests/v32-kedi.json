@@ -1,0 +1,10 @@
+{"id": "v32-kedi", "items": [
+ {"name": "kedi_atla_slow", "source": "pixabay_video", "q": "cat jump slow motion", "n": 5},
+ {"name": "kedi_atla", "source": "pixabay_video", "q": "cat jumping", "n": 6},
+ {"name": "kedi_dus", "source": "pixabay_video", "q": "cat falling", "n": 4},
+ {"name": "kedi_in", "source": "pixabay_video", "q": "cat landing", "n": 4},
+ {"name": "kedi_yuksek", "source": "pixabay_video", "q": "cat balcony", "n": 4},
+ {"name": "yavru", "source": "pixabay_video", "q": "kitten playing", "n": 3},
+ {"name": "marey", "source": "wikimedia", "q": "Marey falling cat 1894", "n": 4},
+ {"name": "kedi_foto", "source": "pixabay_photo", "q": "cat jumping air", "n": 6}
+]}
