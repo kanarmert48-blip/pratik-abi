@@ -1,11 +1,8 @@
 [
- {"ad": "sinekkapan", "tr": ["sinekkapan bitkisi nasıl kapanır", "venüs sinekkapan bitkisi"], "en": ["venus flytrap counts touches"], "kw_tr": "sinekkapan|sinek kapan", "kw_en": "flytrap"},
- {"ad": "flamingo", "tr": ["flamingo neden tek ayak üstünde durur"], "en": ["why flamingos stand on one leg"], "kw_tr": "flamingo", "kw_en": "flamingo"},
- {"ad": "uzay_alev", "tr": ["uzayda ateş nasıl yanar", "uzayda mum yakarsan ne olur"], "en": ["fire in space microgravity flame"], "kw_tr": "uzay", "kw_en": "space|microgravity|zero"},
- {"ad": "kar_tanesi", "tr": ["kar taneleri neden hiç aynı değil", "ilk kar tanesi fotoğrafı"], "en": ["why no two snowflakes are alike"], "kw_tr": "kar tane", "kw_en": "snowflake"},
- {"ad": "kopek_silkelenme", "tr": ["köpek ıslanınca neden silkelenir"], "en": ["how dogs shake off water slow motion"], "kw_tr": "köpek", "kw_en": "dog"},
- {"ad": "kurbaga_goz", "tr": ["kurbağa gözleriyle yutar", "kurbağa yutarken gözünü neden kapatır"], "en": ["frogs use their eyes to swallow"], "kw_tr": "kurbağa", "kw_en": "frog"},
- {"ad": "ses_duvari", "tr": ["uçak ses duvarını aşınca oluşan bulut", "ses duvarı nasıl aşılır"], "en": ["vapor cone sound barrier explained"], "kw_tr": "ses duvar|ses hız", "kw_en": "vapor cone|sound barrier"},
- {"ad": "aycicegi", "tr": ["ayçiçeği güneşi takip eder mi"], "en": ["do sunflowers follow the sun"], "kw_tr": "ayçiçe", "kw_en": "sunflower"},
- {"ad": "fulgurit", "tr": ["yıldırım kuma düşerse ne olur"], "en": ["lightning hits sand fulgurite"], "kw_tr": "yıldırım|kum", "kw_en": "fulgurite|lightning"}
+ {"ad": "stapp", "tr": ["john stapp roket kızağı", "insan kaç g kuvvetine dayanır"], "en": ["john stapp rocket sled"], "kw_tr": "stapp|roket kızağı|g kuvveti", "kw_en": "stapp|rocket sled"},
+ {"ad": "apollo_tuy", "tr": ["ayda çekiç ve tüy deneyi", "tüy ve çekiç aynı anda düşer mi"], "en": ["apollo 15 hammer feather drop"], "kw_tr": "tüy|çekiç", "kw_en": "feather"},
+ {"ad": "nasa_ucak", "tr": ["nasa uçağı bilerek düşürdü", "nasa yolcu uçağı çarpma testi"], "en": ["nasa controlled impact demonstration boeing 720 crash"], "kw_tr": "nasa|uçağ", "kw_en": "720|controlled impact|nasa"},
+ {"ad": "pitch_drop", "tr": ["dünyanın en uzun süren deneyi", "zift damlası deneyi"], "en": ["pitch drop experiment"], "kw_tr": "zift|en uzun", "kw_en": "pitch drop"},
+ {"ad": "tacoma", "tr": ["tacoma köprüsü neden yıkıldı"], "en": ["tacoma narrows bridge collapse explained"], "kw_tr": "tacoma|köprü", "kw_en": "tacoma"},
+ {"ad": "leidenfrost", "tr": ["leidenfrost etkisi", "kızgın tavada su damlası neden dans eder"], "en": ["leidenfrost effect water droplet"], "kw_tr": "leidenfrost|damla", "kw_en": "leidenfrost"}
 ]
