@@ -1,8 +1,7 @@
 [
- {"ad": "kohnstamm", "tr": ["kolunu duvara bastır kolun kendiliğinden kalkar", "kol kendi kendine havaya kalkıyor deney"], "en": ["kohnstamm phenomenon floating arm trick"], "kw_tr": "kol|duvar", "kw_en": "kohnstamm|floating arm|arm"},
- {"ad": "ardil", "tr": ["10 saniye bak sonra beyaz duvara bak", "ardıl görüntü illüzyonu"], "en": ["stare for 30 seconds afterimage illusion"], "kw_tr": "saniye|bak|illüzyon", "kw_en": "afterimage|stare"},
- {"ad": "ayak6", "tr": ["sağ ayağını çevir ve 6 çiz", "ayağını saat yönünde çevir eline 6 yaz"], "en": ["rotate your foot clockwise draw 6 trick"], "kw_tr": "ayak|6", "kw_en": "foot|6"},
- {"ad": "aristo", "tr": ["parmaklarını çaprazla burnuna dokun iki burun", "aristoteles illüzyonu"], "en": ["aristotle illusion crossed fingers two noses"], "kw_tr": "parmak|burun|aristo", "kw_en": "aristotle|crossed fingers"},
- {"ad": "sakkad", "tr": ["aynada kendi gözünün hareketini göremezsin", "aynaya bak gözlerini sağa sola çevir"], "en": ["you can't see your own eyes move in the mirror saccadic masking"], "kw_tr": "ayna|göz", "kw_en": "mirror|saccad|eyes move"},
- {"ad": "uc_kase", "tr": ["sıcak ve soğuk suya elini koy sonra ılık suya", "ılık su hem sıcak hem soğuk gelir deney"], "en": ["three bowls experiment hot cold lukewarm water"], "kw_tr": "su|ılık", "kw_en": "lukewarm|three bowls|bowls"}
+ {"ad": "vor", "tr": ["başını salla yazıyı okuyabilirsin telefonu salla okuyamazsın", "telefonu sallayınca yazı neden okunmaz"], "en": ["shake your head vs shake your phone reading vestibulo ocular reflex"], "kw_tr": "salla|oku", "kw_en": "shake|vestibulo|reflex"},
+ {"ad": "frekans", "tr": ["bu sesi duyuyorsan 25 yaşından gençsin", "kulak yaşı testi ses"], "en": ["hearing age test can you hear this sound"], "kw_tr": "ses|duy|kulak", "kw_en": "hear|hearing"},
+ {"ad": "tek_ayak", "tr": ["tek ayak üstünde 10 saniye duramayan", "tek ayak testi ömür"], "en": ["stand on one leg 10 seconds test mortality"], "kw_tr": "tek ayak", "kw_en": "one leg"},
+ {"ad": "dalis", "tr": ["yüzünü soğuk suya sokunca kalp yavaşlar", "dalış refleksi"], "en": ["dive reflex cold water face heart rate drops"], "kw_tr": "dalış|soğuk su|refleks", "kw_en": "dive reflex|diving reflex|cold water"},
+ {"ad": "baskin_goz", "tr": ["baskın gözünü bul testi", "hangi gözün baskın"], "en": ["find your dominant eye test"], "kw_tr": "baskın|göz", "kw_en": "dominant eye"}
 ]
