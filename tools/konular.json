@@ -1,8 +1,8 @@
 [
- {"ad": "stapp", "tr": ["john stapp roket kızağı", "insan kaç g kuvvetine dayanır"], "en": ["john stapp rocket sled"], "kw_tr": "stapp|roket kızağı|g kuvveti", "kw_en": "stapp|rocket sled"},
- {"ad": "apollo_tuy", "tr": ["ayda çekiç ve tüy deneyi", "tüy ve çekiç aynı anda düşer mi"], "en": ["apollo 15 hammer feather drop"], "kw_tr": "tüy|çekiç", "kw_en": "feather"},
- {"ad": "nasa_ucak", "tr": ["nasa uçağı bilerek düşürdü", "nasa yolcu uçağı çarpma testi"], "en": ["nasa controlled impact demonstration boeing 720 crash"], "kw_tr": "nasa|uçağ", "kw_en": "720|controlled impact|nasa"},
- {"ad": "pitch_drop", "tr": ["dünyanın en uzun süren deneyi", "zift damlası deneyi"], "en": ["pitch drop experiment"], "kw_tr": "zift|en uzun", "kw_en": "pitch drop"},
- {"ad": "tacoma", "tr": ["tacoma köprüsü neden yıkıldı"], "en": ["tacoma narrows bridge collapse explained"], "kw_tr": "tacoma|köprü", "kw_en": "tacoma"},
- {"ad": "leidenfrost", "tr": ["leidenfrost etkisi", "kızgın tavada su damlası neden dans eder"], "en": ["leidenfrost effect water droplet"], "kw_tr": "leidenfrost|damla", "kw_en": "leidenfrost"}
+ {"ad": "kohnstamm", "tr": ["kolunu duvara bastır kolun kendiliğinden kalkar", "kol kendi kendine havaya kalkıyor deney"], "en": ["kohnstamm phenomenon floating arm trick"], "kw_tr": "kol|duvar", "kw_en": "kohnstamm|floating arm|arm"},
+ {"ad": "ardil", "tr": ["10 saniye bak sonra beyaz duvara bak", "ardıl görüntü illüzyonu"], "en": ["stare for 30 seconds afterimage illusion"], "kw_tr": "saniye|bak|illüzyon", "kw_en": "afterimage|stare"},
+ {"ad": "ayak6", "tr": ["sağ ayağını çevir ve 6 çiz", "ayağını saat yönünde çevir eline 6 yaz"], "en": ["rotate your foot clockwise draw 6 trick"], "kw_tr": "ayak|6", "kw_en": "foot|6"},
+ {"ad": "aristo", "tr": ["parmaklarını çaprazla burnuna dokun iki burun", "aristoteles illüzyonu"], "en": ["aristotle illusion crossed fingers two noses"], "kw_tr": "parmak|burun|aristo", "kw_en": "aristotle|crossed fingers"},
+ {"ad": "sakkad", "tr": ["aynada kendi gözünün hareketini göremezsin", "aynaya bak gözlerini sağa sola çevir"], "en": ["you can't see your own eyes move in the mirror saccadic masking"], "kw_tr": "ayna|göz", "kw_en": "mirror|saccad|eyes move"},
+ {"ad": "uc_kase", "tr": ["sıcak ve soğuk suya elini koy sonra ılık suya", "ılık su hem sıcak hem soğuk gelir deney"], "en": ["three bowls experiment hot cold lukewarm water"], "kw_tr": "su|ılık", "kw_en": "lukewarm|three bowls|bowls"}
 ]
