@@ -1,6 +1,1 @@
-[
- {"ad": "spiral", "tr": ["bu spirale 20 saniye bak sonra eline bak", "dönen spirale bak sonra eline bak"], "en": ["stare at spiral then look at your hand illusion"], "kw_tr": "spiral|eline", "kw_en": "spiral|hand"},
- {"ad": "yuz_bozulma", "tr": ["ortadaki artıya bak yüzler canavara dönüşüyor"], "en": ["flashed face distortion effect stare at the cross"], "kw_tr": "yüz|canavar|artı", "kw_en": "face distortion|faces|cross"},
- {"ad": "mccollough", "tr": ["bu görüntü gözünü aylarca etkiler mccollough"], "en": ["mccollough effect illusion lasts months"], "kw_tr": "mccollough|aylarca", "kw_en": "mccollough"},
- {"ad": "su_selale", "tr": ["şelaleye 30 saniye bak sonra kayalara bak"], "en": ["waterfall illusion motion aftereffect rocks move"], "kw_tr": "şelale", "kw_en": "waterfall"}
-]
+[{"ad": "munker", "tr": ["bu toplar aynı renk illüzyonu", "bu topların hepsi aynı renk"], "en": ["munker illusion same color balls"], "kw_tr": "aynı renk|top", "kw_en": "munker|same color"}]
