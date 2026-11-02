@@ -124,7 +124,7 @@ C += [
     clip("pencere_2", T(3, "Kapı") - 0.1, G[4] - 0.1, off=1.0, z=(1.0, 1.1)),
     # 4 - triceratops
     clip("k_trike2", G[4] - 0.1, T(4, "Ağırlığı") - 0.1, off=0.0, z=(1.0, 1.06), xf=0.0, speed=1.0),
-    clip("fil_3", T(4, "Ağırlığı") - 0.1, T(4, "İyi") - 0.1, off=2.0, z=(1.0, 1.06)),
+    clip("fil_2", T(4, "Ağırlığı") - 0.1, T(4, "İyi") - 0.1, off=1.0, z=(1.0, 1.08)),
     clip("dino_orman_2", T(4, "İyi") - 0.1, T(4, "Çim") - 0.1, off=3.0, z=(1.0, 1.08)),
     clip("cim_1", T(4, "Çim") - 0.1, T(4, "Çötü") - 0.1, off=3.0, z=(1.0, 1.06)),
     clip("k_trike2", T(4, "Çötü") - 0.1, T(4, "Su") - 0.1, off=4.0, z=(1.06, 1.12), speed=1.0),
@@ -146,7 +146,7 @@ C += [
     clip("hesap_2", T(6, "Sigorta") - 0.1, G[7] - 0.1, off=4.0, z=(1.0, 1.06)),
     # 7 - spinosaurus
     clip("k_spino", G[7] - 0.1, T(7, "2020") - 0.1, off=0.0, z=(1.0, 1.06), xf=0.0),
-    clip("timsah_1", T(7, "2020") - 0.1, T(7, "Ana") - 0.1, off=2.0, z=(1.0, 1.06)),
+    clip("timsah_4", T(7, "2020") - 0.1, T(7, "Ana") - 0.1, off=1.0, z=(1.0, 1.08)),
     clip("havuz_1", T(7, "Ana") - 0.1, T(7, "Peki") - 0.1, off=1.0, z=(1.0, 1.08)),
     clip("havuz_4", T(7, "Peki") - 0.1, G[8] - 0.1, off=1.0, z=(1.0, 1.3)),
     # 8 - T. rex
@@ -1111,7 +1111,29 @@ if __name__ == "__main__":
                 r.close()
     elif mode == "ses":
         build_audio()
+    elif mode == "some":
+        pass
     else:
         build_audio()
         render_all(int(sys.argv[3]) if len(sys.argv) > 3 else 0)
         print("render bitti", TOTAL, flush=True)
+
+
+def render_some(idx):
+    out_dir = WORK / "parts"
+    n = int(round(TOTAL * FPS))
+    jobs = [(a, min(n, a + 900), str(out_dir / f"p{j:02d}.mp4")) for j, a in enumerate(range(0, n, 900))]
+    with Pool(2) as p:
+        p.map(TL.render_chunk, [jobs[i] for i in idx], chunksize=1)
+    lst = out_dir / "list.txt"
+    lst.write_text("".join(f"file '{x[2]}'\n" for x in jobs))
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", str(lst), "-i",
+                    str(WORK / "mix.wav"), "-map", "0:v", "-map", "1:a", "-vf", "hqdn3d=3:2:4:4", "-c:v", "libx264",
+                    "-preset", "veryfast", "-b:v", "6500k", "-maxrate", "7500k", "-bufsize", "15000k", "-pix_fmt", "yuv420p",
+                    "-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags", "+faststart", str(WORK / "final.mp4")],
+                   check=True)
+    print("render bitti", flush=True)
+
+
+if __name__ == "__main__" and mode == "some":
+    render_some([int(x) for x in sys.argv[3].split(",")])
