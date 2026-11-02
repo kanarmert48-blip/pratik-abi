@@ -1,0 +1,17 @@
+{"id": "v38b-sinema", "items": [
+ {"name": "sin_trex", "source": "pixabay_video", "q": "tyrannosaurus rex cinematic", "n": 8},
+ {"name": "sin_trex2", "source": "pixabay_video", "q": "t-rex forest", "n": 6},
+ {"name": "sin_raptor", "source": "pixabay_video", "q": "velociraptor forest", "n": 6},
+ {"name": "sin_trike", "source": "pixabay_video", "q": "triceratops forest", "n": 5},
+ {"name": "sin_sauro", "source": "pixabay_video", "q": "brachiosaurus forest", "n": 5},
+ {"name": "sin_spino", "source": "pixabay_video", "q": "spinosaurus", "n": 4},
+ {"name": "sin_dino", "source": "pixabay_video", "q": "prehistoric dinosaur realistic", "n": 8},
+ {"name": "sin_jur", "source": "pixabay_video", "q": "jurassic dinosaur", "n": 8},
+ {"name": "sin_su", "source": "pixabay_video", "q": "dinosaur river water", "n": 4},
+ {"name": "sin_kukre", "source": "pixabay_video", "q": "dinosaur roar close up", "n": 4},
+ {"name": "ev_kanepe", "source": "pixabay_video", "q": "messy living room", "n": 3},
+ {"name": "ev_tuy", "source": "pixabay_video", "q": "feathers falling", "n": 3},
+ {"name": "ev_kedi", "source": "pixabay_video", "q": "scared cat", "n": 3},
+ {"name": "ev_kapi", "source": "pixabay_video", "q": "door slam", "n": 3},
+ {"name": "ev_bos", "source": "pixabay_video", "q": "empty bowl", "n": 2}
+]}
