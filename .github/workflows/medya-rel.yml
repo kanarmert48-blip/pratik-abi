@@ -1,0 +1,54 @@
+name: medya-rel
+# Büyük istekler: indirir, 1080p'ye küçültür, önizleme kareleri çıkarır ve "m-<id>" release'ine yükler (repoya commit yok).
+on:
+  workflow_dispatch:
+    inputs:
+      req:
+        description: "requests/<id>.json"
+        required: true
+permissions:
+  contents: write
+jobs:
+  indir:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: |
+            tools
+            requests
+      - name: İndir
+        env:
+          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
+        run: python3 tools/fetch_media.py ${{ inputs.req }}
+      - name: Küçült + önizleme
+        run: |
+          sudo apt-get -qq update && sudo apt-get -qq install -y ffmpeg imagemagick > /dev/null
+          id=$(python3 -c "import json;print(json.load(open('${{ inputs.req }}'))['id'])")
+          d=media/$id; mkdir -p out prev
+          for f in $d/*; do
+            b=$(basename "$f"); n="${b%.*}"
+            case "$b" in
+              *.mp4|*.webm|*.mov)
+                ffmpeg -v error -y -i "$f" -an -vf "scale=-2:1080" -c:v libx264 -preset fast -crf 21 -pix_fmt yuv420p "out/$n.mp4" || true
+                dur=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$f")
+                for k in 1 2 3 4; do ffmpeg -v error -y -ss $(python3 -c "print($dur*$k/5)") -i "$f" -frames:v 1 -vf scale=320:-2 "prev/${n}_$k.jpg" || true; done
+                montage prev/${n}_*.jpg -tile 4x1 -geometry +4+4 -background black -label "" "prev/$n.png" 2>/dev/null || true
+                convert "prev/$n.png" -gravity northwest -fill yellow -pointsize 22 -annotate +6+4 "$n $(printf %.0f $dur)s" "prev/$n.png" || true
+                ;;
+              *.jpg|*.png|*.jpeg|*.gif) cp "$f" "out/$b"; convert "$f[0]" -resize 640x360 "prev/$n.png" || true ;;
+              manifest.json) cp "$f" out/ ;;
+            esac
+          done
+          ls prev/*.png | sort > list.txt
+          i=0; while mapfile -t -n 10 chunk && ((${#chunk[@]})); do montage "${chunk[@]}" -tile 1x -geometry +0+6 -background black "out/sheet_$i.jpg"; i=$((i+1)); done < list.txt
+          echo "ID=$id" >> $GITHUB_ENV
+      - name: Release'e yükle
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh release view m-$ID >/dev/null 2>&1 || gh release create m-$ID --title m-$ID --notes "medya"
+          gh release upload m-$ID out/* --clobber
