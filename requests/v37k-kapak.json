@@ -1,0 +1,9 @@
+{"id": "v37k-kapak", "items": [
+ {"name": "kacan", "source": "pixabay_photo", "q": "man running scared", "n": 6},
+ {"name": "dusen", "source": "pixabay_photo", "q": "man falling", "n": 6},
+ {"name": "tokezle", "source": "pixabay_photo", "q": "man tripping", "n": 4},
+ {"name": "kosan_adam", "source": "pixabay_photo", "q": "man running away", "n": 6},
+ {"name": "korku", "source": "pixabay_photo", "q": "scared man screaming", "n": 4},
+ {"name": "yesil_kos", "source": "pixabay_video", "q": "man running green screen", "n": 4},
+ {"name": "yesil_dus", "source": "pixabay_video", "q": "man falling green screen", "n": 4}
+]}
