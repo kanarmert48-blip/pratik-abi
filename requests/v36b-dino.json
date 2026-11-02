@@ -1,0 +1,9 @@
+{"id": "v36b-dino", "items": [
+ {"name": "kehribar_wm", "source": "wikimedia", "q": "Cornupalpatum burmanicum", "n": 3},
+ {"name": "kehribar2_wm", "source": "wikimedia", "q": "Deinocroton draculi", "n": 2},
+ {"name": "hellcreek_wm", "source": "wikimedia", "q": "Hell Creek Formation", "n": 3},
+ {"name": "trike_wm", "source": "wikimedia", "q": "Triceratops skeleton", "n": 2},
+ {"name": "ayakizi", "source": "pixabay_video", "q": "dinosaur footprint", "n": 3},
+ {"name": "fil", "source": "pixabay_video", "q": "elephant", "n": 3},
+ {"name": "kehribar_px", "source": "pixabay_photo", "q": "amber insect", "n": 2}
+]}
