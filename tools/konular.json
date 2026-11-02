@@ -1,1 +1,10 @@
-[{"ad": "munker", "tr": ["bu toplar aynı renk illüzyonu", "bu topların hepsi aynı renk"], "en": ["munker illusion same color balls"], "kw_tr": "aynı renk|top", "kw_en": "munker|same color"}]
+[
+ {"ad": "dino_hayatta", "tr": ["dinozorlar çağında kaç gün hayatta kalırdın", "dinozor çağına gitsen ne olurdu belgesel"], "en": ["how long would you survive in the age of dinosaurs"], "kw_tr": "dinozor", "kw_en": "dinosaur"},
+ {"ad": "tas_devri", "tr": ["taş devrinde bir gün nasıl geçerdi", "taş devrinde hayatta kalabilir miydin"], "en": ["a day in the life of a stone age human"], "kw_tr": "taş devri|ilk insan", "kw_en": "stone age|caveman|prehistoric"},
+ {"ad": "osmanli_gun", "tr": ["osmanlıda bir gün nasıl geçerdi", "osmanlı döneminde yaşasaydın"], "en": ["a day in the life ottoman empire"], "kw_tr": "osmanlı", "kw_en": "ottoman"},
+ {"ad": "gobeklitepe", "tr": ["göbeklitepe belgesel", "göbeklitepeyi kim yaptı"], "en": ["gobekli tepe documentary"], "kw_tr": "göbekli", "kw_en": "gobekli"},
+ {"ad": "buzul", "tr": ["buzul çağında hayatta kalabilir miydin", "buzul çağı belgesel"], "en": ["how long would you survive in the ice age"], "kw_tr": "buzul", "kw_en": "ice age"},
+ {"ad": "orta_cag", "tr": ["orta çağda yaşasaydın kaç gün dayanırdın", "orta çağda bir gün"], "en": ["would you survive in medieval times"], "kw_tr": "orta çağ|ortaçağ", "kw_en": "medieval"},
+ {"ad": "roma_asker", "tr": ["roma lejyoneri olsaydın", "roma askerinin bir günü"], "en": ["a day in the life of a roman legionary"], "kw_tr": "roma", "kw_en": "roman|legionary"},
+ {"ad": "hitit", "tr": ["hititlerde bir gün", "hitit belgesel"], "en": ["hittites documentary"], "kw_tr": "hitit", "kw_en": "hittite"}
+]
