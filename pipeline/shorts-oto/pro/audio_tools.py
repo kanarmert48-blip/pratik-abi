@@ -191,7 +191,7 @@ def sfx(path, total, events):
                 a = np.exp(-2 * np.pi * cut[i] / SR)
                 acc = (1 - a) * noise[i] + a * acc
                 y[i] = acc
-            y = y * env * 0.5
+            y = y * env * 0.15  # kullanıcı: geçiş rüzgar sesi %30
             s = max(0, s - int(0.2 * SR))
         elif kind == "pop":
             m = int(0.09 * SR)
