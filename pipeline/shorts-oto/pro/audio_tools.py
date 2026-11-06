@@ -184,14 +184,14 @@ def sfx(path, total, events):
             noise = rng.standard_normal(m)
             tt = np.linspace(0, 1, m)
             env = np.sin(np.pi * tt) ** 2
-            cut = 400 + 5000 * tt
+            cut = 300 + 2200 * tt  # yumuşak, tıssız
             y = np.zeros(m)
             acc = 0.0
             for i in range(m):
                 a = np.exp(-2 * np.pi * cut[i] / SR)
                 acc = (1 - a) * noise[i] + a * acc
                 y[i] = acc
-            y = y * env * 0.15  # kullanıcı: geçiş rüzgar sesi %30
+            y = y * env * 0.05  # kullanıcı: geçiş rüzgar sesi çok kısık (eskinin %10u)
             s = max(0, s - int(0.2 * SR))
         elif kind == "pop":
             m = int(0.09 * SR)
