@@ -1,0 +1,185 @@
+[
+{
+"a": 0,
+"b": "sıçradın",
+"f": "atla_3.mp4",
+"off": 4.2,
+"speed": 0.75,
+"z0": 1.05,
+"z1": 1.22,
+"grade": "cool",
+"fx": 0.5,
+"rot0": -2,
+"rot1": 3,
+"dim": 1.1
+},
+{
+"a": "sıçradın",
+"b": "Yalnız",
+"f": "uyan_4.mp4",
+"off": 0.5,
+"z0": 1.12,
+"z1": 1.16,
+"shake": 34,
+"grade": "night",
+"fx": 0.3,
+"dim": 1.7
+},
+{
+"a": "Yalnız",
+"b": "Bunun",
+"f": "uyan_1.mp4",
+"off": 9.0,
+"z0": 1.0,
+"z1": 1.08,
+"fx": 0.6
+},
+{
+"a": "Bunun",
+"b": "insanların",
+"f": "uyku_3.mp4",
+"off": 1.0,
+"z0": 1.0,
+"z1": 1.1,
+"grade": "night",
+"fx": 0.6
+},
+{
+"a": "insanların",
+"b": "Uykuya",
+"f": "uykusuz_3.mp4",
+"off": 3.0,
+"z0": 1.0,
+"z1": 1.06,
+"grade": "night",
+"dim": 0.8
+},
+{
+"a": "Uykuya",
+"b": "Bir",
+"f": "uyan_1.mp4",
+"off": 0.3,
+"z0": 1.0,
+"z1": 1.14,
+"fx": 0.7,
+"grade": "warm",
+"fy": 0.2
+},
+{
+"a": "Bir",
+"b": "düşmek",
+"f": "beyin_1.mp4",
+"off": 0.0,
+"z0": 1.0,
+"z1": 1.14
+},
+{
+"a": "düşmek",
+"b": "sıçratıyor",
+"f": "kotu_3.mp4",
+"off": 3.0,
+"speed": 1.6,
+"z0": 1.1,
+"z1": 1.5,
+"grade": "cool",
+"rot0": 0,
+"rot1": 9,
+"dim": 1.0
+},
+{
+"a": "sıçratıyor",
+"b": "Psikolog",
+"f": "uyan_4.mp4",
+"off": 4.0,
+"z0": 1.12,
+"z1": 1.16,
+"shake": 34,
+"grade": "night",
+"fx": 0.3,
+"dim": 1.7
+},
+{
+"a": "Psikolog",
+"b": "ağaçlarda",
+"f": "orangutan_2.mp4",
+"off": 1.0,
+"z0": 1.0,
+"z1": 1.08,
+"fx": 0.55
+},
+{
+"a": "ağaçlarda",
+"b": "refleks",
+"f": "orangutan_1.mp4",
+"off": 2.0,
+"z0": 1.0,
+"z1": 1.08,
+"fx": 0.5
+},
+{
+"a": "refleks",
+"b": "Kafein",
+"f": "maymun_3.mp4",
+"off": 3.0,
+"z0": 1.0,
+"z1": 1.06,
+"fx": 0.62
+},
+{
+"a": "Kafein",
+"b": "stres",
+"f": "kahve_3.mp4",
+"off": 0.5,
+"z0": 1.0,
+"z1": 1.08,
+"fx": 0.45
+},
+{
+"a": "stres",
+"b": "uykusuzluk",
+"f": "stres_3.mp4",
+"off": 4.0,
+"z0": 1.0,
+"z1": 1.06,
+"fx": 0.55
+},
+{
+"a": "uykusuzluk",
+"b": "yatmadan",
+"f": "uyan_3.mp4",
+"off": 5.0,
+"z0": 1.0,
+"z1": 1.06,
+"grade": "night",
+"fx": 0.45
+},
+{
+"a": "yatmadan",
+"b": "Ama",
+"f": "spor_3.mp4",
+"off": 0.3,
+"z0": 1.0,
+"z1": 1.06,
+"fx": 0.3
+},
+{
+"a": "Ama",
+"b": "Sen",
+"f": "uyan_2.mp4",
+"off": 3.0,
+"z0": 1.0,
+"z1": 1.06,
+"fx": 0.45,
+"grade": "warm"
+},
+{
+"a": "Sen",
+"b": "END",
+"f": "kedi_2.mp4",
+"off": 2.0,
+"z0": 1.0,
+"z1": 1.08,
+"fx": 0.4,
+"grade": "warm"
+}
+]
