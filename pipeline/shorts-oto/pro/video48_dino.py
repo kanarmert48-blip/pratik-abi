@@ -135,6 +135,27 @@ GRADES = {"none": np.array([1.0, 1.0, 1.0], np.float32), "night": np.array([0.78
           "warm": np.array([1.08, 1.0, 0.9], np.float32), "cool": np.array([0.92, 0.98, 1.08], np.float32)}
 
 
+_GR = np.random.default_rng(7)
+_GRAIN = [_GR.normal(0, 1, (H // 2, W // 2, 1)).astype(np.float32) for _ in range(8)]
+
+
+def realism(arr, t):
+    """belgesel/film görünümü: doygunluk ve kontrast dengesi, sıcak-soğuk ton, hafif parlama, film greni"""
+    x = np.clip(arr / 255.0, 0, 1)
+    lum = (x[..., :1] * 0.299 + x[..., 1:2] * 0.587 + x[..., 2:3] * 0.114)
+    x = lum + (x - lum) * 0.82                      # aşırı doygunluğu kıs (AI'nın "oyun" rengi)
+    x = x * x * (3 - 2 * x) * 0.35 + x * 0.65         # yumuşak S eğrisi (film kontrastı)
+    x = x * np.array([1.03, 1.0, 0.95], np.float32) * (1 - lum) + x * np.array([0.97, 1.0, 1.04], np.float32) * lum
+    hi = np.clip((lum - 0.75) / 0.25, 0, 1)
+    if hi.max() > 0.01:
+        glow = cv2.GaussianBlur((x * hi).astype(np.float32), (0, 0), 18)
+        x = x + glow * 0.25                          # ışık parlaması (halation)
+    g = _GRAIN[int(t * 30) % 8]
+    g = cv2.resize(g, (W, H), interpolation=cv2.INTER_LINEAR)[..., None]
+    x = x + g * 0.022 * (0.6 + 0.4 * (1 - lum))      # film greni
+    return np.clip(x, 0, 1) * 255.0
+
+
 def shot_at(t):
     for s in SHOTS:
         if s["a"] <= t < s["b"]:
@@ -176,6 +197,7 @@ def base(t):
         arr = (arr * 0.75 + lum * 0.25) * g * 0.9 + np.array([4, 8, 18], np.float32)
     else:
         arr = arr * g
+    arr = realism(arr, t)
     arr *= SHADE * VIG * s["dim"]
     # kesme flaşı
     for c in CUTS:
@@ -189,6 +211,38 @@ ORANGE = (255, 140, 40)
 
 def AI_TAG(L, a=0.75):
     txt(L, (540, 112), "Görüntüler yapay zekâ ile üretildi", 26, WHITE, a * 0.75, k="b", stroke=3)
+
+
+def person_icon(d, x, ybase, h, col):
+    """ayakta insan silüeti: x merkez, ybase taban, h boy (px)"""
+    r = h * 0.12
+    d.ellipse([x - r, ybase - h, x + r, ybase - h + 2 * r], fill=col)
+    d.rounded_rectangle([x - h * 0.14, ybase - h + 2.2 * r, x + h * 0.14, ybase - h * 0.42], radius=int(h * 0.06), fill=col)
+    d.rectangle([x - h * 0.12, ybase - h * 0.44, x - h * 0.03, ybase], fill=col)
+    d.rectangle([x + h * 0.03, ybase - h * 0.44, x + h * 0.12, ybase], fill=col)
+
+
+def sizes(L, t, a, t0):
+    """uzunluk çubukları: Spinosaurus ~15 m, T-Rex ~12 m, insan 1,8 m (aynı ölçek)"""
+    d = ImageDraw.Draw(L)
+    x0 = u(90)
+    full = u(760)  # 15 m
+    rows = [("Spinosaurus", "~15 m", 15.0, ORANGE, t0, 330), ("T-Rex", "~12 m", 12.0, RED, t0 + 0.35, 450)]
+    for nm, lab, m, col, tt, y in rows:
+        q = ramp(t, tt, tt + 0.6)
+        if q <= 0.01:
+            continue
+        w = full * m / 15.0 * q
+        yy = u(y)
+        d.rounded_rectangle([x0, yy - u(30), x0 + max(u(40), w), yy + u(30)], radius=int(u(30)),
+                            fill=col + (int(235 * a),))
+        txt(L, (90 + 30, y), nm, 40, INKC, a * clamp(q * 2), k="black", anchor="lm")
+        txt(L, (90 + 760 * m / 15.0 * q + 18, y), lab, 44, WHITE, a * clamp(q * 2), k="black", anchor="lm", stroke=5)
+    qh = pop(t, t0 + 0.8, 0.3)
+    if qh > 0.02:
+        hp = full * 1.8 / 15.0
+        person_icon(d, x0 + hp / 2, u(600), hp * 1.0 * qh, WHITE + (int(235 * a),))
+        txt(L, (90 + 1.8 / 15 * 760 + 40, 560), "İnsan: 1,8 m", 38, WHITE, a * qh, k="b", anchor="lm", stroke=5)
 
 
 def timeline(L, t, t0, a):
@@ -214,7 +268,6 @@ def timeline(L, t, t0, a):
 
 
 def ui(L, t):
-    AI_TAG(L)
     if t < K["Spinosaurus"] - 0.1:
         a = 1 - ramp(t, K["Spinosaurus"] - 0.3, K["Spinosaurus"] - 0.1)
         p = 1 + 0.12 * (1 - pop(t, 0.0, 0.3))
@@ -229,12 +282,10 @@ def ui(L, t):
             chip(L, 540, 640, "KİM KAZANIR?", bg=WHITE, fg=INKC, size=64, k="black", alpha=a, scale=pop(t, 2.4, 0.3))
     elif t < K["T-Rex"] - 0.1:
         a = wnd(t, K["Spinosaurus"] - 0.1, K["T-Rex"] - 0.05)
-        two(L, t, a, "SPİNOSAURUS", ORANGE, 96, "", WHITE, 1, K["Spinosaurus"] - 0.1, y1=200)
-        if t >= K["uzun,"] - 0.1:
-            chip(L, 540, 650, "Boy: ~15 metre", bg=WHITE, fg=INKC, size=56, k="black",
-                 alpha=a, scale=pop(t, K["uzun,"] - 0.1, 0.3))
+        two(L, t, a, "GERÇEK BOYUTLAR", WHITE, 84, "", WHITE, 1, K["Spinosaurus"] - 0.1, y1=200)
+        sizes(L, t, a, K["Spinosaurus"] + 0.1)
         if t >= K["yelken"] - 0.1:
-            chip(L, 540, 790, "Sırtında dev yelken", bg=ORANGE, fg=INKC, size=56, k="black", alpha=a,
+            chip(L, 540, 760, "Sırtında dev yelken", bg=ORANGE, fg=INKC, size=52, k="black", alpha=a,
                  scale=pop(t, K["yelken"] - 0.1, 0.3))
     elif t < K["Ama"] - 0.1:
         a = wnd(t, K["T-Rex"] - 0.1, K["Ama"] - 0.05)
