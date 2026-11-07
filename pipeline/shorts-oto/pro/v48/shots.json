@@ -1,0 +1,80 @@
+[
+ {
+  "a": 0,
+  "b": "Spinosaurus",
+  "f": "dino1.mp4",
+  "z0": 1.0,
+  "z1": 1.08,
+  "speed": 0.82,
+  "fy": 0.6
+ },
+ {
+  "a": "Spinosaurus",
+  "b": "TRex",
+  "f": "dino1.mp4",
+  "off": 1.0,
+  "z0": 1.7,
+  "z1": 1.85,
+  "fx": 0.02,
+  "fy": 0.72,
+  "speed": 0.5
+ },
+ {
+  "a": "TRex",
+  "b": "parçalıyordu.",
+  "f": "dino3.mp4",
+  "z0": 1.0,
+  "z1": 1.12,
+  "speed": 0.95,
+  "dim": 1.35
+ },
+ {
+  "a": "parçalıyordu.",
+  "b": "Ama",
+  "f": "dino3.mp4",
+  "off": 2.1,
+  "shake": 14,
+  "z0": 1.15,
+  "z1": 1.25,
+  "speed": 0.9,
+  "dim": 1.35
+ },
+ {
+  "a": "Ama",
+  "b": "Aralarında",
+  "f": "dino6.mp4",
+  "z0": 1.0,
+  "z1": 1.15,
+  "speed": 0.68,
+  "grade": "warm"
+ },
+ {
+  "a": "Aralarında",
+  "b": "Yani",
+  "f": "dino5.mp4",
+  "z0": 1.0,
+  "z1": 1.08,
+  "speed": 0.9,
+  "dim": 0.55
+ },
+ {
+  "a": "Yani",
+  "b": "Sence",
+  "f": "dino1.mp4",
+  "off": 0.4,
+  "z0": 1.05,
+  "z1": 1.15,
+  "speed": 1.0,
+  "fy": 0.6
+ },
+ {
+  "a": "Sence",
+  "b": "END",
+  "f": "dino3.mp4",
+  "off": 0.0,
+  "z0": 1.05,
+  "z1": 1.2,
+  "speed": 0.5,
+  "dim": 1.2
+ }
+]
