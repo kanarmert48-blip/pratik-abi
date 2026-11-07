@@ -1,0 +1,20 @@
+{"id": "v47b-amazon", "items": [
+ {"name": "jaguar", "source": "pixabay_video", "q": "jaguar", "n": 4},
+ {"name": "iz", "source": "pixabay_video", "q": "footprints mud", "n": 2},
+ {"name": "pirana", "source": "pixabay_video", "q": "piranha", "n": 3},
+ {"name": "yilanbaligi", "source": "pixabay_video", "q": "electric eel", "n": 2},
+ {"name": "anakonda", "source": "pixabay_video", "q": "anaconda", "n": 3},
+ {"name": "yilan", "source": "pixabay_video", "q": "snake swimming water", "n": 2},
+ {"name": "kayman", "source": "pixabay_video", "q": "caiman", "n": 3},
+ {"name": "firtina", "source": "pixabay_video", "q": "tropical storm heavy rain", "n": 3},
+ {"name": "simsek", "source": "pixabay_video", "q": "lightning storm night", "n": 2},
+ {"name": "sel", "source": "pixabay_video", "q": "flash flood muddy river", "n": 2},
+ {"name": "ates", "source": "pixabay_video", "q": "campfire night", "n": 2},
+ {"name": "corap", "source": "pixabay_video", "q": "wet feet", "n": 2},
+ {"name": "dere", "source": "pixabay_video", "q": "jungle stream creek", "n": 3},
+ {"name": "yuruyen", "source": "pixabay_video", "q": "man walking in jungle", "n": 3},
+ {"name": "tekne", "source": "pixabay_video", "q": "boat jungle river", "n": 3},
+ {"name": "helikopter", "source": "pixabay_video", "q": "helicopter flying forest", "n": 2},
+ {"name": "koy", "source": "pixabay_video", "q": "amazon village", "n": 2},
+ {"name": "manyok", "source": "pixabay_video", "q": "cassava", "n": 2}
+]}
