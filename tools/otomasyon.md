@@ -25,6 +25,10 @@ Kanal durumu:
 - `tools/onerilenler.md`: 2. satır **yapılmış** konular, asla tekrar etme. 3. satır önerilmiş konular, oradan seçebilirsin.
 - Doyuma ulaşmış kalıp formatları seçme (aynı tip illüzyon/test videosunu art arda yapma). Konu ilk 1–2 sn'de durduracak kancaya sahip olsun.
 - Bilgileri en az 2 güvenilir kaynakla doğrula.
+- Konu türü dönüşümlü: **Slot A** katılımlı/dene türü (izleyici videoyu izlerken bir şey yapar: bak, dene, test et; kanalın en çok tutan türü),
+  **Slot B** merak/ilginç bilgi türü (az bilinen gerçek, nostalji 2015–2020, "neden böyle?" soruları). Aynı gün iki slot aynı türde olmaz.
+- 3–4 aday çıkar, her birini YouTube'da (Türkçe + yabancı) ara: benzer Shorts sayısı ve izlenmeleri. Çok kalabalık olanı ele.
+- Her adayı 4 başlıkta 1–5 puanla: nadirlik, izlenme tutma (ilk 2 sn kancası), algoritma uyumu, tekrar içerik riski (ters puan). En yüksek puanlıyı seç.
 - **Konuyu hemen rezerve et:** 2. satırın sonuna `<konu> (<no>, oto <YYYY-MM-DD> <A|B>)` ekle, commit + push.
   Push çakışırsa rebase et ve konunun diğer slot tarafından alınmadığını tekrar kontrol et.
 
