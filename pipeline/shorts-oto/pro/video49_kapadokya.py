@@ -1,4 +1,4 @@
-"""49. video (2K Shorts, ~30 sn): Ters renkli Kapadokya fotoğrafına 15 saniye bak -> beyaz ekranda gerçek renkler (ardıl görüntü).
+"""49. video (2K Shorts, ~30 sn): Ters renkli Kapadokya fotoğrafına 15 saniye bak -> siyah-beyaz fotoğraf renkli görünür (ardıl görüntü).
 Kullanım: python3 video49_kapadokya.py <WORK> [frames t1,t2,... | ses | render]
 WORK/foto/kapadokya.jpg (Unsplash, Aleks) + voice_cut.wav + words.json + zaman.json + muzik.wav gerekir."""
 import os
@@ -7,7 +7,7 @@ import json, math, subprocess, sys
 from pathlib import Path
 
 import numpy as np
-from PIL import ImageEnhance
+from PIL import ImageEnhance, ImageOps
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from engine import *  # noqa
@@ -62,6 +62,9 @@ BASE_NEG = Image.new("RGB", (W, H), DARK)
 BASE_NEG.paste(NEG, (PX0, PY0), _mask)
 BASE_REAL = Image.new("RGB", (W, H), DARK)
 BASE_REAL.paste(REAL, (PX0, PY0), _mask)
+GRAYP = ImageOps.grayscale(REAL).convert("RGB")          # siyah-beyaz (beyin renklendirir)
+BASE_GRAY = Image.new("RGB", (W, H), DARK)
+BASE_GRAY.paste(GRAYP, (PX0, PY0), _mask)
 
 
 def dot(d, r=11, a=1.0, col=(0, 0, 0)):
@@ -138,17 +141,23 @@ class Vid(Video):
                 ROZ.draw(im, t, float(OPN[i]), alpha=ra)
             return im.convert("RGB")
         if t < REVEAL:
-            # sadece beyaz + gri nokta: ardıl görüntü burada görülür
-            im = Image.new("RGBA", (W, H), (248, 248, 248, 255))
-            d = ImageDraw.Draw(im)
-            r = u(9)
-            d.ellipse([DOT[0] - r, DOT[1] - r, DOT[0] + r, DOT[1] + r], fill=(150, 150, 150, 255))
-            if t < TSW + 1.6:
-                a = 1 - ramp(t, TSW + 1.1, TSW + 1.6)
-                txt(im, (540, 330), "ŞİMDİ BEYAZA BAK!", 70, (40, 40, 48), a, k="black", stroke=0)
+            # aynı yerde siyah-beyaz fotoğraf + nokta: beyin onu renkli gösterir (Kız Kulesi videosu gibi)
+            im = BASE_GRAY.copy().convert("RGBA")
+            L = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+            dot(ImageDraw.Draw(L))
+            if t < t_kap - 0.1:
+                txt(L, (540, 150), "ŞİMDİ SİYAH-BEYAZ", 62, WHITE, 1.0, stroke=6)
+                txt(L, (540, 235), "fotoğrafa bak!", 56, GOLD, 1.0, stroke=6)
+                txt(L, (540, 330), "Noktadan gözünü ayırma", 40, WHITE, 0.8, k="b", stroke=4)
+            else:
+                q = pop(t, t_kap - 0.1, 0.3)
+                txt(L, (540, 160), "RENKLİ GÖRDÜN", round(76 * q), GOLD, 1.0, stroke=7)
+                txt(L, (540, 260), "değil mi?", round(58 * q), WHITE, 1.0, stroke=6)
+            im.alpha_composite(L)
+            brand(im, 540, 62, size=34)
             return im.convert("RGB")
         f = ramp(t, REVEAL, REVEAL + 0.5)
-        im = Image.blend(Image.new("RGB", (W, H), (248, 248, 248)), BASE_REAL, f).convert("RGBA")
+        im = Image.blend(BASE_GRAY, BASE_REAL, f).convert("RGBA")
         L = Image.new("RGBA", (W, H), (0, 0, 0, 0))
         reveal_ui(L, t)
         im.alpha_composite(L)
