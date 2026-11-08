@@ -38,8 +38,8 @@ Kanal durumu:
 - Son 5 başlıkla kalıp tekrarına bak. Videodan 5 kare çıkarıp bak. Sesin son 0,5 sn'si sessiz mi kontrol et.
 
 ## 4. Barındırma
-- `yayin` release'i yoksa oluştur. `gh release upload yayin <no>-<ad>.mp4 --clobber`.
-- Herkese açık adres: `https://github.com/kanarmert48-blip/pratik-abi/releases/download/yayin/<no>-<ad>.mp4`.
+- `bash tools/yayin_yukle.sh <no>-<ad>.mp4` → herkese açık adresi yazdırır
+  (`https://raw.githubusercontent.com/kanarmert48-blip/pratik-abi/yayin/<no>-<ad>.mp4`). Bu oturum release oluşturamaz, bu yüzden dal kullanılıyor.
 
 ## 5. Soru (13:00 / 18:00)
 - Video erken biterse `send_later` ile tam soru saatine kendine mesaj kur ve o mesaj gelince sor.
@@ -68,7 +68,7 @@ Kanal durumu:
 Sonra `getScheduledPosts` ile sıraya girdiğini doğrula, kullanıcıya "yüklendi" de.
 
 ### DinoFlash (hazır olunca)
-`jobs/yukle-<id>/meta.json` = `{"kanal": "dinoflash", "video": "<yayin'daki dosya adı>", "title": "...",
+`jobs/yukle-<id>/meta.json` = `{"kanal": "dinoflash", "video": "<yayin dalındaki dosya adı>", "title": "...",
 "description": "...", "tags": ["..."], "categoryId": "27", "ai": false}` push et, sonra:
 `gh api -X POST repos/kanarmert48-blip/pratik-abi/actions/workflows/yt-yukle.yml/dispatches -f ref=main -f "inputs[job]=jobs/yukle-<id>"`.
 Sonucu `yukleme` release'indeki `<id>_sonuc.json` dosyasından oku.

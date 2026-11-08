@@ -26,7 +26,7 @@ jobs:
           ID=$(basename "$JOB")
           KANAL=$(jq -r .kanal "$JOB/meta.json")
           VID=$(jq -r .video "$JOB/meta.json")
-          gh release download yayin -p "$VID" -D /tmp
+          curl -sSfL -o "/tmp/$VID" "https://raw.githubusercontent.com/${{ github.repository }}/yayin/$VID"
           if [ "$KANAL" = "dinoflash" ]; then
             export YT_CLIENT_ID="$DINO_ID" YT_CLIENT_SECRET="$DINO_SECRET" YT_REFRESH_TOKEN="$DINO_REFRESH"
           fi
