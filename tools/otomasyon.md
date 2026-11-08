@@ -33,9 +33,29 @@ Kanal durumu:
 - Skill'deki tüm kurallar (ses ayarları, 2K, Abi sol altta, ~30 sn, sonda "Daha fazlası için takip etmeyi de unutma" + TAKİP ET).
 - Müzik işini ve medya isteğini en başta paralel başlat.
 
-## 3. YouTube kontrolü
-- `tools/dogal_dil.md` "Son kontrol" + "YouTube politika kontrolü" maddelerini tek tek uygula.
-- Son 5 başlıkla kalıp tekrarına bak. Videodan 5 kare çıkarıp bak. Sesin son 0,5 sn'si sessiz mi kontrol et.
+## 3. YouTube kontrolü (12:30–13:00 / 17:30–18:00) — puan kartı
+Her madde Geçti/Kaldı. Bir madde bile "Kaldı" ise düzelt, yeniden render al, tekrar kontrol et. Düzeltilemiyorsa soruda kullanıcıya söyle.
+
+A. Metin doğal mı
+1. Bitmiş videonun sesini whisper ile yazıya dök. Metni, başlığı ve açıklamayı `tools/dogal_dil.md` yasak listesine göre tara
+   (ör. "değil," kalıbı, "—", "Hadi gelin", "Peki ya", "inanılmaz", "büyüleyici", "keşfet", üçlü sıralama).
+2. Sesli okuma testi: her cümle günlük konuşmada böyle söylenir mi? Kitap dili ya da reklam dili varsa değiştir.
+3. Başlık: son 5 videonun başlığıyla (kanal_son.json) aynı kalıpta mı? En fazla 1 emoji, en fazla 1 büyük harf kelime.
+
+B. Ses ve görüntü doğal mı
+4. Ses: hızlandırma yok, duraklar doğal, son kelime kesilmemiş (son 0,5 sn sessiz), ses seviyesi -14 ile -16 LUFS arası.
+5. 6 kare çıkar (0,5 sn, 2 sn, %25, %50, %75, son kare) ve bak: yazı taşması, yapay zekâ bozulması (garip el/yüz/yazı),
+   görselin o anda söylenenle uyumu.
+
+C. YouTube'a uygun mu
+6. İlk 2 sn: ilk kare + ilk cümle kaydırmayı durdurur mu, başlıkla aynı şeyi mi söylüyor?
+7. Özgünlük: konu ve format son 10 videodan farklı mı (`tools/yayin_log.md` + onerilenler 2. satır)?
+8. Bilgiler en az 2 güvenilir kaynakla doğrulandı mı, rakamlar temkinli mi?
+9. Telif: müzik kendi üretimimiz, görseller kredili (CC/Unsplash), ünlü fotoğrafı yok.
+10. Yapay içerik beyanı: gerçekçi yapay zekâ görüntüsü varsa `isAiGeneratedContent: true`, yoksa `false`.
+11. Süre 20–35 sn, dikey 9:16, 2K.
+
+Soru mesajına tek satır ekle: "Kontrol: 11/11 geçti" ya da neyin düzeltildiği.
 
 ## 4. Barındırma
 - `bash tools/yayin_yukle.sh <no>-<ad>.mp4` → herkese açık adresi yazdırır
