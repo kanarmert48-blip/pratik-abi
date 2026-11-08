@@ -188,7 +188,7 @@ def expr_at(t):
 def abi(im, t):
     lvl = float(ENV[min(len(ENV) - 1, int(t * FPS))])
     wink = float(math.sin(min(1.0, max(0.0, (t - t_cunku) / 0.4)) * math.pi))
-    fig = YUZ.frame(t, level=lvl, expr=expr_at(t), height=AH, wink=wink)
+    fig = YUZ.frame(t, level=0.0, expr=expr_at(t), height=AH, wink=wink)
     feet_y = H - round(u(34))
     cx = round(u(45)) + round(174 * AH / 1024)
     comp(im, SHADOW, cx - SHADOW.width / 2, feet_y - SHADOW.height * 0.55)

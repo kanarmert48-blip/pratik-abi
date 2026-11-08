@@ -281,15 +281,21 @@ class Timeline:
             r.close()
         return path
 
-    def render(self, out_dir, audio, out, workers=2, parts=None):
+    def render(self, out_dir, audio, out, workers=2, parts=None, step=None, keep=0):
+        """keep: ilk 'keep' parça zaten varsa yeniden çizilmez (aynı step ile)."""
         out_dir = Path(out_dir)
         out_dir.mkdir(exist_ok=True)
         n = int(round(self.total * FPS))
         k = parts or workers * 3
-        step = math.ceil(n / k)
+        step = step or math.ceil(n / k)
         jobs = [(a, min(n, a + step), str(out_dir / f"p{j:02d}.mp4")) for j, a in enumerate(range(0, n, step))]
+        for old in out_dir.glob("p*.mp4"):
+            if int(old.stem[1:]) >= keep:
+                old.unlink()
+        todo = [j for j in jobs[keep:]]
         with Pool(workers) as p:
-            paths = p.map(self.render_chunk, jobs, chunksize=1)
+            p.map(self.render_chunk, todo, chunksize=1)
+        paths = [j[2] for j in jobs]
         lst = out_dir / "list.txt"
         lst.write_text("".join(f"file '{x}'\n" for x in paths))
         subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", str(lst), "-i", audio,

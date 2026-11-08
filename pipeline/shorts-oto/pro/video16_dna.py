@@ -340,19 +340,19 @@ def coil(L, t, start, end):
 
 
 def equation(L, t, start, end):
-    """2 metre x trilyonlarca hücre = milyarlarca km."""
+    """2 metre x trilyonlarca hücre = trilyonlarca metre (~Güneş'e 20 gidiş-dönüş)."""
     if not (start <= t < end):
         return
-    a = card_glass(L, t, start, end, 120, 560, 840, 420)
+    a = card_glass(L, t, start, end, 110, 540, 860, 480)
     if a <= 0.02:
         return
-    rows = [("2 metre DNA", WHITE, 0.15), ("× trilyonlarca hücre", WHITE, 0.8), ("= MİLYARLARCA KM!", ACC, 1.6)]
-    for i, (txt, col, dl) in enumerate(rows):
+    rows = [("2 metre DNA", WHITE, 64, 0.15), ("× trilyonlarca hücre", WHITE, 64, 0.8),
+            ("= TRİLYONLARCA METRE!", ACC, 72, 1.6), ("≈ Güneş'e 20 gidiş-dönüş", SUN, 48, 2.6)]
+    for i, (txt, col, sz, dl) in enumerate(rows):
         if t < start + dl:
             continue
         b = eb(ph(t, start + dl, 0.35)) * a
-        sz = 64 if i < 2 else 74
-        text_c(L, (540, 650 + i * 110), txt, "black", round(sz * (0.8 + 0.2 * b)), col, alpha=b, stroke=6,
+        text_c(L, (540, 630 + i * 105), txt, "black", round(sz * (0.8 + 0.2 * b)), col, alpha=b, stroke=6,
                stroke_fill=(5, 6, 12))
 
 
@@ -440,7 +440,7 @@ if __name__ == "__main__":
             v.frame(tt).save(WORK / f"fr_{tt:05.1f}.png")
     else:
         sfx = [(st, "whoosh") for st in STARTS[1:-1]] + [(0.0, "pop"), (t_gun + 2.0, "pop"), (t_bunu + 1.0, "pop"),
-                                                         (t_bunu + 1.8, "pop"), (t_bonus + 1.4, "pop"), (t_gm + 0.1, "pop")]
+                                                         (t_bunu + 1.8, "pop"), (t_bunu + 2.8, "pop"), (t_bonus + 1.4, "pop"), (t_gm + 0.1, "pop")]
         at.sfx(str(WORK / "sfx.wav"), TOTAL, sfx)
         subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(WORK / "muzik.wav"), "-af",
                         f"apad,atrim=0:{TOTAL:.3f},afade=t=in:d=0.15,afade=t=out:st={TOTAL - 0.35:.3f}:d=0.35",

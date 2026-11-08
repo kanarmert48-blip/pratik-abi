@@ -732,5 +732,5 @@ if __name__ == "__main__":
     else:
         a0 = float(sys.argv[3]) if len(sys.argv) > 3 else None
         build_audio()
-        TL.render(WORK / "parts", str(WORK / "mix.wav"), str(WORK / "video.mp4"), workers=2, parts=12)
+        TL.render(WORK / "parts", str(WORK / "mix.wav"), str(WORK / "video.mp4"), workers=2, step=828, keep=int(sys.argv[3]) if len(sys.argv) > 3 else 0)
         print("render bitti", TOTAL, flush=True)

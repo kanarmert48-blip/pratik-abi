@@ -1,0 +1,36 @@
+name: yt-yukle
+on:
+  workflow_dispatch:
+    inputs:
+      job:
+        description: "jobs/yukle-<id> klasörü (meta.json içerir)"
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  yukle:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Videoyu indir ve yükle
+        env:
+          GH_TOKEN: ${{ github.token }}
+          JOB: ${{ inputs.job }}
+          DINO_ID: ${{ secrets.DINO_YT_CLIENT_ID }}
+          DINO_SECRET: ${{ secrets.DINO_YT_CLIENT_SECRET }}
+          DINO_REFRESH: ${{ secrets.DINO_YT_REFRESH_TOKEN }}
+        run: |
+          set -e
+          ID=$(basename "$JOB")
+          KANAL=$(jq -r .kanal "$JOB/meta.json")
+          VID=$(jq -r .video "$JOB/meta.json")
+          gh release download yayin -p "$VID" -D /tmp
+          if [ "$KANAL" = "dinoflash" ]; then
+            export YT_CLIENT_ID="$DINO_ID" YT_CLIENT_SECRET="$DINO_SECRET" YT_REFRESH_TOKEN="$DINO_REFRESH"
+          fi
+          python3 tools/yt_yukle.py "$JOB/meta.json" "/tmp/$VID" "/tmp/${ID}_sonuc.json" || true
+          gh release view yukleme >/dev/null 2>&1 || gh release create yukleme -t yukleme -n "yükleme sonuçları"
+          gh release upload yukleme "/tmp/${ID}_sonuc.json" --clobber
+          cat "/tmp/${ID}_sonuc.json"
