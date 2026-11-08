@@ -88,10 +88,10 @@ def stare_ui(L, t):
     cx, cy, r = 540, 335, 52
     q = clamp((t - T0) / (TSW - T0))
     bx = [u(cx - r), u(cy - r), u(cx + r), u(cy + r)]
-    d.ellipse(bx, outline=(255, 255, 255, 70), width=round(u(9)))
-    if q < 1:
-        d.arc(bx, -90 + 360 * q, 270, fill=CYAN + (255,), width=round(u(9)))
-    if t >= 2.5:
+    if t >= 2.5:                                   # başlık bitince halka (yazıyla çakışmasın)
+        d.ellipse(bx, outline=(255, 255, 255, 70), width=round(u(9)))
+        if q < 1:
+            d.arc(bx, -90 + 360 * q, 270, fill=CYAN + (255,), width=round(u(9)))
         txt(L, (cx, cy), str(n), 56, WHITE, 1.0, k="black", stroke=5)
     # alt ilerleme çubuğu
     y = PY0 + PH + u(34)
