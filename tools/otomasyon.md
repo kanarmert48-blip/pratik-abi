@@ -14,6 +14,12 @@ Kanal durumu:
   Yükleme `yt-yukle` iş akışıyla yapılır (aşağıda).
 - **3. kanal**: henüz açılmadı.
 
+## Durum kaydı (hata ayıklama için zorunlu)
+Her adım bitince `tools/oto_durum.md` sonuna tek satır ekle ve hemen commit + push et:
+`<YYYY-MM-DD HH:MM> <slot> <adım> OK` (kurulum, konu, ses, render, kontrol, soru, yükleme).
+Bir adım hata verirse önce hata mesajının ilk 3 satırını aynı dosyaya `HATA` olarak yaz, push et, sonra kullanıcıya bildir.
+Kurulum takılırsa (ör. geri_yukle.sh içindeki manim kurulumu) o paketi atla, video için gerekenlerle devam et.
+
 ## 0. Kurulum (yeni oturum)
 - `/home/claude/pratik-abi` yoksa: `add_repo` (owner `kanarmert48-blip`, repo `pratik-abi`, access `push`) ve verdiği komutla klonla.
 - `/home/claude/shorts-oto` yoksa: `bash /home/claude/pratik-abi/pipeline/geri_yukle.sh`.
