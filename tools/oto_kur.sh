@@ -9,6 +9,7 @@ A=/home/claude/araclar
 cd "$(dirname "$0")/.."
 if [ ! -d /home/claude/shorts-oto ]; then cp -r pipeline/shorts-oto /home/claude/shorts-oto; fi
 python3 -c "import faster_whisper" 2>/dev/null || pip install --break-system-packages -q faster-whisper
+python3 -c "import cv2" 2>/dev/null || pip install --break-system-packages -q opencv-python-headless
 mkdir -p $A/whisper-turbo
 if [ ! -f $A/whisper-turbo/model.bin ] && [ -z "$(ls -A $A/whisper-turbo 2>/dev/null)" ]; then
   ID=$(gh api repos/$R/releases/tags/araclar --jq '.assets[] | select(.name=="whisper-turbo.tar") | .id')
