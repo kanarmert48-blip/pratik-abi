@@ -22,7 +22,11 @@ Kurulum takılırsa (ör. geri_yukle.sh içindeki manim kurulumu) o paketi atla,
 
 ## 0. Kurulum (yeni oturum)
 - `/home/claude/pratik-abi` yoksa: `add_repo` (owner `kanarmert48-blip`, repo `pratik-abi`, access `push`) ve verdiği komutla klonla.
-- `/home/claude/shorts-oto` yoksa: `bash /home/claude/pratik-abi/pipeline/geri_yukle.sh`.
+- Kurulum: `bash /home/claude/pratik-abi/tools/oto_kur.sh` (HAFİF kurulum: motor + whisper). `geri_yukle.sh` / `araclar_kur.sh` ÇALIŞTIRMA:
+  ağır modelleri (~3 GB) indirip diski dolduruyor, 09.11'deki iki çalışma büyük ihtimalle bu yüzden çöktü.
+- Ses: `ses/raw1.wav` → `python3 /home/claude/araclar/whb.py` (kelime zamanları) → `python3 /home/claude/araclar/kes3.py` (sessizlik sıkılaştırma, `ses/v1.wav` + `ses/v1.json`).
+  Whisper sonda uydurma kelime eklerse ("İzlediğiniz için teşekkür ederim") önce onları sil.
+- Örnek tam video: `pipeline/shorts-oto/pro/video50_kleopatra.py` (foto + Ken Burns + zaman çizelgesi + Abi rozeti).
 - `pratik-abi-video` skill'ini yükle ve uygula. Hafızadan `/areas/pratik-abi.md` ve `/areas/youtube-otomasyon.md` oku.
 - `tools/dogal_dil.md` dosyasını oku. Senaryo, başlık ve açıklama bu kurallara uymak zorunda.
 
