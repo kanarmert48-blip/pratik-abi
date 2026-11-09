@@ -2,10 +2,13 @@
 
 Kullanıcının kuralı: her gün 2 Short. Saatler Türkiye saati (Europe/Istanbul).
 
-| Slot | Araştırma | Üretim | YouTube kontrolü | Kullanıcıya soru | Cevap yoksa yükleme |
-|------|-----------|--------|------------------|------------------|---------------------|
-| A    | 11:30     | 12:00  | 12:30            | 13:00            | 13:30               |
-| B    | 16:30     | 17:00  | 17:30            | 18:00            | 18:30               |
+**KURAL DEĞİŞTİ (09.11.2026): Claude YÜKLEME YAPMAZ.** Kullanıcı: "Sen sadece video hazırla, konu sor, yüklemeyi ben yaparım."
+Claude konu sorar, videoyu hazırlar, başlık/açıklama/etiketle birlikte teslim eder. Yüklemeyi kullanıcı yapar. Metricool'a ya da YouTube'a hiçbir şey gönderilmez.
+
+| Slot | Konu sorusu | Üretim + kontrol | Teslim |
+|------|-------------|------------------|--------|
+| A    | ~11:15      | konu seçilince   | 13:00'ten önce |
+| B    | ~16:15      | konu seçilince   | 18:00'den önce |
 
 Kanal durumu:
 - **Pratik Abi** (@PratikAbii): aktif. Yükleme Metricool üzerinden (blogId `7502348`, YouTube bağlı).
@@ -30,7 +33,11 @@ Kurulum takılırsa (ör. geri_yukle.sh içindeki manim kurulumu) o paketi atla,
 - `pratik-abi-video` skill'ini yükle ve uygula. Hafızadan `/areas/pratik-abi.md` ve `/areas/youtube-otomasyon.md` oku.
 - `tools/dogal_dil.md` dosyasını oku. Senaryo, başlık ve açıklama bu kurallara uymak zorunda.
 
-## 1. Konu (araştırma saati)
+## 1. Konu (araştırma + kullanıcıya sor)
+- Aşağıdaki kurallarla 3 aday konu çıkar, her biri tek cümlelik kancayla. `SendUserMessage` + `PushNotification` ile kullanıcıya sor:
+  "Bugünkü <13:00/18:00> videosu için konu: 1) … 2) … 3) … Hangisi?"
+- `send_later` ile 30 dk sonrasına hatırlatıcı kur. Kullanıcı seçerse onu yap. 30 dk içinde cevap yoksa en yüksek puanlı adayı seç,
+  "cevap gelmedi, 1'i yapıyorum" diye kısa yaz ve devam et.
 - `kanal` release'inden `kanal_son.json` indir. Son videolarda neyin tuttuğuna bak.
 - `tools/onerilenler.md`: 2. satır **yapılmış** konular, asla tekrar etme. 3. satır önerilmiş konular, oradan seçebilirsin.
 - Doyuma ulaşmış kalıp formatları seçme (aynı tip illüzyon/test videosunu art arda yapma). Konu ilk 1–2 sn'de durduracak kancaya sahip olsun.
@@ -71,41 +78,14 @@ C. YouTube'a uygun mu
 
 Soru mesajına tek satır ekle: "Kontrol: 11/11 geçti" ya da neyin düzeltildiği.
 
-## 4. Barındırma
+## 4. Barındırma (artık gerekmiyor, yükleme yok)
 - `bash tools/yayin_yukle.sh <no>-<ad>.mp4` → herkese açık adresi yazdırır
   (`https://raw.githubusercontent.com/kanarmert48-blip/pratik-abi/yayin/<no>-<ad>.mp4`). Bu oturum release oluşturamaz, bu yüzden dal kullanılıyor.
 
-## 5. Soru (13:00 / 18:00)
-- Video erken biterse `send_later` ile tam soru saatine kendine mesaj kur ve o mesaj gelince sor.
-- Sorarken: `SendUserFile` (video + kapak), `SendUserMessage` (başlık, açıklama, etiketler ve
-  "Yükleyeyim mi? 30 dk içinde cevap gelmezse <saat>'te kendim yüklüyorum."), `PushNotification`.
-- Hemen ardından `send_later` ile 30 dk sonrasına "otomatik yükleme zamanı" mesajı kur.
-- Üretim gecikirse: hazır olunca sor, yükleme sorudan 30 dk sonra.
-
-## 6. Karar
-- "yükle / tamam / evet" → hemen yükle. Sonra gelen otomatik yükleme mesajında tekrar yükleme yapma.
-- "yükleme / dur / iptal" → yükleme. Log'a `iptal` yaz.
-- Değişiklik isterse → düzelt, yeniden gönder, yeniden sor, yeni 30 dk say.
-- 30 dk içinde hiç cevap yok → yükle.
-
-## 7. Yükleme
-### Pratik Abi (Metricool)
-`createScheduledPost`: blogId `7502348`, `date` = şimdi + 3 dk (Europe/Istanbul, ISO 8601), `info`:
-```json
-{"autoPublish": true, "draft": false, "text": "<açıklama>", "media": ["<yayin adresi>"],
- "providers": [{"network": "youtube"}],
- "publicationDate": {"dateTime": "YYYY-MM-DDTHH:mm:ss", "timezone": "Europe/Istanbul"},
- "youtubeData": {"title": "<başlık>", "type": "short", "privacy": "public", "tags": ["..."],
-                 "category": "EDUCATION", "madeForKids": false, "isAiGeneratedContent": false}}
-```
-`isAiGeneratedContent` sadece gerçekçi yapay zekâ görüntüsü varsa `true`. Kapak alanlarını (videoThumbnailUrl) gönderme.
-Sonra `getScheduledPosts` ile sıraya girdiğini doğrula, kullanıcıya "yüklendi" de.
-
-### DinoFlash (hazır olunca)
-`jobs/yukle-<id>/meta.json` = `{"kanal": "dinoflash", "video": "<yayin dalındaki dosya adı>", "title": "...",
-"description": "...", "tags": ["..."], "categoryId": "27", "ai": false}` push et, sonra:
-`gh api -X POST repos/kanarmert48-blip/pratik-abi/actions/workflows/yt-yukle.yml/dispatches -f ref=main -f "inputs[job]=jobs/yukle-<id>"`.
-Sonucu `yukleme` release'indeki `<id>_sonuc.json` dosyasından oku.
+## 5. Teslim (13:00 / 18:00'den önce)
+- `SendUserFile` (video + kapak) ve `SendUserMessage`: başlık, kısa açıklama (+ fotoğraf kredisi), etiketler,
+  "Değiştirilmiş içerik: Evet/Hayır" ve "Kontrol: 11/11 geçti". `PushNotification` at.
+- Değişiklik isterse düzelt ve yeniden gönder. **Yükleme yapma**, yüklemeyi kullanıcı yapar.
 
 ## 8. Kayıt
 - `tools/yayin_log.md` sonuna: `| tarih | slot | kanal | no | konu | başlık | durum |`.
