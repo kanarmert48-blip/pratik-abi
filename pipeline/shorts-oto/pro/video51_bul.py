@@ -39,15 +39,16 @@ INKC = (20, 18, 40)
 S_END = T("Daha") - 0.1
 
 # ---------- turlar ----------
-COLS, ROWS = 11, 12
-CX0, CY0, CW, CH = 72, 440, 85, 80          # 1080 birim, ızgara sol üst + hücre boyu
+COLS, ROWS = 13, 15
+CX0, CY0, CW, CH = 72, 440, 72, 66          # 1080 birim, ızgara sol üst + hücre boyu
 CARD = (CX0 - 26, CY0 - 26, CX0 + COLS * CW + 26, CY0 + ROWS * CH + 26)
 R = [  # (doldurma, hedef, süre, geri sayım başı, tur başı, tur sonu, başlık1, başlık2, renk, hedef hücre)
-    dict(fill="1", target="7", dur=5, t0=4.85, a=0.0, b=10.9, h1="5 SANİYEDE", h2="7'Yİ BUL!", col=GOLD, cell=(7, 8)),
-    dict(fill="9", target="6", dur=4, t0=14.15, a=10.9, b=19.2, h1="TUR 2 · 4 SANİYE", h2="6'YI BUL!", col=CYAN, cell=(2, 4)),
-    dict(fill="O", target="Ö", dur=3, t0=22.35, a=19.2, b=S_END, h1="SON TUR · 3 SANİYE", h2="Ö'YÜ BUL!", col=PINK, cell=(8, 2)),
+    dict(fill="1", target="7", dur=5, t0=4.85, a=0.0, b=10.9, h1="5 SANİYEDE", h2="7'Yİ BUL!", col=GOLD, cell=(9, 10)),
+    dict(fill="9", target="6", dur=4, t0=14.15, a=10.9, b=19.2, h1="TUR 2 · 4 SANİYE", h2="6'YI BUL!", col=CYAN, cell=(3, 6)),
+    dict(fill="O", target="Ö", dur=3, t0=22.35, a=19.2, b=S_END, h1="SON TUR · 3 SANİYE", h2="Ö'YÜ BUL!", col=PINK, cell=(10, 3)),
 ]
-FN = font("black", round(u(60)))
+FN = font("black", round(u(50)))
+PAL = [(235, 235, 255), (120, 225, 255), (255, 140, 200), (255, 214, 110), (170, 255, 170)]
 
 
 def cell_xy(c, r):
@@ -55,17 +56,25 @@ def cell_xy(c, r):
 
 
 def make_grid(rd, dim=False):
+    """Koyu kart, renkli ve hafif kayık karakterler (daha zor)."""
     L = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-    card(L, CARD[0], CARD[1], CARD[2] - CARD[0], CARD[3] - CARD[1], r=34, fill=(250, 248, 255, 255))
+    card(L, CARD[0], CARD[1], CARD[2] - CARD[0], CARD[3] - CARD[1], r=34, fill=(28, 24, 64, 240),
+         outline=(140, 110, 230, 255), width=round(u(3)))
     d = ImageDraw.Draw(L)
-    a = 70 if dim else 255
+    rng = random.Random(hash(rd["fill"]) % 1000 + 7)
+    a = 55 if dim else 255
     for r in range(ROWS):
         for c in range(COLS):
-            ch = rd["target"] if (c, r) == rd["cell"] else rd["fill"]
-            if dim and (c, r) == rd["cell"]:
-                continue
+            col = rng.choice(PAL)
+            jx, jy = rng.uniform(-5, 5), rng.uniform(-5, 5)
+            if (c, r) == rd["cell"]:
+                if dim:
+                    continue
+                ch = rd["target"]
+            else:
+                ch = rd["fill"]
             x, y = cell_xy(c, r)
-            d.text((u(x), u(y)), ch, font=FN, fill=INKC + (a,), anchor="mm")
+            d.text((u(x + jx), u(y + jy)), ch, font=FN, fill=col + (a,), anchor="mm")
     return L
 
 
@@ -141,7 +150,7 @@ def round_frame(im, L, t, i):
         x, y = cell_xy(c, r)
         k = pop(t, end, 0.35)
         d = ImageDraw.Draw(L)
-        hw = CW * 0.55 * k
+        hw = CW * 0.6 * k
         d.rounded_rectangle([u(x - hw), u(y - hw * 0.95), u(x + hw), u(y + hw * 0.95)], radius=round(u(16)),
                             fill=GOLD + (255,), outline=INKC + (255,), width=round(u(4)))
         txt(L, (x, y), rd["target"], max(8, round(70 * k)), INKC, 1.0, k="black", stroke=0)
