@@ -1,10 +1,10 @@
-"""55. video (2K Shorts, ~17 sn): Bu şekilde kaç üçgen var? 5 sn süre, sonra 18 üçgen tek tek sayılır.
+"""55. video (2K Shorts, ~17 sn): Bu şekilde kaç üçgen var? 7 sn süre, cevap verilmez, yorumlara yazdırılır.
+Neon çizgili şekil, cam kart, renkli ışık lekeleri.
 Kullanım: python3 video55_ucgen.py <WORK> [frames t1,t2,... | ses | render]
 WORK/voice_cut.wav + marks.json + muzik.wav gerekir."""
 import os
 os.environ.setdefault("PA_SCALE", str(4 / 3))
 import json, math, random, subprocess, sys
-from itertools import combinations
 from pathlib import Path
 
 import numpy as np
@@ -23,21 +23,20 @@ TOTAL = round(at.duration(str(VOICE)), 3)
 
 GOLD = (255, 204, 70)
 CYAN = (60, 230, 255)
-PINK = (255, 90, 170)
+PINK = (255, 80, 190)
 RED = (255, 70, 70)
 INKC = (20, 18, 40)
-PAL = [(255, 90, 170), (60, 230, 255), (255, 204, 70), (120, 240, 120), (180, 120, 255), (255, 140, 60)]
 
 
 def ramp(t, a, b):
     return eio(clamp((t - a) / max(1e-6, b - a)))
 
 
-# ---- şekil: tepeden 4 çizgi (2 kenar + 2 iç), 3 yatay (2 iç + taban) -> C(4,2)*3 = 18 üçgen ----
-AX, AY = 540, 440
-BY, BX0, BX1 = 1430, 110, 970
-FOOT = [BX0, BX0 + (BX1 - BX0) / 3, BX0 + 2 * (BX1 - BX0) / 3, BX1]   # çizgilerin tabandaki x'i
-HF = [0.45, 0.72, 1.0]                                                 # yatayların yüksekliği (oran)
+# ---- şekil: tepeden 4 çizgi (2 kenar + 2 iç), 3 yatay (2 iç + taban) ----
+AX, AY = 540, 470
+BY, BX0, BX1 = 1400, 130, 950
+FOOT = [BX0, BX0 + (BX1 - BX0) / 3, BX0 + 2 * (BX1 - BX0) / 3, BX1]
+HF = [0.45, 0.72, 1.0]
 
 
 def pt(line, h):
@@ -45,59 +44,108 @@ def pt(line, h):
     return AX + (FOOT[line] - AX) * f, AY + (BY - AY) * f
 
 
-TRI = []
-for h in range(3):
-    for i, j in combinations(range(4), 2):
-        TRI.append((j - i, h, i, j))
-TRI.sort()                                       # önce küçükler, sonra büyükler
-TRI = [((AX, AY), pt(i, h), pt(j, h)) for _, h, i, j in TRI]
-assert len(TRI) == 18
-N = len(TRI)
-STEP = (MK["cnt1"] - MK["cnt0"]) / N
-
-_bg = np.zeros((H, W, 3), np.float32)
-yy = np.linspace(0, 1, H)[:, None]
-_bg[:] = (np.array([46, 20, 92]) * (1 - yy) + np.array([12, 10, 38]) * yy)[:, None, :][:, 0, :][:, None, :]
-BG = Image.fromarray(_bg.clip(0, 255).astype(np.uint8))
-random.seed(55)
-STARS = [(random.uniform(0, 1080), random.uniform(0, 1920), random.uniform(2, 5), random.uniform(0, 6.28)) for _ in range(60)]
-
-
-def background(t):
-    im = BG.copy().convert("RGBA")
-    d = ImageDraw.Draw(im)
-    for x, y, r, ph in STARS:
-        a = int(60 + 60 * math.sin(t * 2 + ph))
-        d.ellipse([u(x - r), u(y - r), u(x + r), u(y + r)], fill=(255, 255, 255, a))
+def grad_line_layer(width, blur):
+    """Neon çizgiler: yukarıda camgöbeği, aşağıda pembe."""
+    m = Image.new("L", (W, H), 0)
+    d = ImageDraw.Draw(m)
+    w = round(u(width))
+    segs = [((AX, AY), (FOOT[k], BY)) for k in range(4)] + [(pt(0, h), pt(3, h)) for h in range(3)]
+    for (x0, y0), (x1, y1) in segs:
+        d.line([u(x0), u(y0), u(x1), u(y1)], fill=255, width=w)
+        for x, y in ((x0, y0), (x1, y1)):
+            d.ellipse([u(x) - w / 2, u(y) - w / 2, u(x) + w / 2, u(y) + w / 2], fill=255)
+    if blur:
+        m = m.filter(ImageFilter.GaussianBlur(u(blur)))
+    yy = np.linspace(0, 1, H)[:, None, None]
+    top, bot = np.array(CYAN, np.float32), np.array(PINK, np.float32)
+    k = np.clip((yy - u(AY) / H) / ((u(BY) - u(AY)) / H), 0, 1)
+    col = (top * (1 - k) + bot * k).astype(np.uint8)
+    col = np.broadcast_to(col, (H, W, 3))
+    im = Image.fromarray(np.ascontiguousarray(col)).convert("RGBA")
+    a = np.asarray(m, np.float32)
+    if blur:
+        a = np.clip(a * 2.2, 0, 255)
+    im.putalpha(Image.fromarray(a.astype(np.uint8)))
     return im
 
 
-def draw_shape(L, t, glow=1.0):
+def cells_layer():
+    """Hücrelere çok hafif renk (cevabı vermez, sadece güzellik)."""
+    L = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     d = ImageDraw.Draw(L)
-    w = round(u(9))
-    segs = [((AX, AY), (FOOT[k], BY)) for k in range(4)]
+    cols = [(60, 230, 255), (150, 110, 255), (255, 80, 190)]
     for h in range(3):
-        segs.append((pt(0, h), pt(3, h)))
-    for (x0, y0), (x1, y1) in segs:
-        d.line([u(x0), u(y0), u(x1), u(y1)], fill=(255, 255, 255, 255), width=w)
-    for (x0, y0), (x1, y1) in segs:                # uç noktaları yuvarla
-        for x, y in ((x0, y0), (x1, y1)):
-            d.ellipse([u(x) - w / 2, u(y) - w / 2, u(x) + w / 2, u(y) + w / 2], fill=(255, 255, 255, 255))
+        for k in range(3):
+            if h == 0:
+                poly = [(AX, AY), pt(k, 0), pt(k + 1, 0)]
+            else:
+                poly = [pt(k, h - 1), pt(k + 1, h - 1), pt(k + 1, h), pt(k, h)]
+            c = cols[h]
+            d.polygon([(u(x), u(y)) for x, y in poly], fill=c + (28 + 10 * ((k + h) % 2),))
+    return L
+
+
+GLOW = grad_line_layer(26, 14)
+CORE = grad_line_layer(8, 0)
+WHITECORE = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+_m = Image.new("L", (W, H), 0)
+_d = ImageDraw.Draw(_m)
+for (x0, y0), (x1, y1) in [((AX, AY), (FOOT[k], BY)) for k in range(4)] + [(pt(0, h), pt(3, h)) for h in range(3)]:
+    _d.line([u(x0), u(y0), u(x1), u(y1)], fill=200, width=round(u(3)))
+WHITECORE = Image.new("RGBA", (W, H), (255, 255, 255, 0))
+WHITECORE.putalpha(_m)
+CELLS = cells_layer()
+
+# arka plan: koyu lacivert-mor degrade + bulanık renk lekeleri + nokta ızgara
+_bg = np.zeros((H, W, 3), np.float32)
+yy = np.linspace(0, 1, H)[:, None]
+_bg[:] = (np.array([28, 14, 70]) * (1 - yy) + np.array([8, 6, 26]) * yy)[:, None, :][:, 0, :][:, None, :]
+BG = Image.fromarray(_bg.clip(0, 255).astype(np.uint8)).convert("RGBA")
+_bl = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+_bd = ImageDraw.Draw(_bl)
+for x, y, r, c in [(160, 380, 260, CYAN), (930, 820, 300, PINK), (300, 1450, 280, (150, 110, 255)), (900, 1750, 220, CYAN)]:
+    _bd.ellipse([u(x - r), u(y - r), u(x + r), u(y + r)], fill=c + (70,))
+_bl = _bl.filter(ImageFilter.GaussianBlur(u(120)))
+BG.alpha_composite(_bl)
+_gd = ImageDraw.Draw(BG)
+for gx in range(0, 1081, 54):
+    for gy in range(0, 1921, 54):
+        _gd.ellipse([u(gx) - 2, u(gy) - 2, u(gx) + 2, u(gy) + 2], fill=(255, 255, 255, 26))
+# cam kart
+CARD = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+card(CARD, 70, 400, 940, 1080, r=56, fill=(255, 255, 255, 18), outline=(255, 255, 255, 60), width=round(u(3)))
+
+random.seed(55)
+SPARK = [(random.uniform(60, 1020), random.uniform(380, 1500), random.uniform(3, 7), random.uniform(0, 6.28), random.uniform(1.5, 3))
+         for _ in range(26)]
+
+
+def background(t):
+    im = BG.copy()
+    im.alpha_composite(CARD)
+    d = ImageDraw.Draw(im)
+    for x, y, r, ph, sp in SPARK:
+        a = max(0.0, math.sin(t * sp + ph))
+        if a > 0.05:
+            rr = r * (0.6 + 0.4 * a)
+            d.ellipse([u(x - rr), u(y - rr), u(x + rr), u(y + rr)], fill=(255, 255, 255, int(160 * a)))
+    return im
 
 
 def timer(L, t):
     d = ImageDraw.Draw(L)
-    cx, cy, r = 540, 335, 56
-    q = clamp((t - MK["t0"]) / 5.0)
-    left = 5.0 * (1 - q)
+    cx, cy, r = 540, 1590, 74
+    q = clamp((t - MK["t0"]) / MK["dur"])
+    left = MK["dur"] * (1 - q)
     n = max(0, int(math.ceil(left - 1e-6)))
-    col = RED if (t >= MK["t0"] and left <= 1.0) else GOLD
+    hot = t >= MK["t0"] and left <= 3.0 and q < 1
+    col = RED if hot else GOLD
     bx = [u(cx - r), u(cy - r), u(cx + r), u(cy + r)]
-    d.ellipse(bx, fill=(0, 0, 0, 120), outline=(255, 255, 255, 60), width=round(u(10)))
+    d.ellipse(bx, fill=(10, 8, 30, 200), outline=(255, 255, 255, 50), width=round(u(12)))
     if q < 1:
-        d.arc(bx, -90 + 360 * q, 270, fill=col + (255,), width=round(u(10)))
-    s = 1 + 0.18 * max(0.0, 1 - ((t - MK["t0"]) % 1.0) / 0.25) if MK["t0"] <= t < MK["tend"] else 1.0
-    txt(L, (cx, cy), str(n if t >= MK["t0"] else 5), round(68 * s), WHITE, 1.0, k="black", stroke=5)
+        d.arc(bx, -90 + 360 * q, 270, fill=col + (255,), width=round(u(12)))
+    s = 1 + 0.2 * max(0.0, 1 - ((t - MK["t0"]) % 1.0) / 0.25) if MK["t0"] <= t < MK["tend"] else 1.0
+    txt(L, (cx, cy), str(n if t >= MK["t0"] else int(MK["dur"])), round(76 * s), WHITE, 1.0, k="black", stroke=5)
 
 
 class Vid(Video):
@@ -105,47 +153,30 @@ class Vid(Video):
         i = min(len(OPN) - 1, int(t * FPS))
         im = background(t)
         L = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-        F = Image.new("RGBA", (W, H), (0, 0, 0, 0))      # dolgu katmanı (çizgilerin altında)
-        k_in = pop(t, 0.0, 0.45)
-        # başlık
-        if t < MK["tC"]:
-            txt(L, (540, 118), "BU ŞEKİLDE", round(52 * k_in), WHITE, 1.0, stroke=6)
-            put_word(L, "KAÇ ÜÇGEN VAR?", GOLD, 540, 188, max(8, round(84 * k_in)), alpha=1.0, glow=0.45)
-        if t < MK["tB"]:
-            timer(L, t)
-        # sayım
-        cnt = 0
-        if t >= MK["cnt0"]:
-            cnt = min(N, int((t - MK["cnt0"]) / STEP) + 1)
-            fd = ImageDraw.Draw(F)
-            if t < MK["cnt1"]:
-                a, b, c = TRI[cnt - 1]
-                col = PAL[(cnt - 1) % len(PAL)]
-                fd.polygon([(u(a[0]), u(a[1])), (u(b[0]), u(b[1])), (u(c[0]), u(c[1]))], fill=col + (190,))
-            else:
-                for k, (a, b, c) in enumerate(TRI[:3]):     # en küçük 3'ü renkli bırak
-                    pass
-                q = ramp(t, MK["cnt1"], MK["cnt1"] + 0.3)
-                fd.polygon([(u(AX), u(AY)), (u(BX0), u(BY)), (u(BX1), u(BY))], fill=CYAN + (int(60 * q),))
-        im.alpha_composite(F)
-        draw_shape(L, t)
-        if cnt:
-            ks = 1 + 0.25 * max(0.0, 1 - ((t - MK["cnt0"]) % STEP) / (STEP * 0.6)) if t < MK["cnt1"] else 1.0
-            if t < MK["tC"]:
-                d = ImageDraw.Draw(L)
-                d.ellipse([u(540 - 78), u(1560 - 78), u(540 + 78), u(1560 + 78)], fill=INKC + (230,), outline=GOLD + (255,), width=round(u(6)))
-                txt(L, (540, 1560), str(cnt), round(84 * ks), GOLD, 1.0, k="black", stroke=0)
-        if MK["tB"] - 0.05 <= t < MK["cnt0"]:
-            chip(L, 540, 1600, "CEVAP...", bg=GOLD, fg=INKC, size=58, k="black", scale=pop(t, MK["tB"] - 0.05, 0.3))
-        if t >= MK["tC"] - 0.05:
+        # şekil: çizilerek gelir
+        k = ramp(t, 0.05, 0.6)
+        if k > 0:
+            im.alpha_composite(set_alpha(CELLS, k))
+            pulse = 0.75 + 0.25 * math.sin(t * 3.2)
+            im.alpha_composite(set_alpha(GLOW, k * pulse))
+            im.alpha_composite(set_alpha(CORE, k))
+            im.alpha_composite(set_alpha(WHITECORE, k))
+        if t < MK["tC"] - 0.05:
+            q = pop(t, 0.0, 0.45)
+            txt(L, (540, 150), "BU ŞEKİLDE", round(56 * q), WHITE, 1.0, stroke=6)
+            put_word(L, "KAÇ ÜÇGEN VAR?", GOLD, 540, 250, max(8, round(98 * q)), alpha=1.0, glow=0.55)
+            if t >= MK["dikkat"] - 0.05:
+                chip(L, 540, 1590 if t < MK["t0"] else 1750, "DİKKATLİ SAY!", bg=PINK, fg=WHITE, size=50, k="black",
+                     icon_name="eyes", scale=pop(t, MK["dikkat"] - 0.05, 0.35)) if t < MK["t0"] else None
+            timer(L, t) if t >= MK["t0"] - 0.3 else None
+        else:
             q = pop(t, MK["tC"] - 0.05, 0.4)
-            put_word(L, "18 ÜÇGEN!", GOLD, 540, 190, max(8, round(120 * q)), alpha=1.0, glow=0.6)
-        if t >= MK["kac"] - 0.1:
-            q = pop(t, MK["kac"] - 0.1, 0.35)
-            txt(L, (540, 1560), "Sen kaç tane buldun?", round(62 * q), WHITE, 1.0, stroke=7)
-        if t >= MK["yor"] - 0.1:
-            chip(L, 640, 1720, "Yorumlara yaz!", bg=GOLD, fg=INKC, size=56, icon_name="speech_balloon", k="black",
-                 scale=pop(t, MK["yor"] - 0.1, 0.35))
+            txt(L, (540, 150), "SÜRE BİTTİ!", round(56 * q), WHITE, 1.0, stroke=6)
+            put_word(L, "KAÇ TANE BULDUN?", GOLD, 540, 250, max(8, round(88 * q)), alpha=1.0, glow=0.55)
+            if t >= MK["yor"] - 0.1:
+                pulse = 1 + 0.04 * math.sin((t - MK["yor"]) * 8)
+                chip(L, 610, 1560, "Cevabını yorumlara yaz!", bg=GOLD, fg=INKC, size=52, icon_name="speech_balloon",
+                     k="black", scale=pop(t, MK["yor"] - 0.1, 0.35) * pulse)
         im.alpha_composite(L)
         brand(im, 540, 62, size=34)
         ROZ.draw(im, t, float(OPN[i]))
@@ -158,10 +189,8 @@ VID = Vid([{"start": 0, "end": TOTAL, "draw": lambda *a: None}], [], "", TOTAL, 
 
 
 def make_audio():
-    ev = [(0.0, "pop"), (MK["t0"] - 0.05, "whoosh")]
-    ev += [(MK["t0"] + s, "tink") for s in range(5)]
-    ev += [(MK["tB"] - 0.05, "whoosh")]
-    ev += [(MK["cnt0"] + k * STEP, "pop") for k in range(N)]
+    ev = [(0.0, "whoosh"), (MK["dikkat"] - 0.05, "pop"), (MK["t0"] - 0.05, "pop")]
+    ev += [(MK["t0"] + s, "tink") for s in range(int(MK["dur"]))]
     ev += [(MK["tC"] - 0.05, "whoosh"), (MK["yor"] - 0.1, "pop")]
     at.sfx(str(WORK / "sfx.wav"), TOTAL, ev)
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-stream_loop", "3", "-i", str(WORK / "muzik.wav"), "-af",
