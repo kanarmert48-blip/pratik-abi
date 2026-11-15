@@ -1,0 +1,43 @@
+name: edge-ses
+on:
+  workflow_dispatch:
+    inputs:
+      voices:
+        description: "Boşlukla ayrılmış Edge ses adları"
+        required: true
+      text:
+        description: "Okunacak metin"
+        required: true
+      prefix:
+        description: "Dosya ön eki"
+        required: true
+permissions:
+  contents: write
+jobs:
+  ses:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Kur
+        run: pip install -q -U edge-tts
+      - name: Üret
+        env:
+          VOICES: ${{ inputs.voices }}
+          TEXT: ${{ inputs.text }}
+          P: ${{ inputs.prefix }}
+        run: |
+          mkdir -p out
+          for v in $VOICES; do
+            edge-tts --voice "$v" --text "$TEXT" --write-media "out/${P}_${v}.mp3" || echo "HATA $v" >> out/${P}_hata.txt
+          done
+          edge-tts --list-voices | grep -i -E "Multilingual|tr-TR" > out/${P}_liste.txt || true
+          ls -la out
+      - name: Release'e yükle
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          R=sesler
+          gh release view $R >/dev/null 2>&1 || gh release create $R --title "$R" --notes "otomatik"
+          gh release upload $R out/* --clobber
