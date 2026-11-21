@@ -5,3 +5,4 @@ Taranıp elenen: flamingo, kar tanesi, ayçiçeği, fulgurit, Apollo tüy-çeki�
 Uzun belgesel: YAPILDI 36 dinozor çağında kaç gün yaşardın; YAPILDI 37 komik versiyon (tek terlikle hayatta kalma); YAPILDI 38 evcil dinozor sahiplendirme. Önerildi (yapılmadı): buz çağı, Çanakkale siperi, Göbeklitepe, Osmanlı esnafı, Roma lejyoneri, tek terlikle Mars, tek terlikle Antarktika, Amazon ormanında 7 gün., yunus yarım beyin uyku, karides kalbi kafada, at ayakta uyur, karabiber sabun deneyi, yumurta tuzlu su, ters bardak kağıt, gözlerini kıs gizli resim (hibrit görüntü), harfleri karışık yazı okunuyor, yavaş değişen resim (değişim körlüğü)
 - 58: Dilini burnuna değdirebilir misin? (hemen dene, 11 sn, Emre) — yapıldı
 - 59: Gölgeden futbolcuyu bil (Ronaldo, Messi, Haaland, Mbappé; Daniel, cevapsız) — yapıldı
+- 60: Gölgeden futbolcu Part 2 (Osimhen, Palmer, Bellingham, Yamal; yeni profesyonel kurallar) — yapıldı
